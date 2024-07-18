@@ -7,43 +7,23 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 import logoIcon from "@/assets/images/favicon.png";
-import { LuArrowBigRightDash } from "react-icons/lu";
 import {
   RiArrowDropRightLine,
   RiMailAddLine,
   RiMapPinLine,
   RiPhoneLine,
 } from "react-icons/ri";
+import "@/styles/footer.css";
 
 const Footer = () => {
   return (
     <footer>
-      <div className="mx-auto max-w-[1250px] px-2 pt-16 pb-5">
-        {/* <div className="mx-auto max-w-md">
-          <strong className="block text-center text-xl font-bold text-gray-900 sm:text-3xl">
-            Want us to email you with the latest blockbuster news?
-          </strong>
-
-          <form className="mt-6">
-            <div className="relative max-w-lg">
-              <label className="sr-only" htmlFor="email">
-                {" "}
-                Email{" "}
-              </label>
-
-              <input
-                className="w-full rounded-full border-gray-200 bg-gray-100 p-4 pe-32 text-sm font-medium"
-                id="email"
-                type="email"
-                placeholder="john@doe.com"
-              />
-
-              <button className="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700">
-                Subscribe
-              </button>
-            </div>
-          </form>
-        </div> */}
+      <div className="mx-auto max-w-[1250px] px-2 pt-16 pb-3">
+        <div>
+          <div className="footer-wave"></div>
+          <div className="footer-wave"></div>
+          <div className="footer-wave"></div>
+        </div>
 
         <div className="flex flex-col md:flex-row justify-between gap-8 lg:gap-32">
           <div className="basis-[35%]">
@@ -168,7 +148,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-10 border-t border-gray-100 pt-3">
-          <p className="text-center text-xs/relaxed text-gray-500 font-medium">
+          <p className="text-center text-xs/relaxed text-gray-800 font-medium">
             <span>Labone Hospital ©{new Date().getFullYear()} Created by </span>
             <Link href={"https://websyner.com"} className="text-primary">
               WebSyner
