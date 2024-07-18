@@ -9,7 +9,17 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        archivo: ["Archivo", "sans-serif"],
+        tiroBangla: ["Tiro Bangla", "sans-serif"],
+      },
+      colors: {
+        primary: "#0a8848",
+        secondary: "#f70920",
+        accent: "#333333",
+      },
+    },
   },
   plugins: [nextui()],
 };
