@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
-import "./globals.css";
 import { Providers } from "@/provider/Providers";
+import "@/app/globals.css";
 
 const archivo = Archivo({ subsets: ["latin"] });
 
