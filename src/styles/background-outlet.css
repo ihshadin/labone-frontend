@@ -1,0 +1,134 @@
+@keyframes labone-body-animation {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(360deg) scale(1.5);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes labone-body-animation {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(360deg) scale(1.5);
+    opacity: 1;
+  }
+}
+@keyframes labone-body-drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+@-webkit-keyframes labone-body-drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+.labone-body-gradient {
+  --bg-size: 100vw;
+  --bg-speed: 20s;
+  --bg-easing: cubic-bezier(0.5, 0.3, 0.1, 0.4);
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: var(--bg-size);
+  height: 100%;
+  filter: blur(calc(var(--bg-size) / 5));
+  background-image: conic-gradient(
+    rgba(167, 255, 211, 0.4),
+    rgba(10, 136, 73, 0.2),
+    rgba(247, 9, 33, 0.1)
+  );
+  animation: labone-body-animation var(--bg-speed) var(--bg-easing) infinite;
+  /* border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; */
+  z-index: -999999;
+}
+
+@media (min-width: 720px) {
+  .labone-body-gradient {
+    --bg-size: 100vw;
+  }
+}
+body {
+  overflow-x: hidden;
+}
+
+.labone-body-gradient-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin: auto;
+  width: 90vw;
+  display: flex;
+  justify-content: space-around;
+  z-index: -99999;
+}
+
+.labone-body-gradient-line {
+  position: relative;
+  width: 1px;
+  height: 100%;
+  /* top: 0; */
+  /* left: 50%; */
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.labone-body-gradient-line::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    #0a884900 0%,
+    #0a88499b 75%,
+    #0a8849bc 100%
+  );
+  -webkit-animation: labone-body-drop 7s 0s infinite;
+  animation: labone-body-drop 7s 0s infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+.labone-body-gradient-line:nth-child(1)::after {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.labone-body-gradient-line:nth-child(2)::after {
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+}
+.labone-body-gradient-line:nth-child(3)::after {
+  -webkit-animation-delay: 6s;
+  animation-delay: 6s;
+}
+.labone-body-gradient-line:nth-child(4)::after {
+  -webkit-animation-delay: 3s;
+  animation-delay: 3s;
+}
