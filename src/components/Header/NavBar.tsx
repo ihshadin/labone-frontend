@@ -11,7 +11,7 @@ import {
   Link,
 } from "@nextui-org/react";
 import Image from "next/image";
-import LabBtn from "@/utils/Buttons/LabBtn";
+import LabBtn from "@/utils/LabBtn";
 import logo from "@/assets/images/labOneLogoThik.png";
 import { HiMiniXMark, HiOutlineBars3BottomLeft } from "react-icons/hi2";
 
@@ -32,8 +32,12 @@ const NavBar = () => {
       text: "Services",
     },
     {
-      link: "department",
+      link: "departments",
       text: "Departments",
+    },
+    {
+      link: "doctors",
+      text: "Doctors",
     },
     {
       link: "machines",

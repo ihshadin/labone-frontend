@@ -18,7 +18,7 @@ import logoIcon from "@/assets/images/favicon.png";
 const Footer = () => {
   return (
     <footer>
-      <div className="mx-auto max-w-[1250px] px-2 pt-16 pb-3">
+      <div className="mx-auto w-full max-w-[1250px] px-2 pt-16 pb-3 overflow-hidden">
         <div>
           <div className="footer-wave"></div>
           <div className="footer-wave"></div>
