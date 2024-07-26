@@ -6,7 +6,6 @@ import {
   FaSquareFacebook,
   FaXTwitter,
 } from "react-icons/fa6";
-import logoIcon from "@/assets/images/favicon.png";
 import {
   RiArrowDropRightLine,
   RiMailAddLine,
@@ -14,11 +13,12 @@ import {
   RiPhoneLine,
 } from "react-icons/ri";
 import "@/styles/footer.css";
+import logoIcon from "@/assets/images/favicon.png";
 
 const Footer = () => {
   return (
     <footer>
-      <div className="mx-auto max-w-[1250px] px-2 pt-16 pb-3">
+      <div className="mx-auto w-full max-w-[1250px] px-2 pt-16 pb-3 overflow-hidden">
         <div>
           <div className="footer-wave"></div>
           <div className="footer-wave"></div>
@@ -42,7 +42,7 @@ const Footer = () => {
               the best intention to help.
             </p>
 
-            <div className="mt-6 flex justify-center lg:justify-start gap-5 *:text-accent/90 hover:*:text-accent">
+            <div className="mt-4 md:mt-6 flex justify-center lg:justify-start gap-5 *:text-accent/90 hover:*:text-accent">
               <Link href={"https://facebook.com"} target="_blank">
                 <FaSquareFacebook size={20} />
               </Link>
@@ -61,11 +61,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="basis-[65%] grid grid-cols-1 gap-3 text-center lg:grid-cols-3 lg:text-left">
+          <div className="basis-[65%] grid grid-cols-1 gap-7 md:gap-3 text-center lg:grid-cols-3 lg:text-left">
             <div>
               <h4 className="text-primary text-lg font-semibold">Our Links</h4>
 
-              <ul className="mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
+              <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
                 <li>
                   <RiArrowDropRightLine />
                   <Link href={"#"}>About Us</Link>
@@ -93,7 +93,7 @@ const Footer = () => {
                 Important Links
               </h4>
 
-              <ul className="mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
+              <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
                 <li>
                   <RiArrowDropRightLine />
                   <Link href={"#"}>WHO</Link>
@@ -119,7 +119,7 @@ const Footer = () => {
             <div>
               <h4 className="text-primary text-lg font-semibold">Contact Us</h4>
 
-              <ul className="mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
+              <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
                 <li>
                   <RiPhoneLine />
                   <Link href={"tel:+880 1987009911"}>+880 1987009911</Link>
