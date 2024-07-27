@@ -39,7 +39,7 @@ const departmentsData = [
 const DepartmentsPage = () => {
   return (
     <>
-      <Breadcamp title={"Our Doctors"} subTitle="Doctors" />
+      <Breadcamp title={"Our Departments"} subTitle="Departments" />
       <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {departmentsData.map((department) => (

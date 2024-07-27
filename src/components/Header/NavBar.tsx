@@ -28,7 +28,7 @@ const NavBar = () => {
       text: "About Us",
     },
     {
-      link: "service",
+      link: "services",
       text: "Services",
     },
     {
