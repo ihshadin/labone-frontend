@@ -1,0 +1,107 @@
+.lab-one-btn {
+  position: relative;
+  /* top: 0;
+  left: 0; */
+  width: 220px;
+  height: 50px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lab-one-btn span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-image: rgba(255, 255, 255, 0.05); */
+  background-image: linear-gradient(to right, #0a8849, #07ccec);
+  /* background-image: conic-gradient(
+    from 90deg,
+    rgba(167, 255, 211, 0.6),
+    rgba(10, 136, 73, 0.4),
+    rgba(10, 136, 73, 0.4)
+  ); */
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 10px;
+  letter-spacing: 1px;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  backdrop-filter: blur(8px);
+}
+
+.lab-one-btn:hover span {
+  letter-spacing: 3px;
+}
+
+.lab-one-btn span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.2), transparent);
+  /* background-image: linear-gradient(
+    to left,
+    rgba(10, 136, 73, 0.3),
+    rgba(247, 9, 33, 0.2),
+    transparent,
+    transparent
+  ); */
+  transform: skewX(45deg) translate(0);
+  transition: 0.5s;
+  filter: blur(0px);
+  z-index: -1;
+}
+
+.lab-one-btn:hover span::before {
+  transform: skewX(45deg) translate(200px);
+}
+
+.lab-one-btn::before {
+  content: "";
+  position: absolute;
+  left: 68%;
+  transform: translatex(-50%);
+  bottom: -5px;
+  width: 30px;
+  height: 10px;
+  background: #0a8849;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5;
+}
+
+.lab-one-btn:hover::before {
+  left: 15%;
+  border-radius: 30px;
+}
+
+.lab-one-btn::after {
+  content: "";
+  position: absolute;
+  left: 33%;
+  transform: translatex(-50%);
+  top: -5px;
+  width: 30px;
+  height: 10px;
+  background: #0a8849;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5;
+}
+
+.lab-one-btn:hover::after {
+  left: 85%;
+  border-radius: 30px;
+}
