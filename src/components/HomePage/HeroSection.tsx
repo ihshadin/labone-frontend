@@ -10,6 +10,7 @@ import heroImage from "../../assets/images/labone-bg.png";
 // import required modules
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
+import LabBtn from "@/utils/LabBtn";
 
 const HeroSection = () => {
   return (
@@ -23,24 +24,78 @@ const HeroSection = () => {
       >
         <SwiperSlide>
           <div className="relative">
-            <div>
-              <h2 className="text-7xl md:w-[380px] absolute left-5 bottom-20 text-primary">
-                ল্যাব ওয়ান
-                <span className="text-secondary"> হাসপাতালে </span> আপনাকে
-                স্বাগতম
-              </h2>
+            <div className="absolute max-w-[1250px] p-2 w-full h-full flex items-center">
+              <div className="w-[50%] ml-12">
+                <h2 className="text-left text-[#058946] font-tiroBangla font-[700] text-[65px] leading-[1.1] md:w-[380px] ">
+                  ল্যাব ওয়ান
+                  <span className="text-[#dc3545]"> হাসপাতালে </span> আপনাকে
+                  স্বাগতম
+                </h2>
+
+                <div>
+                  <p className="text-[16px] text-left text-accent mt-[28px] mb-[18px]">
+                    সুখে দুখে আপনার পাশে
+                  </p>
+                  <LabBtn link="/appointment" text="Call Us" />
+                </div>
+              </div>
             </div>
-            <Image src={heroImage} alt="labOne-hero" />
+            <Image
+              className="min-h-[700px] bg-center bg-cover "
+              src={heroImage}
+              alt="labOne-hero"
+            />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <Image src={heroImage} alt="labOne-hero" />
+          <div className="relative">
+            <div className="absolute max-w-[1250px] p-2 w-full h-full flex items-center">
+              <div className="w-[50%] ml-12">
+                <h2 className="text-left text-[#058946] font-tiroBangla font-[700] text-[65px] leading-[1.1] md:w-[380px] ">
+                  ল্যাব ওয়ান
+                  <span className="text-[#dc3545]"> হাসপাতালে </span> আপনাকে
+                  স্বাগতম
+                </h2>
+
+                <div>
+                  <p className="text-[16px] text-left text-accent mt-[28px] mb-[18px]">
+                    সুখে দুখে আপনার পাশে
+                  </p>
+                  <LabBtn link="/appointment" text="Call Us" />
+                </div>
+              </div>
+            </div>
+            <Image
+              className="min-h-[700px] bg-center bg-cover "
+              src={heroImage}
+              alt="labOne-hero"
+            />
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <Image src={heroImage} alt="labOne-hero" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={heroImage} alt="labOne-hero" />
+          <div className="relative">
+            <div className="absolute max-w-[1250px] p-2 w-full h-full flex items-center">
+              <div className="w-[50%] ml-12">
+                <h2 className="text-left text-[#058946] font-tiroBangla font-[700] text-[65px] leading-[1.1] md:w-[380px] ">
+                  ল্যাব ওয়ান
+                  <span className="text-[#dc3545]"> হাসপাতালে </span> আপনাকে
+                  স্বাগতম
+                </h2>
+
+                <div>
+                  <p className="text-[16px] text-left text-accent mt-[28px] mb-[18px]">
+                    সুখে দুখে আপনার পাশে
+                  </p>
+                  <LabBtn link="/appointment" text="Call Us" />
+                </div>
+              </div>
+            </div>
+            <Image
+              className="min-h-[700px] bg-center bg-cover "
+              src={heroImage}
+              alt="labOne-hero"
+            />
+          </div>
         </SwiperSlide>
       </Swiper>
     </div>
