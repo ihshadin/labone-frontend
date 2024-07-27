@@ -2,6 +2,8 @@ import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import "@/app/globals.css";
 import "@/styles/background-outlet.css";
+import "@/styles/doctors.css";
+import "@/styles/common-styles.css";
 
 const layout = ({
   children,

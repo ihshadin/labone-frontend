@@ -1,5 +1,4 @@
-import { TMachine } from "@/types/machine.type";
-import DoctorCard from "./DoctorCard";
+import DoctorCard from "@/components/Doctors/DoctorCard";
 
 const doctorsData = [
   {

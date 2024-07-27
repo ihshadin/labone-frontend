@@ -5,7 +5,7 @@ import { Card, CardFooter, CardHeader, Image, Link } from "@nextui-org/react";
 const DoctorCard = ({ doctor }) => {
   return (
     <>
-      <Card className="w-full">
+      <Card className="w-full max-w-[380px]">
         <CardHeader className="absolute z-10 top-1 flex-col items-start">
           <span className="text-[12px] text-white uppercase font-medium bg-primary py-0.5 px-2 rounded-full font-tiroBangla">
             {doctor.degree}

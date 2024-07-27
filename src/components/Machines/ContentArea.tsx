@@ -1,5 +1,5 @@
 import { TMachine } from "@/types/machine.type";
-import MachineCard from "./MachineCard";
+import MachineCard from "@/components/Machines/MachineCard";
 
 const machineData = [
   {
