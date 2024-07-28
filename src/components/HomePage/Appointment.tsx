@@ -34,7 +34,7 @@ const Appointment = () => {
   ];
 
   return (
-    <div className="w-[50%] max-w-[1250px] mx-auto bg-white my-20 rounded-md p-2 border border-red-800">
+    <div className=" bg-white w-[50%] rounded-lg shadow-lg p-2 ">
       <h2 className="text-center my-5 text-3xl font-semibold">
         Make an Appointment, It{`'`}s Free
       </h2>
