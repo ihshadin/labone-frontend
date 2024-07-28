@@ -1,5 +1,5 @@
+import ContentArea from "@/components/Machines/ContentArea";
 import Breadcamp from "@/utils/Breadcamp";
-import ContentArea from "./ContentArea";
 
 const MachinesPage = () => {
   return (
