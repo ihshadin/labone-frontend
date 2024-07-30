@@ -1,6 +1,7 @@
-/* .swiper.vertical-pagination .swiper-wrapper {
-  align-items: center !important;
-} */
+.swiper.hero-slider {
+  width: 100%;
+  height: 100%;
+}
 .swiper.vertical-pagination .swiper-pagination {
   display: flex;
   flex-direction: column;
@@ -17,4 +18,13 @@
 }
 .swiper.vertical-pagination .swiper-pagination .swiper-pagination-bullet {
   margin: 0 !important;
+}
+/* Hero Section Pagination style */
+.swiper.hero-pagination .swiper-pagination .swiper-pagination-bullet {
+  border-radius: 0;
+}
+.swiper.hero-pagination .swiper-pagination .swiper-pagination-bullet-active {
+  background: #0a8848 !important;
+  width: 50px;
+  border-radius: 0;
 }
