@@ -1,0 +1,39 @@
+.ant-upload-wrapper.defaultRation .ant-upload-list-item-container {
+    width: 255px !important;
+    height: 326px !important;
+  }
+  .ant-upload-wrapper.fourThree .ant-upload-list-item-container {
+    width: 255px !important;
+    height: 192px !important;
+  }
+  .ant-upload-wrapper.oneOne .ant-upload-list-item-container {
+    width: 255px !important;
+    height: 255px !important;
+  }
+  .ant-upload-wrapper .ant-upload-list.ant-upload-list-picture-circle {
+    align-items: center !important;
+  }
+  .ant-upload-wrapper .ant-upload.ant-upload-select {
+    width: auto !important;
+    height: auto !important;
+    background-color: transparent !important;
+    border: none !important;
+  }
+  .ant-upload-wrapper .ant-upload-list-item {
+    /* padding: 0 !important; */
+    border-color: #00000014;
+  }
+  .ant-upload-wrapper .ant-upload-list-item img {
+    object-fit: cover !important;
+    border-radius: 6px;
+  }
+  .ant-upload-wrapper .ant-upload-list-item::before {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0;
+    border-radius: 6px;
+  }
+  .ant-upload-wrapper button.ant-upload-list-item-action:hover {
+    background-color: transparent !important;
+  }
+  
