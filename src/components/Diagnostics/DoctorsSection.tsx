@@ -68,7 +68,7 @@ const DoctorsSection = () => {
         <div className="pt-10 lg:pt-14">
           <Swiper
             navigation={true}
-            slidesPerView={2}
+            slidesPerView={1}
             spaceBetween={50}
             breakpoints={{
               640: {
