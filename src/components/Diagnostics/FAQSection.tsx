@@ -6,7 +6,7 @@ const FAQSection = () => {
   return (
     <>
       <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-5 md:gap-14">
+        <div className="grid md:grid-cols-2 items-center gap-14">
           <div>
             <Image
               removeWrapper
@@ -16,11 +16,11 @@ const FAQSection = () => {
             />
           </div>
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-3 md:mb-7">
+            <h2 className="text-5xl font-bold mt-3 mb-7">
               Frequently Asked Questions
             </h2>
             <p>We Answered some common questions that you might asked.</p>
-            <div className="mt-7 md:mt-12">
+            <div className="mt-12">
               <Accordion
                 defaultExpandedKeys={["theme"]}
                 showDivider={false}

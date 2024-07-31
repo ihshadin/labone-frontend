@@ -63,16 +63,16 @@ const TestimonialsSection = () => {
           <Swiper
             slidesPerView={1}
             spaceBetween={10}
-            // autoplay={{
-            //   delay: 2500,
-            //   disableOnInteraction: false,
-            //   pauseOnMouseEnter: true,
-            // }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
             loop={true}
             pagination={{
               clickable: true,
             }}
-            // modules={[Autoplay, Pagination]}
+            modules={[Autoplay, Pagination]}
             className="testimonial-swiper vertical-pagination"
           >
             {testimonialsData.map((testimonial, index) => (
