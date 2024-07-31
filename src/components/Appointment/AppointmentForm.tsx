@@ -12,7 +12,7 @@ import { useState } from "react";
 import LabDatePicker from "@/utils/LabDatePicker";
 import { useDateFormatter } from "@react-aria/i18n";
 
-const AppointmentForm = () => {
+const AppointmentForm = ({ onClose }) => {
   let defaultDate = today(getLocalTimeZone());
   const [date, setDate] = useState(defaultDate);
   const [selectedSpecialization, setSelectedSpecialization] = useState("");
@@ -77,6 +77,7 @@ const AppointmentForm = () => {
           <Input
             type="text"
             label="Patient Name"
+            required
             placeholder="Write here..."
             labelPlacement="outside"
             classNames={{
@@ -190,8 +191,19 @@ const AppointmentForm = () => {
           />
         </div>
 
-        <div className="flex justify-end mt-2">
-          <LabBtn link="/" text="Appointment" />
+        <div className="flex justify-end items-center gap-3 md:gap-4 mt-2">
+          {onClose && (
+            <span
+              onClick={onClose}
+              className="px-5 py-1.5 rounded-full bg-gradient-to-r from-secondary to-secondary/50 text-white"
+            >
+              Close
+            </span>
+          )}
+
+          <button className="px-5 py-1.5 rounded-full bg-gradient-to-r from-primary to-[#07CCEC] text-white">
+            Appointment
+          </button>
         </div>
       </form>
     </>

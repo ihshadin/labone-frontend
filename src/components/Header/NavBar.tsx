@@ -51,8 +51,6 @@ const NavBar = () => {
     },
   ];
 
-  console.log(isSticky);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 150);

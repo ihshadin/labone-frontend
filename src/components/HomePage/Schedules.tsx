@@ -1,7 +1,11 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import AppointmentModal from "../Appointment/AppointmentModal";
 
 const Schedules = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const schedulesData = [
     {
       name: "ডাঃ তোহমিনা আক্তার",
@@ -36,6 +40,11 @@ const Schedules = () => {
     },
   ];
 
+  const handleOpenModal = () => {
+    // setModalContent(content);
+    setIsOpen(true);
+  };
+
   return (
     <>
       {/* <div className="widget-title text-center mb-6">
@@ -68,12 +77,20 @@ const Schedules = () => {
               <p className="text-xs font-medium">{item.specialty}</p>
               <p className="text-sm text-primary font-medium">{item.time}</p>
             </div>
-            <button className="bg-gradient-to-r from-[#0a8849] to-[#07ccec] text-sm font-medium text-white px-3 py-1.5 rounded-full">
+            <button
+              onClick={() => handleOpenModal()}
+              className="bg-gradient-to-r from-[#0a8849] to-[#07ccec] text-sm font-medium text-white px-3 py-1.5 rounded-full"
+            >
               Appointment
             </button>
           </li>
         ))}
       </ul>
+      <AppointmentModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        // content={modalContent}
+      />
     </>
   );
 };
