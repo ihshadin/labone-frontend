@@ -51,6 +51,9 @@ const LabDatePicker = ({ date, setDate, label }: DatePickerParams) => {
         onChange={setDate}
         label={label}
         labelPlacement="outside"
+        // classNames={{
+        //   base
+        // }}
         dateInputClassNames={{
           label:
             "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
