@@ -124,7 +124,7 @@ export default function Home() {
         </div>
       </div>
       <SectionHeader
-        subHeading="our services"
+        subHeading="Our Services"
         heading="Our Special Services For You"
         desc="One of the essential qualities of the clinician is interest in humanity, for the secret of the care of the patient is in caring for the patient."
       />

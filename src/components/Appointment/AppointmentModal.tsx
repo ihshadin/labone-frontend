@@ -248,9 +248,6 @@ const AppointmentModal = ({ isOpen, setIsOpen }) => {
                 <AppointmentForm onClose={onClose} />
               </ModalBody>
               {/* <ModalFooter>
-                <Button color="danger" variant="flat" onPress={onClose}>
-                  Close
-                </Button>
                 <Button color="primary" onPress={onClose}>
                   Sign in
                 </Button>

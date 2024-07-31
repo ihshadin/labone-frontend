@@ -200,7 +200,6 @@ const AppointmentForm = ({ onClose }) => {
               Close
             </span>
           )}
-
           <button className="px-5 py-1.5 rounded-full bg-gradient-to-r from-primary to-[#07CCEC] text-white">
             Appointment
           </button>
