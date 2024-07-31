@@ -13,7 +13,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 const HeroSection = () => {
   return (
     <div className="hidden md:flex">
-      <Swiper
+      <Swiper 
         slidesPerView={1}
         autoplay={{
           delay: 10000,
@@ -80,6 +80,7 @@ const HeroSection = () => {
               className="min-h-[700px]"
               src={heroImage}
               alt="labOne-hero"
+              jahid vai is good
             /> */}
           </div>
         </SwiperSlide>
