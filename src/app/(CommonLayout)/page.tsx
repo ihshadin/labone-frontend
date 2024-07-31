@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HomePage/HeroSection";
 import Schedules from "@/components/HomePage/Schedules";
 import AppointmentForm from "@/utils/AppointmentForm";
+import LiveTimer from "@/utils/LiveTimer";
 
 export default function Home() {
   return (
@@ -23,13 +24,11 @@ export default function Home() {
             </div>
           </div>
           <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
-            <div className=" text-center">
+            <div className="flex items-center justify-between mb-8 ">
               <h2 className="text-primary text-2xl font-semibold">
                 Today&apos;s schedule
               </h2>
-              <p className="text-base font-semibold mt-1">
-                Day: <span className="text-secondary">Saturday</span>
-              </p>
+              <LiveTimer />
             </div>
             <div className="mt-4 md:mt-5">
               <Schedules />

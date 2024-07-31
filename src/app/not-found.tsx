@@ -1,10 +1,11 @@
 import "@/app/globals.css";
+import Link from "next/link";
 
 const NotFoundPage = () => {
   return (
     <>
       <div className="w-full min-h-[calc(100vh-180px)] flex flex-col items-center justify-center">
-        {/* <svg
+        <svg
           className="w-1/2 md:1/3 lg:w-1/4 text-[#90EE90]"
           xmlns="http://www.w3.org/2000/svg"
           data-name="Layer 1"
@@ -154,7 +155,7 @@ const NotFoundPage = () => {
             transform="translate(-169.93432 -164.42601)"
             fill="#0a8848"
           ></path>
-        </svg> */}
+        </svg>
         <div className="flex flex-col items-center justify-center">
           <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mt-10">
             Page Not Found
@@ -162,12 +163,12 @@ const NotFoundPage = () => {
           <p className="md:text-lg text-gray-600 mt-8">
             Sorry, the page you are looking for could not be found.
           </p>
-          <a
+          <Link
             href="/"
             className="flex items-center gap-2 bg-primary hover:bg-accent text-white hover:text-white px-4 py-2.5 mt-12 rounded-lg transition duration-150"
             title="Return Home"
           >
-            {/* <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
               viewBox="0 0 20 20"
@@ -178,9 +179,9 @@ const NotFoundPage = () => {
                 d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
                 clipRule="evenodd"
               ></path>
-            </svg> */}
+            </svg>
             <span>Return Home</span>
-          </a>
+          </Link>
         </div>
       </div>
     </>
