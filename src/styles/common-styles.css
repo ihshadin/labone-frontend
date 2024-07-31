@@ -2,6 +2,9 @@
   width: 100%;
   height: 100%;
 }
+.swiper.testimonial-swiper .swiper-slide {
+  height: auto !important;
+}
 .swiper.vertical-pagination .swiper-pagination {
   display: flex;
   flex-direction: column;
