@@ -8,13 +8,13 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link,
 } from "@nextui-org/react";
 import Image from "next/image";
 import LabBtn from "@/utils/LabBtn";
 import logo from "@/assets/images/labOneLogoThik.png";
-import { HiMiniXMark, HiOutlineBars3BottomLeft } from "react-icons/hi2";
-import { FaBars, FaBarsStaggered } from "react-icons/fa6";
+import { HiMiniXMark } from "react-icons/hi2";
+import { FaBarsStaggered } from "react-icons/fa6";
+import Link from "next/link";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
