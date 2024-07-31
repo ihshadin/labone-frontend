@@ -111,27 +111,6 @@ const NavBar = () => {
           ))}
         </NavbarMenu>
       </Navbar>
-      {/* <div>
-        <div className="mx-auto max-w-[1250px] px-2">
-          <div className="text-left">
-            <Image
-              src={logo}
-              className="w-auto h-20 object-cover"
-              alt="Lab One Hospital"
-            />
-          </div>
-          <div className="text-left">
-            <Image
-              src={logo}
-              className="w-auto h-20 object-cover"
-              alt="Lab One Hospital"
-            />
-          </div>
-          <div>
-            <LabBtn link="/" text="Appointment" />
-          </div>
-        </div>
-      </div> */}
     </>
   );
 };
