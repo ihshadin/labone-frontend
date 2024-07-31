@@ -20,6 +20,15 @@ const config: Config = {
         secondary: "#f70920",
         accent: "#333333",
       },
+      keyframes: {
+        slideDown: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        slideDown: "slideDown 0.3s ease-in-out",
+      },
     },
   },
   plugins: [nextui()],

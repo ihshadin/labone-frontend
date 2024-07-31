@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -8,15 +8,17 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link,
 } from "@nextui-org/react";
 import Image from "next/image";
 import LabBtn from "@/utils/LabBtn";
 import logo from "@/assets/images/labOneLogoThik.png";
-import { HiMiniXMark, HiOutlineBars3BottomLeft } from "react-icons/hi2";
+import { HiMiniXMark } from "react-icons/hi2";
+import { FaBarsStaggered } from "react-icons/fa6";
+import Link from "next/link";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const menuItems = [
     {
@@ -49,24 +51,26 @@ const NavBar = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 150);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
-        className="[&_header]:max-w-[1250px] [&_header]:px-2 [&_header]:py-2 [&_header]:h-auto"
+        className={`[&_header]:max-w-[1250px] [&_header]:px-2 [&_header]:py-2 [&_header]:h-auto ${
+          isSticky && "fixed left-0 top-0 w-full animate-slideDown"
+        }`}
       >
         <NavbarContent className="!grow-0 !basis-auto">
-          <NavbarMenuToggle
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className="sm:hidden px-0.5 py-0.5 border border-primary w-auto rounded"
-            icon={
-              isMenuOpen ? (
-                <HiMiniXMark size={26} />
-              ) : (
-                <HiOutlineBars3BottomLeft size={26} />
-              )
-            }
-          />
           <NavbarBrand>
             <Image
               src={logo}
@@ -77,7 +81,7 @@ const NavBar = () => {
         </NavbarContent>
 
         <NavbarContent
-          className="hidden sm:flex gap-10 text-accent"
+          className="hidden lg:!flex gap-10 text-accent"
           justify="end"
         >
           {menuItems.map((item, index) => (
@@ -89,17 +93,20 @@ const NavBar = () => {
           ))}
         </NavbarContent>
         <NavbarContent justify="end" className="!grow-0 w-auto ml-10">
-          <NavbarItem className="hidden sm:inline-block ">
+          <NavbarItem className="hidden lg:inline-block ">
             <LabBtn link="/" text="Appointment" />
           </NavbarItem>
-          <NavbarItem className="inline-block md:hidden">
-            <Link
-              href="/"
-              className="px-5 py-2 text-white bg-gradient-to-r from-primary to-[#07CCEC] rounded-full"
-            >
-              Appointment
-            </Link>
-          </NavbarItem>
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="lg:!hidden px-1 py-1 border border-primary w-auto rounded"
+            icon={
+              isMenuOpen ? (
+                <HiMiniXMark size={26} />
+              ) : (
+                <FaBarsStaggered size={26} />
+              )
+            }
+          />
         </NavbarContent>
         <NavbarMenu>
           {menuItems.map((item, index) => (
@@ -109,29 +116,16 @@ const NavBar = () => {
               </Link>
             </NavbarMenuItem>
           ))}
+          <NavbarItem className="inline-block md:hidden">
+            <Link
+              href="/"
+              className="px-5 py-2 text-white bg-gradient-to-r from-primary to-[#07CCEC] rounded-full"
+            >
+              Appointment
+            </Link>
+          </NavbarItem>
         </NavbarMenu>
       </Navbar>
-      {/* <div>
-        <div className="mx-auto max-w-[1250px] px-2">
-          <div className="text-left">
-            <Image
-              src={logo}
-              className="w-auto h-20 object-cover"
-              alt="Lab One Hospital"
-            />
-          </div>
-          <div className="text-left">
-            <Image
-              src={logo}
-              className="w-auto h-20 object-cover"
-              alt="Lab One Hospital"
-            />
-          </div>
-          <div>
-            <LabBtn link="/" text="Appointment" />
-          </div>
-        </div>
-      </div> */}
     </>
   );
 };
