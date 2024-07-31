@@ -193,7 +193,6 @@ const AboutUsPage = () => {
         </div>
       </div>
       <TestimonialsSection />
-      <FAQSection />
     </>
   );
 };
