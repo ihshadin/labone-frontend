@@ -26,9 +26,9 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between gap-8 lg:gap-32">
-          <div className="baseis-[30%] md:basis-[35%]">
+          <div className="basis-[35%]">
             <Link href="/">
-              <div className="flex items-center justify-center md:justify-start gap-1.5 cursor-pointer py-2">
+              <div className="flex items-center gap-1.5 cursor-pointer py-2">
                 <Image className="w-[62px]" src={logoIcon} alt="logo" />
                 <div className="text-2xl leading-[1em] italic font-extrabold">
                   <h2 className="text-primary">Lab One</h2>
@@ -37,7 +37,7 @@ const Footer = () => {
                 {/* <img className="w-14" src={logoIcon} alt="logo" /> */}
               </div>
             </Link>
-            <p className="text-center md:text-left">
+            <p className="text-center lg:text-left">
               Welcome to Lab One Hospital. We are best at serving people with
               the best intention to help.
             </p>
@@ -61,7 +61,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="baseis-[70%] md:basis-[65%] grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-3">
+          <div className="basis-[65%] grid grid-cols-1 gap-7 md:gap-3 text-center lg:grid-cols-3 lg:text-left">
             <div>
               <h4 className="text-primary text-lg font-semibold">Our Links</h4>
 

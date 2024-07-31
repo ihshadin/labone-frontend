@@ -5,10 +5,9 @@ import { RiArrowDropRightLine } from "react-icons/ri";
 import serviceLine from "@/assets/images/sr-line.png";
 import MachineCard from "@/components/Machines/MachineCard";
 import DoctorsSection from "@/components/Diagnostics/DoctorsSection";
+import bgImg from "@/assets/images/an-bg.png";
 import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
 import FAQSection from "@/components/Diagnostics/FAQSection";
-import Newsletter from "@/components/Newsletter/Newsletter";
-import AppointmentModal from "@/components/Appointment/AppointmentModal";
 
 const machineData = [
   {
@@ -44,7 +43,7 @@ const DiagnosticsPage = () => {
   return (
     <>
       <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-6 md:gap-8 lg:gap-14">
+        <div className="grid md:grid-cols-2 items-center gap-14">
           <div>
             <Image
               removeWrapper
@@ -54,10 +53,10 @@ const DiagnosticsPage = () => {
             />
           </div>
           <div>
-            <h6 className="text-center font-medium uppercase text-xs md:text-base text-primary tracking-[2px] py-1.5 md:py-2.5 px-3 md:px-5 inline-block transition-all cursor-context-menu relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
+            <h6 className="font-medium uppercase text-primary tracking-[2px] py-2.5 px-5 inline-block transition-all cursor-w-resize relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
               About Labone Diagnositc
             </h6>
-            <h2 className="text-3xl lg:text-5xl font-bold mt-1.5 md:mt-3 mb-3 lg:mb-7">
+            <h2 className="text-5xl font-bold mt-3 mb-7">
               We Are Specialize in Medical Diagnositics
             </h2>
             <p>
@@ -84,9 +83,7 @@ const DiagnosticsPage = () => {
                 <span>We have 24/7 emergency service.</span>
               </li>
             </ul>
-            <div className="flex justify-center md:justify-start">
-              <LabBtn text="Read More" link="/about-us" />
-            </div>
+            <LabBtn text="Read More" link="/about-us" />
           </div>
         </div>
       </div>
@@ -97,7 +94,7 @@ const DiagnosticsPage = () => {
       />
       <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-16">
         <div
-          className="grid md:grid-cols-3 gap-8 md:gap-16 bg-no-repeat bg-[center_top_30px]"
+          className="grid md:grid-cols-3 gap-16 bg-no-repeat bg-[center_top_30px]"
           style={{ backgroundImage: `url(${serviceLine.src})` }}
         >
           <div>
@@ -157,8 +154,8 @@ const DiagnosticsPage = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-24">
+        <div className="grid md:grid-cols-4 gap-5">
           <div className="p-8 bg-white shadow-[3px_4px_8px] shadow-primary/10 hover:shadow-[3px_4px_8px_inset] hover:shadow-primary/20 rounded-xl">
             <Image
               removeWrapper
@@ -209,7 +206,7 @@ const DiagnosticsPage = () => {
           </div>
         </div>
       </div>
-      {/* <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
         <SectionHeader
           subHeading="OUR LATEST Instruments"
           heading="We use modern machines"
@@ -222,12 +219,35 @@ const DiagnosticsPage = () => {
         <div className="flex flex-col items-center">
           <LabBtn text="See All" link="/machines" />
         </div>
-      </div> */}
+      </div>
       <DoctorsSection />
-      <Newsletter />
+      <div
+        className={`bg-no-repeat bg-[center_bottom] bg-cover -z-10`}
+        style={{ backgroundImage: `url(${bgImg.src})` }}
+      >
+        <div className="mx-auto max-w-[1250px] px-2">
+          <div className="grid md:grid-cols-2 gap-5">
+            <div className="mt-44">
+              <h6 className="font-medium uppercase text-primary tracking-[2px] py-2.5 px-5 inline-block transition-all cursor-context-menu relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-0 hover:before:w-full before:duration-300">
+                NEWSLETTER
+              </h6>
+              <h2 className="text-5xl font-bold mt-3 mb-7">
+                Subscribe To Our <br /> Newsletter
+              </h2>
+            </div>
+            <div>
+              <Image
+                removeWrapper
+                className="w-[330px] ml-auto object-cover rounded-none"
+                src={"https://labonehospital.com/img/bg/news-illustration.png"}
+                alt="Services image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <TestimonialsSection />
       <FAQSection />
-      <AppointmentModal />
     </>
   );
 };
