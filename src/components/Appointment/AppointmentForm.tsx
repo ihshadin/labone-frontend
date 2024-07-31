@@ -190,7 +190,6 @@ const AppointmentForm = ({ onClose }) => {
             }}
           />
         </div>
-
         <div className="flex justify-end items-center gap-3 md:gap-4 mt-2">
           {onClose && (
             <span
