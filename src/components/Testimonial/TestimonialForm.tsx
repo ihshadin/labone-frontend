@@ -37,7 +37,6 @@ const TestimonialForm = () => {
     <>
       {FeedBackData && (
         <>
-        {/* Hello */}
           <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-10">
             <div className="md:flex gap-10 items-start relative my-5 md:my-16">
               <form onSubmit={handleSubmit(onSubmit)} className="md:w-1/2">
@@ -48,9 +47,9 @@ const TestimonialForm = () => {
                     type="text"
                     onKeyUp={(e: any) => setExp(e.target.value)}
                     id="thumbExp"
-                    label="Thumb expression"
+                    label="Name"
                     required
-                    placeholder="Awesome experience"
+                    placeholder="Type your name"
                     {...register("thumbExpression", { required: true })}
                     labelPlacement="outside"
                     classNames={{
@@ -66,51 +65,13 @@ const TestimonialForm = () => {
                       ],
                     }}
                   />
-                  {/* <input
-                    onKeyUp={(e: any) => setExp(e.target.value)}
-                    type="text"
-                    id="thumbExp"
-                    className="w-full px-6 bg-secondary-color py-3 rounded-xl border-2 border-slate-500 hover:border-[#0fcda156] focus:border-[#0fcda156] outline-none"
-                    placeholder="Awesome experience"
-                    {...register("thumbExpression", { required: true })}
-                  /> */}
                 </div>
+                
                 <div className="w-full mb-5">
                   <label
                     htmlFor="details"
                     className="text-sm font-semibold px-1 py-1"
                   ></label>
-                  <Input
-                    id="details"
-                    type="file"
-                    label="Give your full expression"
-                    placeholder="Write details about your experience"
-                    {...register("details", { required: true })}
-                    labelPlacement="outside"
-                    classNames={{
-                      inputWrapper: [
-                        "bg-white",
-                        "hover:border-primary/50",
-                        "group-data-[hover=true]:bg-white",
-                        "group-data-[focus=true]:bg-white",
-                        "group-data-[focus=true]:border-primary/50",
-                      ],
-                    }}
-                  />
-                </div>
-                <div className="w-full mb-5">
-                  <label
-                    htmlFor="details"
-                    className="text-sm font-semibold px-1 py-1"
-                  ></label>
-                  {/* <textarea
-                  onKeyUp={(e:any) => setDetails(e.target.value)}
-                  rows={5}
-                  id="details"
-                  className="w-full px-6 bg-secondary-color py-3 rounded-xl border-2 border-slate-500 hover:border-[#0fcda156] focus:border-[#0fcda156] outline-none"
-                  placeholder="Write details about your experience"
-                  {...register("details", { required: true })}
-                /> */}
                   <Textarea
                     onKeyUp={(e: any) => setDetails(e.target.value)}
                     id="details"
@@ -122,6 +83,33 @@ const TestimonialForm = () => {
                     classNames={{
                       inputWrapper: [
                         "border",
+                        "bg-white",
+                        "hover:border-primary/50",
+                        "group-data-[hover=true]:bg-white",
+                        "group-data-[focus=true]:bg-white",
+                        "group-data-[focus=true]:border-primary/50",
+                      ],
+                    }}
+                  />
+                </div>
+
+                <div className="w-full mb-5">
+                  <label
+                  htmlFor="photo"
+                    className="  px-1 "
+                  ></label>
+                  <Input
+                    id="photo"
+                    type="file"
+                    label="Upload your photo"
+                    placeholder="Upload your photo"
+                    {...register("photo", { required: true })}
+                    labelPlacement="outside"
+                    classNames={{
+                      inputWrapper: [
+                        "flex",
+                        "item-center",
+                        "justify-center",
                         "bg-white",
                         "hover:border-primary/50",
                         "group-data-[hover=true]:bg-white",
