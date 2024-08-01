@@ -2,7 +2,8 @@ import { TMachine } from "@/types/machine.type";
 import { Card, CardFooter, CardHeader, Image, Link } from "@nextui-org/react";
 // import Link from "next/link";
 
-const MachineCard: React.FC<{ machine: TMachine }> = ({ machine }) => {
+const MachineCard = ({ machine }: { machine: TMachine }) => {
+  console.log(machine);
   return (
     <>
       {/* <Card className="w-full h-[300px]">
@@ -45,7 +46,7 @@ const MachineCard: React.FC<{ machine: TMachine }> = ({ machine }) => {
         />
         <CardFooter className="flex-col justify-start items-start bg-white/70 backdrop-blur-sm absolute left-1/2 -translate-x-1/2 rounded-large bottom-1.5 w-[calc(100%_-_12px)] shadow z-10">
           <Link
-            href={machine.slug}
+            href={`/machines/${machine._id}`}
             className="text-black text-base md:text-lg font-bold"
           >
             {machine.name}
@@ -55,20 +56,6 @@ const MachineCard: React.FC<{ machine: TMachine }> = ({ machine }) => {
           </p>
         </CardFooter>
       </Card>
-      {/* <Card radius="lg" className="border-none w-full">
-        <Image
-          removeWrapper
-          alt="Relaxing app background"
-          className="z-0 w-full h-[300px] object-cover"
-          src="https://labonehospital.com/admin/machineimage/machine1.jpg"
-        />
-        <CardFooter className="flex-col justify-start items-start bg-white h-auto rounded-large shadow z-10">
-          <Link href={"/"} className="text-primary text-xl font-bold">
-            CT SCAN Machine
-          </Link>
-          <p className="text-accent/90 text-sm">Japan</p>
-        </CardFooter>
-      </Card> */}
     </>
   );
 };
