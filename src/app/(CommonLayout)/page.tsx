@@ -11,6 +11,12 @@ import serviceLine from "@/assets/images/sr-line.png";
 import Newsletter from "@/components/Newsletter/Newsletter";
 import { baseApi } from "@/utils/baseUrl";
 import { Image } from "@nextui-org/react";
+import LiveTimer from "@/utils/LiveTimer";
+import Schedules from "@/components/HomePage/Schedules";
+import { RiArrowDropRightLine } from "react-icons/ri";
+import LabBtn from "@/utils/LabBtn";
+import SectionHeader from "@/utils/SectionHeader";
+
 
 const machineData = [
   {
@@ -82,7 +88,7 @@ export default async function Home() {
               <LiveTimer/>
             </div>
             <div className="mt-4 md:mt-5">
-              <Schedules />
+              <Schedules/>
             </div>
           </div>
         </div>
@@ -114,11 +120,11 @@ export default async function Home() {
             </p>
             <ul className="mt-2 md:mt-5 mb-8 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
               <li>
-                <RiArrowDropRightLine />
+                <RiArrowDropRightLine/>
                 <span>We are dedicated to the commitment of patient.</span>
               </li>
               <li>
-                <RiArrowDropRightLine />
+                <RiArrowDropRightLine/>
                 <span>
                   Our Doctors are very much professional on their job..
                 </span>
@@ -268,7 +274,7 @@ export default async function Home() {
         </div>
       </div>
       <DoctorsSection doctors ={data?.data?.result} />
-      <Newsletter />
+      <Newsletter/>
       <TestimonialsSection />
       <FAQSection />
     </>
