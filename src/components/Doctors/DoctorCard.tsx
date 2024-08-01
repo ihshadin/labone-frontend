@@ -3,7 +3,7 @@ import { TMachine } from "@/types/machine.type";
 import { Card, CardFooter, CardHeader, Image, Link } from "@nextui-org/react";
 // import Link from "next/link";
 
-const DoctorCard = ({ doctor } : {doctor: TDoctor}) => {
+const DoctorCard = ({ doctor }: { doctor: TDoctor }) => {
   return (
     <>
       <Card className="w-full max-w-[380px]">
@@ -21,7 +21,7 @@ const DoctorCard = ({ doctor } : {doctor: TDoctor}) => {
         <CardFooter className="absolute left-1/2 -translate-x-1/2 rounded-large bottom-1.5 w-[calc(100%_-_12px)] shadow bg-white/70 border-t-1 border-zinc-100/50 z-10 backdrop-blur-sm">
           <div className="w-full">
             <Link
-              href={doctor?._id} 
+              href={`/doctors/${doctor?._id}`}
               className="block text-primary hover:text-primary/90 text-base md:text-lg font-bold text-center font-tiroBangla"
             >
               {doctor.firstName + " " + doctor.lastName}
