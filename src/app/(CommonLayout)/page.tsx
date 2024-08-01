@@ -1,4 +1,3 @@
-import { Image } from "@nextui-org/react";
 import { baseApi } from "@/utils/baseUrl";
 import { TMachine } from "@/types/machine.type";
 import HeroSection from "@/components/HomePage/HeroSection";
@@ -9,11 +8,12 @@ import SectionHeader from "@/utils/SectionHeader";
 import AppointmentForm from "@/components/Appointment/AppointmentForm";
 import DoctorsSection from "@/components/Diagnostics/DoctorsSection";
 import FAQSection from "@/components/Diagnostics/FAQSection";
-import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
 import MachineCard from "@/components/Machines/MachineCard";
-import serviceLine from "@/assets/images/sr-line.png";
 import Newsletter from "@/components/Newsletter/Newsletter";
 import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
+import AchivementSection from "@/components/AchivementSection/AchivementSection";
+import SpecialService from "@/components/SpecialService/SpecialService";
+import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
 
 const spotlightData = {
   image: "https://labonehospital.com/img/bg/illlustration.jpg",
@@ -51,7 +51,7 @@ export default async function Home() {
 
   return (
     <>
-      <HeroSection/>
+      <HeroSection />
       <div className="mx-auto max-w-[1250px] px-2 py-10 md:py-16 lg:py-20">
         <div className="grid md:grid-cols-2 gap-4 md:gap-5">
           <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
@@ -73,10 +73,10 @@ export default async function Home() {
               <h2 className="text-primary text-2xl font-semibold">
                 Today&apos;s schedule
               </h2>
-              <LiveTimer/>
+              <LiveTimer />
             </div>
             <div className="mt-4 md:mt-5">
-              <Schedules/>
+              <Schedules />
             </div>
           </div>
         </div>
@@ -87,124 +87,12 @@ export default async function Home() {
         heading="Our Special Services For You"
         desc="One of the essential qualities of the clinician is interest in humanity, for the secret of the care of the patient is in caring for the patient."
       />
-      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-16">
-        <div
-          className="grid md:grid-cols-3 gap-8 md:gap-16 bg-no-repeat bg-[center_top_30px]"
-          style={{ backgroundImage: `url(${serviceLine.src})` }}
-        >
-          <div>
-            <div className="flex items-center justify-center mx-auto w-[120px] h-[120px] bg-white shadow-[3px_4px_15px] shadow-primary/15 rounded-full p-2.5 text-center">
-              <Image
-                removeWrapper
-                className="w-12 object-cover rounded-none"
-                src={"https://labonehospital.com/img/icon/sr-icon01.png"}
-                alt="Services image"
-              />
-            </div>
-            <div className="mt-5">
-              <h5 className="text-lg font-semibold text-center mb-1">
-                24/7 Ambulance
-              </h5>
-              <p className="text-center">
-                We provide 24 hours Ambulance anywhere in all over the country.
-              </p>
-            </div>
-          </div>
-          <div className="mt-8">
-            <div className="flex items-center justify-center mx-auto w-[120px] h-[120px] bg-white shadow-[3px_4px_15px] shadow-primary/15 rounded-full p-2.5 text-center">
-              <Image
-                removeWrapper
-                className="w-12 object-cover rounded-none"
-                src={"https://labonehospital.com/img/icon/sr-icon02.png"}
-                alt="Services image"
-              />
-            </div>
-            <div className="mt-5">
-              <h5 className="text-lg font-semibold text-center mb-1">
-                Medication Service
-              </h5>
-              <p className="text-center">
-                We have the largest collection of medicines in our own pharmacy.
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center justify-center mx-auto w-[120px] h-[120px] bg-white shadow-[3px_4px_15px] shadow-primary/15 rounded-full p-2.5 text-center">
-              <Image
-                removeWrapper
-                className="w-12 object-cover rounded-none"
-                src={"https://labonehospital.com/img/icon/sr-icon03.png"}
-                alt="Services image"
-              />
-            </div>
-            <div className="mt-5">
-              <h5 className="text-lg font-semibold text-center mb-1">
-                24/7 Emergency Depertment
-              </h5>
-              <p className="text-center">
-                Our Doctors are avaibale in our emergency depertment for 24
-                hours.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div className="p-8 bg-white shadow-[3px_4px_8px] shadow-primary/10 hover:shadow-[3px_4px_8px_inset] hover:shadow-primary/20 rounded-xl">
-            <Image
-              removeWrapper
-              className="w-12 mx-auto object-cover rounded-none"
-              src={"https://labonehospital.com/img/icon/cunt-icon01.png"}
-              alt="Services image"
-            />
-            <h5 className="text-4xl font-bold text-primary text-center mt-2 mb-0.5">
-              90+
-            </h5>
-            <p className="text-center">Doctors At Work</p>
-          </div>
-          <div className="p-8 bg-white shadow-[3px_4px_8px] shadow-primary/10 hover:shadow-[3px_4px_8px_inset] hover:shadow-primary/20 rounded-xl">
-            <Image
-              removeWrapper
-              className="w-12 mx-auto object-cover rounded-none"
-              src={"https://labonehospital.com/img/icon/cunt-icon02.png"}
-              alt="Services image"
-            />
-            <h5 className="text-4xl font-bold text-primary text-center mt-2 mb-0.5">
-              230000+
-            </h5>
-            <p className="text-center">Happy Patients</p>
-          </div>
-          <div className="p-8 bg-white shadow-[3px_4px_8px] shadow-primary/10 hover:shadow-[3px_4px_8px_inset] hover:shadow-primary/20 rounded-xl">
-            <Image
-              removeWrapper
-              className="w-12 mx-auto object-cover rounded-none"
-              src={"https://labonehospital.com/img/icon/cunt-icon03.png"}
-              alt="Services image"
-            />
-            <h5 className="text-4xl font-bold text-primary text-center mt-2 mb-0.5">
-              50+
-            </h5>
-            <p className="text-center">Medical Beds</p>
-          </div>
-          <div className="p-8 bg-white shadow-[3px_4px_8px] shadow-primary/10 hover:shadow-[3px_4px_8px_inset] hover:shadow-primary/20 rounded-xl">
-            <Image
-              removeWrapper
-              className="w-12 mx-auto object-cover rounded-none"
-              src={"https://labonehospital.com/img/icon/cunt-icon03.png"}
-              alt="Services image"
-            />
-            <h5 className="text-4xl font-bold text-primary text-center mt-2 mb-0.5">
-              22+
-            </h5>
-            <p className="text-center">Cabin</p>
-          </div>
-        </div>
-      </div>
+      <SpecialService />
+      <AchivementSection />
       <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
         <SectionHeader
           subHeading="OUR LATEST Instruments"
-          heading="We use modern machines"
+          heading="We Use Modern Machines"
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 py-8 md:py-12">
           {machineData?.data?.result?.map((machine: TMachine) => (
@@ -212,7 +100,7 @@ export default async function Home() {
           ))}
         </div>
         <div className="flex flex-col items-center">
-          <LabBtn text="See All" link="/machines" />
+          <LabBtn text="See All Machines" link="/machines" />
         </div>
       </div>
       <DoctorsSection doctors={data?.data?.result} />
