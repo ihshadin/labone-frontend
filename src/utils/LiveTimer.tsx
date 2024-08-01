@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import "../styles/live-timer.css";
 
-const LiveTimer: React.FC = () => {
-  const [time, setTime] = useState<Date>(new Date());
+const LiveTimer = () => {
+  const [time, setTime] = useState<Date | null>(null);
   const [flip, setFlip] = useState({
     hours: false,
     minutes: false,
@@ -11,13 +11,15 @@ const LiveTimer: React.FC = () => {
   });
 
   useEffect(() => {
+    setTime(new Date());
+
     const intervalId = setInterval(() => {
       const newTime = new Date();
       setTime(newTime);
       setFlip({
-        hours: newTime.getHours() !== time.getHours(),
-        minutes: newTime.getMinutes() !== time.getMinutes(),
-        seconds: newTime.getSeconds() !== time.getSeconds(),
+        hours: newTime.getHours() !== time?.getHours(),
+        minutes: newTime.getMinutes() !== time?.getMinutes(),
+        seconds: newTime.getSeconds() !== time?.getSeconds(),
       });
 
       setTimeout(
@@ -27,6 +29,10 @@ const LiveTimer: React.FC = () => {
     }, 1000);
     return () => clearInterval(intervalId);
   }, [time]);
+
+  if (!time) {
+    return null; // or a loading spinner
+  }
 
   const formatTimeParts = (date: Date) => {
     const days = [

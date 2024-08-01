@@ -1,39 +1,18 @@
 "use client";
-import {
-  Input,
-  Select,
-  SelectItem,
-  Textarea,
-} from "@nextui-org/react";
+import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
 import { getLocalTimeZone, today, now } from "@internationalized/date";
 import { Dispatch, useState } from "react";
 import LabDatePicker from "@/utils/LabDatePicker";
 import { useDateFormatter } from "@react-aria/i18n";
 
 type IAppointmentForm = {
-  onClose: any;
+  onClose?: any;
 };
 
 const AppointmentForm = ({ onClose }: IAppointmentForm) => {
   let defaultDate = today(getLocalTimeZone());
   const [date, setDate] = useState(defaultDate);
   const [selectedSpecialization, setSelectedSpecialization] = useState("");
-
-  //   let formatter = useDateFormatter({ dateStyle: "short" });
-  //   const formattedDate = formatter.format(date.toDate(getLocalTimeZone()));
-  //   console.log("formattedDate---=>", formattedDate);
-
-  const genderList = [
-    { key: "male", label: "Male" },
-    { key: "female", label: "Female" },
-    { key: "others", label: "Others" },
-  ];
-
-  const departmentList = [
-    { key: "csc", label: "Csc" },
-    { key: "eee", label: "Eee" },
-    { key: "extra", label: "Extra" },
-  ];
 
   const doctorList = [
     {
@@ -68,7 +47,7 @@ const AppointmentForm = ({ onClose }: IAppointmentForm) => {
   const handleDoctorChange = (doctorId: string) => {
     const selectedDoctor = doctorList.find((doctor) => doctor.key === doctorId);
     setSelectedSpecialization(
-      selectedDoctor ? selectedDoctor.specialization : "",
+      selectedDoctor ? selectedDoctor.specialization : ""
     );
   };
 
@@ -196,7 +175,7 @@ const AppointmentForm = ({ onClose }: IAppointmentForm) => {
           {onClose && (
             <span
               onClick={onClose}
-              className="px-5 py-1.5 rounded-full bg-gradient-to-r from-secondary to-secondary/50 text-white"
+              className="px-5 py-1.5 rounded-full bg-gradient-to-r from-secondary to-secondary/50 text-white cursor-pointer"
             >
               Close
             </span>
