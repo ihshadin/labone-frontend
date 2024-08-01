@@ -9,12 +9,9 @@ import bgImg from "@/assets/images/an-bg.png";
 import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
 import FAQSection from "@/components/Diagnostics/FAQSection";
 import GallerySlider from "@/components/GallerySlider/GallerySlider";
-<<<<<<< HEAD
-=======
 import Breadcamp from "@/utils/Breadcamp";
 import Newsletter from "@/components/Newsletter/Newsletter";
 import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
->>>>>>> 80b3fb9cd8deca7306011b9800247c57366c0367
 
 const labPhotos = [
   "https://labonehospital.com/admin/doctorimg/9%20lab.jpg",
@@ -42,14 +39,9 @@ const spotlightData = {
 const AboutUsPage = () => {
   return (
     <>
-<<<<<<< HEAD
-      <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-14">
-=======
       <Breadcamp title={"About Us"} subTitle="About Labone" />
       {/* <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
         <div className="grid md:grid-cols-2 items-center gap-6 md:gap-8 lg:gap-14">
->>>>>>> 80b3fb9cd8deca7306011b9800247c57366c0367
           <div>
             <Image
               removeWrapper
@@ -89,9 +81,6 @@ const AboutUsPage = () => {
                 <span>We have 24/7 emergency service.</span>
               </li>
             </ul>
-<<<<<<< HEAD
-            <LabBtn text="Read More" link="/about-us" />
-=======
             <div className="flex justify-center md:justify-start">
               <LabBtn text="Read More" link="/about-us" />
             </div>
@@ -148,7 +137,6 @@ const AboutUsPage = () => {
               22+
             </h5>
             <p className="text-center">Cabin</p>
->>>>>>> 80b3fb9cd8deca7306011b9800247c57366c0367
           </div>
         </div>
       </div>
