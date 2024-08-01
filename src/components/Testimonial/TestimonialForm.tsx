@@ -7,7 +7,6 @@ import Image from "next/image";
 import LabBtn from "@/utils/LabBtn";
 import { Input, Textarea } from "@nextui-org/react";
 
-
 const TestimonialForm = () => {
   const [rating, setRating] = useState(0);
   const [exp, setExp] = useState("");
@@ -41,8 +40,10 @@ const TestimonialForm = () => {
             <div className="md:flex gap-10 items-start relative my-5 md:my-16">
               <form onSubmit={handleSubmit(onSubmit)} className="md:w-1/2">
                 <div className="w-full my-5">
-                  <label htmlFor="thumbExp" className="font-medium p-1 py-2">
-                  </label>
+                  <label
+                    htmlFor="thumbExp"
+                    className="font-medium p-1 py-2"
+                  ></label>
                   <Input
                     type="text"
                     onKeyUp={(e: any) => setExp(e.target.value)}
@@ -66,7 +67,6 @@ const TestimonialForm = () => {
                     }}
                   />
                 </div>
-                
                 <div className="w-full mb-5">
                   <label
                     htmlFor="details"
@@ -95,27 +95,34 @@ const TestimonialForm = () => {
 
                 <div className="w-full mb-5">
                   <label
-                  htmlFor="photo"
-                    className="  px-1 "
-                  ></label>
+                    htmlFor="photo"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Upload your photo
+                  </label>
                   <Input
                     id="photo"
                     type="file"
-                    label="Upload your photo"
                     placeholder="Upload your photo"
                     {...register("photo", { required: true })}
                     labelPlacement="outside"
                     classNames={{
                       inputWrapper: [
                         "flex",
-                        "item-center",
+                        "items-center",
                         "justify-center",
                         "bg-white",
+                        "border",
+                        "border-gray-300",
+                        "rounded-md",
+                        "py-1.5",
+                        "px-4",
+                        "text-sm",
                         "hover:border-primary/50",
                         "group-data-[hover=true]:bg-white",
                         "group-data-[focus=true]:bg-white",
                         "group-data-[focus=true]:border-primary/50",
-                      ],
+                      ].join(" "),
                     }}
                   />
                 </div>
@@ -140,7 +147,7 @@ const TestimonialForm = () => {
               <div className="md:w-1/2 min-h-[22rem] flex flex-col justify-between relative px-5 md:px-10 py-10 mt-10 md:mt-6 rounded-2xl text-primary border  hover:border-primary/50 transition-all duration-300 cursor-pointer bg-white">
                 <div>
                   <h2 className="text-xl md:text-2xl font-semibold mb-5">
-                    {exp === "" ? "Your Expression" : exp}
+                    {exp === "" ? "Your Name" : exp}
                   </h2>
                   <p className="min-h-16 text-slate-500">
                     {details === "" ? "Write your experience here..." : details}
@@ -163,14 +170,16 @@ const TestimonialForm = () => {
                       }
                     />
                   </div>
-                  <div className="w-20 h-20 object-cover rounded-full border border-[#0fcda156] p-1 bg-secondary-color absolute">
-                    <Image
-                      height={250}
-                      width={250}
-                      src={FeedBackData?.image}
-                      className="rounded-full"
-                      alt=""
-                    />
+                  <div className="relative">
+                    <div className="rounded-full border border-[#0fcda156] p-1 bg-secondary-color absolute">
+                      <Image
+                        height={80}
+                        width={80}
+                        src={FeedBackData?.image}
+                        className="rounded-full h-[76px] w-[76px] object-cover"
+                        alt=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
