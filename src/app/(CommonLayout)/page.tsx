@@ -12,6 +12,7 @@ import DoctorsSection from "@/components/Diagnostics/DoctorsSection";
 import MachineCard from "@/components/Machines/MachineCard";
 import serviceLine from "@/assets/images/sr-line.png";
 import Newsletter from "@/components/Newsletter/Newsletter";
+import { baseApi } from "@/utils/baseUrl";
 
 const machineData = [
   {
@@ -43,7 +44,19 @@ const machineData = [
   },
 ];
 
-export default function Home() {
+async function getData() {
+  const res = await fetch(`${baseApi}/doctor`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+
+export default async function Home() {
+  const data = await getData();
+
+  console.log(data?.data?.result);
+
   return (
     <>
       <HeroSection />
@@ -60,7 +73,7 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-4 md:mt-5">
-              <AppointmentForm />
+              <AppointmentForm onClose={""} />
             </div>
           </div>
           <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
@@ -256,7 +269,7 @@ export default function Home() {
           <LabBtn text="See All" link="/machines" />
         </div>
       </div>
-      <DoctorsSection />
+      <DoctorsSection doctors ={data?.data?.result} />
       <Newsletter />
       <TestimonialsSection />
       <FAQSection />
