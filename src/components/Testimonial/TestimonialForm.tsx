@@ -37,12 +37,12 @@ const TestimonialForm = () => {
       {FeedBackData && (
         <>
           <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-10">
-            <div className="md:flex gap-10 items-start relative my-5 md:my-16">
+            <div className="md:flex gap-10 items-start relative my-5 md:my-8">
               <form onSubmit={handleSubmit(onSubmit)} className="md:w-1/2">
-                <div className="w-full my-5">
+                <div className="w-full mt-1">
                   <label
                     htmlFor="thumbExp"
-                    className="font-medium p-1 py-2"
+                    className="font-medium p-2"
                   ></label>
                   <Input
                     type="text"
@@ -67,7 +67,7 @@ const TestimonialForm = () => {
                     }}
                   />
                 </div>
-                <div className="w-full mb-5">
+                <div className="w-full mb-3">
                   <label
                     htmlFor="details"
                     className="text-sm font-semibold px-1 py-1"
@@ -126,16 +126,16 @@ const TestimonialForm = () => {
                     }}
                   />
                 </div>
-                <div className="flex items-center gap-5 mb-8 md:mb-12">
-                  <span className="text-xl font-semibold px-1">Rate Us.</span>
+                <div className="flex items-center gap-5 mb-8 md:mb-10">
+                  <span className="text-lg font-semibold px-1">Rate Us.</span>
                   <div className="flex">
                     <Rating
                       onClick={(value) => setRating(value)}
                       emptySymbol={
-                        <FaRegStar className="text-3xl mr-2 text-amber-500" />
+                        <FaRegStar className="text-xl mr-2 text-amber-500" />
                       }
                       fullSymbol={
-                        <FaStar className="text-3xl mr-2 text-amber-500" />
+                        <FaStar className="text-xl mr-2 text-amber-500" />
                       }
                     />
                   </div>
@@ -155,9 +155,9 @@ const TestimonialForm = () => {
                 </div>
                 <div className="">
                   <div className="flex flex-col-reverse md:flex-row mt-8 md:items-center justify-between mb-3">
-                    <h3 className="text-md w-1/2 md:text-xl font-semibold mt-5 md:mt-0">
+                    {/* <h3 className="text-md w-1/2 md:text-xl font-semibold mt-5 md:mt-0">
                       ~ {FeedBackData?.name || "Your Name"}
-                    </h3>
+                    </h3> */}
                     <Rating
                       initialRating={rating}
                       readonly

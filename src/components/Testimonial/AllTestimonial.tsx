@@ -93,7 +93,7 @@ const AllTestimonial = () => {
         {TestimonialData.map((Testimonial) => (
           <div
             key={Testimonial.id}
-            className="box exploreCard transition-all duration-300 border border-slate-500 hover:border-[#0fcda156] mb-[15px] shadow-xl break-inside-avoid rounded-xl text-primary py-6 "
+            className="box exploreCard transition-all duration-300 border border-gray-300 hover:border-[#0fcda156] mb-[15px] shadow-xl break-inside-avoid rounded-xl text-primary py-6 "
           >
             <div className="flex px-5">
               {Testimonial?.photo ? (
