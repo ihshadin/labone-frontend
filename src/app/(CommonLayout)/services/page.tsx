@@ -40,12 +40,20 @@ const ServicesPage = () => {
       <Breadcamp title={"Our Services"} subTitle="service" />
       <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
         <div>
-          <h2 className="font-tiroBangla text-3xl md:text-4xl font-bold mb-2">
-            {services.serviceTitle}
-          </h2>
-          <p className="font-tiroBangla text-lg md:text-xl">
-            {services.serviceExerpt}
-          </p>
+          {/* <div className="mb-10">
+            <Image
+              removeWrapper
+              className="w-full object-cover"
+              src={"https://labonehospital.com/img/blog/inner_b1.jpg"}
+              alt="Services image"
+            />
+          </div> */}
+          <div>
+            <h2 className="font-tiroBangla text-4xl font-bold mb-2">
+              {services.serviceTitle}
+            </h2>
+            <p className="font-tiroBangla text-xl">{services.serviceExerpt}</p>
+          </div>
         </div>
         <div className="mt-10 pt-2 border-t border-primary/10">
           <ul className="grid md:grid-cols-3 gap-y-2.5 font-medium hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-start [&_svg]:mt-1">
@@ -59,7 +67,7 @@ const ServicesPage = () => {
         </div>
       </div>
       <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-10">
-        <div className="grid md:grid-cols-2 items-center gap-8 md:gap-14">
+        <div className="grid md:grid-cols-2 items-center gap-14">
           <div>
             <Image
               removeWrapper
@@ -69,10 +77,10 @@ const ServicesPage = () => {
             />
           </div>
           <div>
-            <h6 className="text-center font-medium uppercase text-xs md:text-base text-primary tracking-[2px] py-1.5 md:py-2.5 px-3 md:px-5 inline-block transition-all cursor-context-menu relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
+            <h6 className="font-medium uppercase text-primary tracking-[2px] py-2.5 px-5 inline-block transition-all cursor-w-resize relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
               Doctors
             </h6>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-1.5 md:mt-3 mb-3 lg:mb-7">
+            <h2 className="text-5xl font-bold mt-3 mb-7">
               We Are Specialize in Medical Diagnositics
             </h2>
             <p>
@@ -83,7 +91,7 @@ const ServicesPage = () => {
               cutting-edge technology and a patient-first approach, we strive to
               be the premier choice for all of your healthcare needs.
             </p>
-            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-start [&_svg]:mt-1">
+            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
               <li>
                 <RiArrowDropRightLine />
                 <span>We are dedicated to the commitment of patient.</span>
@@ -103,12 +111,12 @@ const ServicesPage = () => {
         </div>
       </div>
       <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-8 md:gap-14">
-          <div className="order-2 md:order-1">
-            <h6 className="text-center font-medium uppercase text-xs md:text-base text-primary tracking-[2px] py-1.5 md:py-2.5 px-3 md:px-5 inline-block transition-all cursor-context-menu relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
+        <div className="grid md:grid-cols-2 items-center gap-14">
+          <div>
+            <h6 className="font-medium uppercase text-primary tracking-[2px] py-2.5 px-5 inline-block transition-all cursor-w-resize relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
               Machines
             </h6>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-1.5 md:mt-3 mb-3 lg:mb-7">
+            <h2 className="text-5xl font-bold mt-3 mb-7">
               We Are Specialize in Medical Diagnositics
             </h2>
             <p>
@@ -119,7 +127,7 @@ const ServicesPage = () => {
               cutting-edge technology and a patient-first approach, we strive to
               be the premier choice for all of your healthcare needs.
             </p>
-            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-start [&_svg]:mt-1">
+            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
               <li>
                 <RiArrowDropRightLine />
                 <span>We are dedicated to the commitment of patient.</span>
@@ -136,7 +144,7 @@ const ServicesPage = () => {
               </li>
             </ul>
           </div>
-          <div className="order-1 md:order-2">
+          <div>
             <Image
               removeWrapper
               className="w-full object-cover"

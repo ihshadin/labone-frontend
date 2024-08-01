@@ -1,47 +1,16 @@
-import HeroSection from "@/components/HomePage/HeroSection";
-import Schedules from "@/components/HomePage/Schedules";
-import LabBtn from "@/utils/LabBtn";
-import LiveTimer from "@/utils/LiveTimer";
-import SectionHeader from "@/utils/SectionHeader";
-import { Image } from "@nextui-org/react";
-import { RiArrowDropRightLine } from "react-icons/ri";
 import AppointmentForm from "@/components/Appointment/AppointmentForm";
-import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
-import FAQSection from "@/components/Diagnostics/FAQSection";
 import DoctorsSection from "@/components/Diagnostics/DoctorsSection";
+import FAQSection from "@/components/Diagnostics/FAQSection";
+import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
+import Appointment from "@/components/HomePage/Appointment";
+import HeroSection from "@/components/HomePage/HeroSection";
+import HomePage from "@/components/HomePage/HomePage";
+import Schedule from "@/components/HomePage/Schedule";
 import MachineCard from "@/components/Machines/MachineCard";
-import serviceLine from "@/assets/images/sr-line.png";
-import Newsletter from "@/components/Newsletter/Newsletter";
-
-const machineData = [
-  {
-    _id: "64b4da56b07a982d6c8d5aef7",
-    photo: "https://labonehospital.com/admin/machineimage/IMG_1214%20(1).jpg",
-    name: "Bone Densitometer Model B100",
-    slug: "Bone-Densitometer-Model-B100",
-    country: "UK",
-    details:
-      "The Bone Densitometer Model B100 from the UK is designed to measure bone density with high accuracy. It provides vital information for diagnosing and monitoring osteoporosis.Features High-precision measurements Low radiation dose Easy-to-use interface Fast scan timesApplicationsThis machine is widely used in diagnosing osteoporosis and other bone-related conditions, offering accurate measurements to guide treatment.SpecificationsResolution:  1800 x 1800 pixels Power Supply:  220V, 50Hz Weight:  150 kg Dimensions:  120 cm x 80 cm x 140 cmWarrantyThe Bone Densitometer Model B100 comes with a 5-year warranty for reliable support.",
-  },
-  {
-    _id: "64b4da56b07a982d6c8d5aef8",
-    photo: "https://labonehospital.com/admin/machineimage/IMG_1212%20(1).jpg",
-    name: "ECG Machine Model E500",
-    slug: "ECG-Machine-Model-E500",
-    country: "China",
-    details:
-      "The ECG Machine Model E500, developed in China, offers precise and reliable electrocardiogram readings. It is designed for accurate monitoring of heart activity.Features High-resolution display Portable design Wireless connectivity Easy-to-use interfaceApplicationsIdeal for cardiology departments, this machine provides accurate ECG readings to help diagnose and monitor heart conditions.SpecificationsResolution:  1280 x 720 pixels Power Supply:  220V, 50Hz Weight:  20 kg Dimensions:  40 cm x 30 cm x 20 cmWarrantyThe ECG Machine Model E500 includes a 4-year warranty for comprehensive support.",
-  },
-  {
-    _id: "64b4da56b07a982d6c8d5aef10",
-    photo: "https://labonehospital.com/admin/machineimage/machine1.jpg",
-    name: "Ventilator Model V800",
-    slug: "Ventilator-Model-V800",
-    country: "India",
-    details:
-      "The Ventilator Model V800, manufactured in India, provides advanced respiratory support for critical care. It is equipped with the latest technology for optimal patient ventilation.Features Advanced ventilation modes High-resolution touch screen Real-time monitoring Portable and compact designApplicationsSuitable for use in ICU, emergency, and transport settings, this ventilator ensures reliable and effective respiratory support for patients in critical condition.SpecificationsResolution:  1024 x 768 pixels Power Supply:  220V, 50Hz Weight:  60 kg Dimensions:  70 cm x 50 cm x 100 cmWarrantyThe Ventilator Model V800 comes with a 5-year warranty for assured performance and support.",
-  },
-];
+import LabBtn from "@/utils/LabBtn";
+import SectionHeader from "@/utils/SectionHeader";
+import { Button, Image } from "@nextui-org/react";
+import { RiArrowDropRightLine } from "react-icons/ri";
 
 export default function Home() {
   return (
@@ -60,7 +29,7 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-4 md:mt-5">
-              <AppointmentForm />
+              <AppointmentForm/>
             </div>
           </div>
           <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
@@ -68,7 +37,7 @@ export default function Home() {
               <h2 className="text-primary text-2xl font-semibold">
                 Today&apos;s schedule
               </h2>
-              <LiveTimer />
+              <LiveTimer/>
             </div>
             <div className="mt-4 md:mt-5">
               <Schedules />
@@ -257,7 +226,7 @@ export default function Home() {
         </div>
       </div>
       <DoctorsSection />
-      <Newsletter />
+      <Newsletter/>
       <TestimonialsSection />
       <FAQSection />
     </>
