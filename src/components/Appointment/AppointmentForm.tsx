@@ -1,18 +1,20 @@
 "use client";
-import LabBtn from "@/utils/LabBtn";
 import {
-  DatePicker,
   Input,
   Select,
   SelectItem,
   Textarea,
 } from "@nextui-org/react";
 import { getLocalTimeZone, today, now } from "@internationalized/date";
-import { useState } from "react";
+import { Dispatch, useState } from "react";
 import LabDatePicker from "@/utils/LabDatePicker";
 import { useDateFormatter } from "@react-aria/i18n";
 
-const AppointmentForm = ({ onClose }) => {
+type IAppointmentForm = {
+  onClose: any;
+};
+
+const AppointmentForm = ({ onClose }: IAppointmentForm) => {
   let defaultDate = today(getLocalTimeZone());
   const [date, setDate] = useState(defaultDate);
   const [selectedSpecialization, setSelectedSpecialization] = useState("");
@@ -63,10 +65,10 @@ const AppointmentForm = ({ onClose }) => {
     },
   ];
 
-  const handleDoctorChange = (doctorId) => {
+  const handleDoctorChange = (doctorId: string) => {
     const selectedDoctor = doctorList.find((doctor) => doctor.key === doctorId);
     setSelectedSpecialization(
-      selectedDoctor ? selectedDoctor.specialization : ""
+      selectedDoctor ? selectedDoctor.specialization : "",
     );
   };
 
@@ -190,7 +192,6 @@ const AppointmentForm = ({ onClose }) => {
             }}
           />
         </div>
-
         <div className="flex justify-end items-center gap-3 md:gap-4 mt-2">
           {onClose && (
             <span
