@@ -8,6 +8,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { TDoctor } from "@/types/doctors.type";
 
 const doctorsData = [
   {
@@ -57,7 +58,8 @@ const doctorsData = [
   },
 ];
 
-const DoctorsSection = () => {
+const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
+  console.log(doctors);
   return (
     <>
       <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
@@ -91,7 +93,7 @@ const DoctorsSection = () => {
             modules={[Navigation]}
             className="doctors-swiper"
           >
-            {doctorsData.map((doctor) => (
+            {doctors?.map((doctor : TDoctor) => (
               <SwiperSlide key={doctor._id}>
                 <DoctorCard doctor={doctor} />
               </SwiperSlide>
