@@ -22,7 +22,7 @@ const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
         <div className="pt-10 lg:pt-14">
           <Swiper
             navigation={true}
-            slidesPerView={1}
+            slidesPerView={2}
             spaceBetween={50}
             breakpoints={{
               640: {

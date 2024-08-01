@@ -7,9 +7,9 @@ import LabBtn from "@/utils/LabBtn";
 import LiveTimer from "@/utils/LiveTimer";
 import SectionHeader from "@/utils/SectionHeader";
 import AppointmentForm from "@/components/Appointment/AppointmentForm";
-import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
-import FAQSection from "@/components/Diagnostics/FAQSection";
 import DoctorsSection from "@/components/Diagnostics/DoctorsSection";
+import FAQSection from "@/components/Diagnostics/FAQSection";
+import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
 import MachineCard from "@/components/Machines/MachineCard";
 import serviceLine from "@/assets/images/sr-line.png";
 import Newsletter from "@/components/Newsletter/Newsletter";
@@ -51,7 +51,7 @@ export default async function Home() {
 
   return (
     <>
-      <HeroSection />
+      <HeroSection/>
       <div className="mx-auto max-w-[1250px] px-2 py-10 md:py-16 lg:py-20">
         <div className="grid md:grid-cols-2 gap-4 md:gap-5">
           <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
@@ -73,10 +73,10 @@ export default async function Home() {
               <h2 className="text-primary text-2xl font-semibold">
                 Today&apos;s schedule
               </h2>
-              <LiveTimer />
+              <LiveTimer/>
             </div>
             <div className="mt-4 md:mt-5">
-              <Schedules />
+              <Schedules/>
             </div>
           </div>
         </div>

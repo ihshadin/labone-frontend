@@ -6,7 +6,7 @@ const FAQSection = () => {
   return (
     <>
       <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-5 md:gap-14">
+        <div className="grid md:grid-cols-2 items-center gap-14">
           <div>
             <Image
               removeWrapper
