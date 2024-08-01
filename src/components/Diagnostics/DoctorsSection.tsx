@@ -19,10 +19,10 @@ const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
           subHeading="Our Doctor"
           heading="Docter’s In The Medical Sciences"
         />
-        <div className="pt-10 lg:pt-14">
+        <div className="pt-8 lg:pt-14">
           <Swiper
             navigation={true}
-            slidesPerView={2}
+            slidesPerView={1}
             spaceBetween={50}
             breakpoints={{
               640: {

@@ -2,6 +2,7 @@ import React from "react";
 import Breadcamp from "@/utils/Breadcamp";
 import { Image } from "@nextui-org/react";
 import { RiArrowDropRightLine } from "react-icons/ri";
+import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 
 const services = {
   serviceTitle: "আমাদের সার্ভিসসমূহ",
@@ -33,6 +34,30 @@ const services = {
     "সার্বক্ষনিক এম্বুলেন্স ব্যবস্থা",
   ],
 };
+const spotlightData = {
+  image: "https://labonehospital.com/img/bg/illlustration.jpg",
+  subHeading: "Doctors",
+  heading: "We Are Specialize in Medical Diagnositics",
+  description:
+    "At our Lab One Hospital, we are dedicated to providing exceptional care and comfort to every patient. Our highly skilled and compassionate team of healthcare professionals is committed to delivering personalized, patient-centered experiences. With cutting-edge technology and a patient-first approach, we strive to be the premier choice for all of your healthcare needs.",
+  featureList: [
+    "We are dedicated to the commitment of patient.",
+    "Our Doctors are very much professional on their job.",
+    "We have 24/7 emergency service.",
+  ],
+};
+const spotlightData2 = {
+  image: "https://labonehospital.com/admin/machineimage/machine1.jpg",
+  subHeading: "Machines",
+  heading: "We Are Specialize in Medical Diagnositics",
+  description:
+    "At our Lab One Hospital, we are dedicated to providing exceptional care and comfort to every patient. Our highly skilled and compassionate team of healthcare professionals is committed to delivering personalized, patient-centered experiences. With cutting-edge technology and a patient-first approach, we strive to be the premier choice for all of your healthcare needs.",
+  featureList: [
+    "We are dedicated to the commitment of patient.",
+    "Our Doctors are very much professional on their job.",
+    "We have 24/7 emergency service.",
+  ],
+};
 
 const ServicesPage = () => {
   return (
@@ -40,20 +65,12 @@ const ServicesPage = () => {
       <Breadcamp title={"Our Services"} subTitle="service" />
       <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
         <div>
-          {/* <div className="mb-10">
-            <Image
-              removeWrapper
-              className="w-full object-cover"
-              src={"https://labonehospital.com/img/blog/inner_b1.jpg"}
-              alt="Services image"
-            />
-          </div> */}
-          <div>
-            <h2 className="font-tiroBangla text-4xl font-bold mb-2">
-              {services.serviceTitle}
-            </h2>
-            <p className="font-tiroBangla text-xl">{services.serviceExerpt}</p>
-          </div>
+          <h2 className="font-tiroBangla text-3xl md:text-4xl font-bold mb-2">
+            {services.serviceTitle}
+          </h2>
+          <p className="font-tiroBangla text-lg md:text-xl">
+            {services.serviceExerpt}
+          </p>
         </div>
         <div className="mt-10 pt-2 border-t border-primary/10">
           <ul className="grid md:grid-cols-3 gap-y-2.5 font-medium hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-start [&_svg]:mt-1">
@@ -66,138 +83,8 @@ const ServicesPage = () => {
           </ul>
         </div>
       </div>
-      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-10">
-        <div className="grid md:grid-cols-2 items-center gap-14">
-          <div>
-            <Image
-              removeWrapper
-              className="w-full object-cover"
-              src={"https://labonehospital.com/img/bg/illlustration.jpg"}
-              alt="Services image"
-            />
-          </div>
-          <div>
-            <h6 className="font-medium uppercase text-primary tracking-[2px] py-2.5 px-5 inline-block transition-all cursor-w-resize relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
-              Doctors
-            </h6>
-            <h2 className="text-5xl font-bold mt-3 mb-7">
-              We Are Specialize in Medical Diagnositics
-            </h2>
-            <p>
-              At our Lab One Hospital, we are dedicated to providing exceptional
-              care and comfort to every patient. Our highly skilled and
-              compassionate team of healthcare professionals is committed to
-              delivering personalized, patient-centered experiences. With
-              cutting-edge technology and a patient-first approach, we strive to
-              be the premier choice for all of your healthcare needs.
-            </p>
-            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
-              <li>
-                <RiArrowDropRightLine />
-                <span>We are dedicated to the commitment of patient.</span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>
-                  Our Doctors are very much professional on their job..
-                </span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>We have 24/7 emergency service.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-14">
-          <div>
-            <h6 className="font-medium uppercase text-primary tracking-[2px] py-2.5 px-5 inline-block transition-all cursor-w-resize relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
-              Machines
-            </h6>
-            <h2 className="text-5xl font-bold mt-3 mb-7">
-              We Are Specialize in Medical Diagnositics
-            </h2>
-            <p>
-              At our Lab One Hospital, we are dedicated to providing exceptional
-              care and comfort to every patient. Our highly skilled and
-              compassionate team of healthcare professionals is committed to
-              delivering personalized, patient-centered experiences. With
-              cutting-edge technology and a patient-first approach, we strive to
-              be the premier choice for all of your healthcare needs.
-            </p>
-            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
-              <li>
-                <RiArrowDropRightLine />
-                <span>We are dedicated to the commitment of patient.</span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>
-                  Our Doctors are very much professional on their job..
-                </span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>We have 24/7 emergency service.</span>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <Image
-              removeWrapper
-              className="w-full object-cover"
-              src={"https://labonehospital.com/admin/machineimage/machine1.jpg"}
-              alt="Services image"
-            />
-          </div>
-        </div>
-      </div>
-      {/* <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-14">
-          <div>
-            <Image
-              removeWrapper
-              className="w-full object-cover"
-              src={"https://labonehospital.com/img/bg/illlustration.jpg"}
-              alt="Services image"
-            />
-          </div>
-          <div>
-            <h6 className="font-medium uppercase text-primary tracking-[2px] py-2.5 px-5 inline-block transition-all cursor-w-resize relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
-              About us
-            </h6>
-            <h2 className="text-5xl font-bold mt-3 mb-7">
-              We Are Specialize in Medical Diagnositics
-            </h2>
-            <p>
-              At our Lab One Hospital, we are dedicated to providing exceptional
-              care and comfort to every patient. Our highly skilled and
-              compassionate team of healthcare professionals is committed to
-              delivering personalized, patient-centered experiences. With
-              cutting-edge technology and a patient-first approach, we strive to
-              be the premier choice for all of your healthcare needs.
-            </p>
-            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
-              <li>
-                <RiArrowDropRightLine />
-                <span>We are dedicated to the commitment of patient.</span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>
-                  Our Doctors are very much professional on their job..
-                </span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>We have 24/7 emergency service.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> */}
+      <SpotlightSection data={spotlightData} />
+      <SpotlightSection data={spotlightData2} layout="reverse" />
     </>
   );
 };
