@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import "../../styles/homePage.css";
 import heroImage from "../../assets/images/labone-bg.png";
 
 // import required modules
