@@ -1,17 +1,15 @@
 "use client";
 import { Card, CardHeader, CardBody, Avatar, Image } from "@nextui-org/react";
 import quoteImg from "@/assets/images/qutation.png";
-import Rating from "react-rating";
-import { IoStar, IoStarHalf, IoStarOutline } from "react-icons/io5";
 import { IoMdStar, IoMdStarOutline } from "react-icons/io";
+import { TTestimonial } from "@/types/testimonial.type";
+import { Rating, ThinStar } from "@smastrom/react-rating";
 
-const TestimonialCard = ({ testimonial }) => {
+const TestimonialCard = ({ testimonial }: { testimonial: TTestimonial }) => {
   return (
     <>
       <div className="h-full relative pt-0 md:pt-12 pl-0 md:pl-20 pb-5 pr-0 md:pr-5 overflow-hidden rounded-xl">
         <Avatar
-          isBordered
-          radius="md"
           className="w-24 md:w-48 h-24 md:h-48 object-cover border-2 border-secondary/30 bg-white p-1 rounded-xl [&_img]:rounded-lg z-10 relative md:absolute left-0 top-0 -mb-7 md:mb-0 ml-5 md:ml-0"
           src={testimonial?.photo}
         />
@@ -22,26 +20,30 @@ const TestimonialCard = ({ testimonial }) => {
                 <h4 className="text-lg md:text-xl font-bold leading-none text-primary">
                   {testimonial?.name}
                 </h4>
-                {/* <h5 className="text-sm font-medium leading-none tracking-tight text-accent/80">
-                  {testimonial?.treatment}
-                </h5> */}
-                <span>
-                  <Rating
+                <div className="text-orange-500">
+                  {/* <Rating
                     emptySymbol={<IoMdStarOutline size={24} />}
                     fullSymbol={<IoMdStar size={24} />}
-                    // fractions={2}
-                    initialRating={2.5}
-                    readonly
+                    fractions={2}
+                    value={5}
+                    items={5}
+                    readOnly
+                  /> */}
+                  <Rating
+                    style={{ width: 20 }}
+                    readOnly
+                    value={3.5}
+                    isRequired
                   />
-                </span>
+                </div>
               </div>
             </div>
-            {/* <Image
+            <Image
               removeWrapper
               className="w-10 md:w-12 object-cover"
               src={quoteImg.src}
               alt="Services image"
-            /> */}
+            />
           </CardHeader>
           <CardBody className="px-3 py-0 text-lg text-accent overflow-hidden mt-3 md:mt-5 p-0 flex-none">
             <p className="line-clamp-[8] md:line-clamp-5">

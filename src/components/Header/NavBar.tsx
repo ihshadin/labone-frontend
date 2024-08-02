@@ -26,27 +26,27 @@ const NavBar = () => {
       text: "Home",
     },
     {
-      link: "about-us",
+      link: "/about-us",
       text: "About Us",
     },
     {
-      link: "services",
+      link: "/services",
       text: "Services",
     },
     {
-      link: "departments",
+      link: "/departments",
       text: "Departments",
     },
     {
-      link: "doctors",
+      link: "/doctors",
       text: "Doctors",
     },
     {
-      link: "machines",
+      link: "/machines",
       text: "Machines",
     },
     {
-      link: "diagnostics",
+      link: "/diagnostics",
       text: "Diagnostics",
     },
   ];
