@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const GallerySlider = ({ photos }) => {
+const GallerySlider = ({ photos }: { photos: string[] }) => {
   return (
     <>
       <Swiper
@@ -40,7 +40,7 @@ const GallerySlider = ({ photos }) => {
         modules={[Autoplay, Navigation]}
         className="gallery-slider"
       >
-        {photos.map((photo) => (
+        {photos?.map((photo: string) => (
           <SwiperSlide key={photo}>
             <Image
               removeWrapper
@@ -50,38 +50,6 @@ const GallerySlider = ({ photos }) => {
             />
           </SwiperSlide>
         ))}
-        {/* <SwiperSlide>
-          <Image
-            removeWrapper
-            className="w-full max-w-[380px] object-cover border-2"
-            src={"https://labonehospital.com/admin/doctorimg/9%20lab.jpg"}
-            alt="Services image"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            removeWrapper
-            className="w-full max-w-[380px] object-cover border-2"
-            src={"https://labonehospital.com/admin/doctorimg/9%20lab.jpg"}
-            alt="Services image"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            removeWrapper
-            className="w-full max-w-[380px] object-cover border-2"
-            src={"https://labonehospital.com/admin/doctorimg/9%20lab.jpg"}
-            alt="Services image"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            removeWrapper
-            className="w-full max-w-[380px] object-cover border-2"
-            src={"https://labonehospital.com/admin/doctorimg/9%20lab.jpg"}
-            alt="Services image"
-          />
-        </SwiperSlide> */}
       </Swiper>
     </>
   );

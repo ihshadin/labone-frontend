@@ -26,9 +26,9 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between gap-8 lg:gap-32">
-          <div className="basis-[35%]">
+          <div className="baseis-[30%] md:basis-[35%]">
             <Link href="/">
-              <div className="flex items-center gap-1.5 cursor-pointer py-2">
+              <div className="flex items-center justify-center md:justify-start gap-1.5 cursor-pointer py-2">
                 <Image className="w-[62px]" src={logoIcon} alt="logo" />
                 <div className="text-2xl leading-[1em] italic font-extrabold">
                   <h2 className="text-primary">Lab One</h2>
@@ -37,7 +37,7 @@ const Footer = () => {
                 {/* <img className="w-14" src={logoIcon} alt="logo" /> */}
               </div>
             </Link>
-            <p className="text-center lg:text-left">
+            <p className="text-center md:text-left">
               Welcome to Lab One Hospital. We are best at serving people with
               the best intention to help.
             </p>
@@ -61,29 +61,29 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="basis-[65%] grid grid-cols-1 gap-7 md:gap-3 text-center lg:grid-cols-3 lg:text-left">
+          <div className="baseis-[70%] md:basis-[65%] grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-3">
             <div>
               <h4 className="text-primary text-lg font-semibold">Our Links</h4>
 
               <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>About Us</Link>
+                  <Link href={"/about-us"}>About Us</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Services</Link>
+                  <Link href={"/services"}>Services</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Departments</Link>
+                  <Link href={"/departments"}>Departments</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Diagnostics</Link>
+                  <Link href={"/diagnostics"}>Diagnostics</Link>
                 </li>
               </ul>
             </div>
@@ -96,22 +96,24 @@ const Footer = () => {
               <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>WHO</Link>
+                  <Link href={"https://www.who.int/"}>WHO</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>PG Hospital</Link>
+                  <Link href={"https://bsmmu.ac.bd/"}>PG Hospital</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Blood Donate</Link>
+                  <Link href={"https://bdrcs.org/donate-blood/"}>
+                    Blood Donate
+                  </Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Blood Bank</Link>
+                  <Link href={"https://bbms.dghs.gov.bd/"}>Blood Bank</Link>
                 </li>
               </ul>
             </div>
