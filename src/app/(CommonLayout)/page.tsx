@@ -37,6 +37,7 @@ const getDoctorData = async () => {
   }
   return res.json();
 };
+
 const getMachineData = async () => {
   const res = await fetch(`${baseApi}/machine?limit=3`);
   if (!res.ok) {
