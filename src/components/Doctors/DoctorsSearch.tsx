@@ -67,22 +67,23 @@ const DoctorsSearch = () => {
   //   };
 
   const handleSearch = async (e) => {
-    const query = e.target.value.toLowerCase();
-    if (query === "") {
-      setActiveSearch([]);
-      return;
-    }
-    setActiveSearch(
-      // await getDoctorData(query)
-      doctorsData
-        .filter(
-          (doctor) =>
-            doctor.firstName.includes(query) ||
-            doctor.lastName.includes(query) ||
-            doctor.degree.includes(query)
-        )
-        .slice(0, 8)
-    );
+    console.log(e)
+  //   const query = e.target.value.toLowerCase();
+  //   if (query === "") {
+  //     setActiveSearch([]);
+  //     return;
+  //   }
+  //   setActiveSearch(
+  //     // await getDoctorData(query)
+  //     doctorsData
+  //       .filter(
+  //         (doctor) =>
+  //           doctor.firstName.includes(query) ||
+  //           doctor.lastName.includes(query) ||
+  //           doctor.degree.includes(query)
+  //       )
+  //       .slice(0, 8)
+  //   );
   };
 
   return (
@@ -91,7 +92,7 @@ const DoctorsSearch = () => {
         <input
           type="search"
           placeholder="Type Here"
-          className="w-full p-4 rounded-full backdrop-filter bg-slate-800 bg-opacity-85 text-white focus:outline-1 focus:outline-primary"
+          className="w-full py-4 px-6 rounded-full backdrop-filter bg-primary/10 bg-opacity-85 text-accent  border-1 border-primary/30 focus:outline-0 focus:outline-primary focus:border-primary/70 duration-300 transition-all "
           onChange={handleSearch}
         />
         <button className="absolute right-1 top-1/2 -translate-y-1/2 p-4 bg-primary text-white rounded-full">
@@ -99,7 +100,7 @@ const DoctorsSearch = () => {
         </button>
       </div>
 
-      {activeSearch.length > 0 && (
+      {/* {activeSearch.length > 0 && (
         <div className="z-50 absolute top-20 p-4 text-white w-full rounded-xl left-1/2 -translate-x-1/2 flex flex-col gap-4 backdrop-blur-sm backdrop-saturate-150 bg-overlay/30 ">
           {activeSearch.map((doctor) => (
             <Link
@@ -124,7 +125,7 @@ const DoctorsSearch = () => {
             // <DoctorCard key={doctor._id} doctor={doctor} />
           ))}
         </div>
-      )}
+      )} */}
     </form>
   );
 };
