@@ -74,7 +74,7 @@ export default async function Home() {
               <h2 className="text-primary text-2xl font-semibold">
                 Today&apos;s schedule
               </h2>
-              <LiveTimer />
+              {/* <LiveTimer /> */}
             </div>
             <div className="mt-4 md:mt-5">
               <Schedules />
