@@ -1,64 +1,74 @@
 "use client";
 import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
 import { getLocalTimeZone, today, now } from "@internationalized/date";
-import { Dispatch, useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 import LabDatePicker from "@/utils/LabDatePicker";
 import { useDateFormatter } from "@react-aria/i18n";
+import { useForm } from "react-hook-form";
+import { baseApi } from "@/utils/baseUrl";
+import { TDoctor } from "@/types/doctors.type";
 
-type IAppointmentForm = {
+type TAppointmentForm = {
   onClose?: any;
+  defaultDoctor?: string;
 };
 
-const AppointmentForm = ({ onClose }: IAppointmentForm) => {
-  let defaultDate = today(getLocalTimeZone());
-  const [date, setDate] = useState(defaultDate);
-  const [selectedSpecialization, setSelectedSpecialization] = useState("");
+const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
+  const { register, handleSubmit, reset } = useForm();
+  const [date, setDate] = useState(today(getLocalTimeZone()));
+  const [doctors, setDoctors] = useState([]);
+  const [selDocInfo, setSelDocInfo] = useState({});
+  const [selectDoc, setSelectDoc] = useState("");
 
-  const doctorList = [
-    {
-      key: "Dr. Moshiur Rahman",
-      label: "Dr. Moshiur Rahman",
-      specialization:
-        "স্ত্রী রোগ, প্রসূতি বিদ্যা ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-    {
-      key: "Dr. Imam Hossain",
-      label: "Dr. Imam Hossain",
-      specialization:
-        "রোগ, প্রসূতি বিদ্যা ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-    {
-      key: "Dr. Mehedi Hasan",
-      label: "Dr. Mehedi Hasan",
-      specialization: "প্রসূতি বিদ্যা ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-    {
-      key: "Dr. Faruq Khan",
-      label: "Dr. Faruq Khan",
-      specialization: "বিদ্যা ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-    {
-      key: "Dr. Jahid Hasan",
-      label: "Dr. Jahid Hasan",
-      specialization: "ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-  ];
+  const onSubmit = async (data) => {
+    data.appointmentDate = date.toString();
+    data.doctorId = selectDoc;
+    console.log(data);
+    try {
+      const response = await fetch(`${baseApi}/appointment`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-  const handleDoctorChange = (doctorId: string) => {
-    const selectedDoctor = doctorList.find((doctor) => doctor.key === doctorId);
-    setSelectedSpecialization(
-      selectedDoctor ? selectedDoctor.specialization : ""
-    );
+      if (response.ok) {
+        console.log("Appointment successfully created");
+        reset();
+        if (onClose) onClose();
+      } else {
+        console.error("Failed to create appointment");
+      }
+    } catch (error) {
+      console.error("An error occurred while creating appointment", error);
+    }
   };
+  console.log(defaultDoctor);
+  const handleDoctorChange = (id: string) => {
+    const selectedDoctor = doctors.find(({ _id }) => _id === id);
+    setSelDocInfo(selectedDoctor ? selectedDoctor : "");
+    setSelectDoc(id);
+  };
+
+  const getDoctorsData = async () => {
+    const res = await fetch(`${baseApi}/doctor`);
+    const data = await res.json();
+    setDoctors(data?.data?.result);
+  };
+
+  useEffect(() => {
+    getDoctorsData();
+  }, []);
 
   return (
     <>
-      <form className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <div className="flex items-center justify-between gap-3">
           <Input
             type="text"
             label="Patient Name"
-            required
+            {...register("patientName", { required: true })}
             placeholder="Write here..."
             labelPlacement="outside"
             classNames={{
@@ -80,6 +90,7 @@ const AppointmentForm = ({ onClose }: IAppointmentForm) => {
           <Input
             type="number"
             label="Patient Age"
+            {...register("patientAge", { required: true })}
             placeholder="Write here..."
             labelPlacement="outside"
             classNames={{
@@ -99,6 +110,7 @@ const AppointmentForm = ({ onClose }: IAppointmentForm) => {
           <Input
             type="number"
             label="Contact Number"
+            {...register("contactNumber", { required: true })}
             placeholder="Write here..."
             labelPlacement="outside"
             classNames={{
@@ -126,7 +138,6 @@ const AppointmentForm = ({ onClose }: IAppointmentForm) => {
           <Select
             label="Select Doctor"
             placeholder="Select a Doctor"
-            //   defaultSelectedKeys={["Dr. Imam Hossain"]}
             labelPlacement="outside"
             classNames={{
               label:
@@ -134,21 +145,30 @@ const AppointmentForm = ({ onClose }: IAppointmentForm) => {
               trigger:
                 "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
             }}
+            defaultSelectedKeys={[defaultDoctor]}
             onChange={(e) => handleDoctorChange(e.target.value)}
           >
-            {doctorList.map((doctor) => (
-              <SelectItem key={doctor.key}>{doctor.label}</SelectItem>
+            {doctors?.map((doctor: TDoctor) => (
+              <SelectItem key={doctor._id} value={doctor._id}>
+                {doctor.firstName + " " + doctor.lastName}
+              </SelectItem>
             ))}
           </Select>
         </div>
 
-        {selectedSpecialization && (
+        {selDocInfo && (
           <div>
             <p>
-              Saturday (12:05 AM - 11:55 PM) & Saturday (12:05 AM - 11:55 PM)
+              {/* Saturday (12:05 AM - 11:55 PM) & Saturday (12:05 AM - 11:55 PM) */}
+              {selDocInfo?.schedules
+                ?.map(
+                  (schedule) =>
+                    `${schedule?.scheduleDay}  (${schedule?.startTime} - ${schedule?.endTime})`
+                )
+                .join(" & ")}
             </p>
             <p className="text-sm font-medium font-tiroBangla text-primary">
-              {selectedSpecialization}
+              {selDocInfo?.specialization}
             </p>
           </div>
         )}
@@ -157,6 +177,7 @@ const AppointmentForm = ({ onClose }: IAppointmentForm) => {
           <Textarea
             type="text"
             label="Add Notes"
+            {...register("addNotes", { required: true })}
             placeholder="Write in details if possible (Optional)"
             labelPlacement="outside"
             classNames={{
