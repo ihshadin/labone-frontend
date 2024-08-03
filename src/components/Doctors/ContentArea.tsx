@@ -1,4 +1,6 @@
 import DoctorCard from "@/components/Doctors/DoctorCard";
+import DoctorPagination from "./DoctorPagination";
+import DoctorsSearch from "./DoctorsSearch";
 
 const doctorsData = [
   {
@@ -50,12 +52,21 @@ const doctorsData = [
 
 const ContentArea = () => {
   return (
+    <>
+    <div className="mb-10 z-50">
+      <DoctorsSearch/>
+    </div>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
       {doctorsData.map((doctor) => (
         <DoctorCard key={doctor._id} doctor={doctor} />
       ))}
     </div>
+    <div className="w-full flex items-center justify-center mt-20">
+     <DoctorPagination/>
+    </div>
+    </>
   );
+  
 };
 
 export default ContentArea;
