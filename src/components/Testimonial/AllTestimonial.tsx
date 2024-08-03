@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import Image from "next/image";
 import { Rating, Star } from "@smastrom/react-rating";
-import { getTestimonials } from "@/api/api";
 import { TTestimonial } from "@/types/testimonial.type";
+import { getTestimonials } from "@/api/reviews";
 import "../../styles/AllTestimonials.css";
 
 const AllTestimonial = async () => {

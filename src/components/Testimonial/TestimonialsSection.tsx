@@ -1,8 +1,8 @@
 "use client";
-import SectionHeader from "@/utils/SectionHeader";
-import TestimonialCard from "./TestimonialCard";
 import { useEffect, useState } from "react";
-import { baseApi, getTestimonials } from "@/api/api";
+import SectionHeader from "@/utils/SectionHeader";
+import { getTestimonials } from "@/api/reviews";
+import TestimonialCard from "@/components/Testimonial/TestimonialCard";
 
 // core version + navigation, pagination modules:
 import { Swiper, SwiperSlide } from "swiper/react";
