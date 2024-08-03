@@ -1,80 +1,90 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Rating from "react-rating";
 import { FaRegStar, FaStar, FaUserCircle } from "react-icons/fa";
 import "../../styles/AllTestimonials.css";
 import Image from "next/image";
+import { Rating } from "@smastrom/react-rating";
 
 const AllTestimonial = () => {
-//   const [feedback, setFeedback] = useState([]);
+  //   const [feedback, setFeedback] = useState([]);
   const TestimonialData = [
     {
       id: 1,
       name: "John Doe",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 5,
       message: "Excellent service! Highly recommended.",
     },
     {
       id: 2,
       name: "Jane Smith",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 4,
       message: "Very good experience, but there's room for improvement.",
     },
     {
       id: 3,
       name: "Samuel Green",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 5,
       message: "Amazing experience! Will definitely come back.",
     },
     {
       id: 4,
       name: "Emily Brown",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 3,
       message: "Average service, could be better.",
     },
     {
       id: 5,
       name: "Michael Johnson",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 4,
       message: "Good overall, but the waiting time was long.",
     },
     {
       id: 6,
       name: "Sarah Lee",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 5,
       message: "Fantastic! I felt very well taken care of.",
     },
     {
       id: 7,
       name: "David Wilson",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 2,
       message: "Not satisfied with the service provided.",
     },
     {
       id: 8,
       name: "Olivia Martinez",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 4,
       message: "Good experience, friendly staff.",
     },
     {
       id: 9,
       name: "Daniel Davis",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 5,
       message: "Exceptional service! Truly outstanding.",
     },
     {
       id: 10,
       name: "Sophia Miller",
-      photo: "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
+      photo:
+        "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%202.jpg",
       rating: 3,
       message: "It was okay, but I expected more.",
     },
@@ -98,8 +108,8 @@ const AllTestimonial = () => {
             <div className="flex px-5">
               {Testimonial?.photo ? (
                 <Image
-                height={45}
-                width={45}
+                  height={45}
+                  width={45}
                   src={Testimonial?.photo}
                   className="overflow-hidden object-cover rounded-full h-[45px] w-[45px]"
                   alt="Photo"
@@ -116,7 +126,9 @@ const AllTestimonial = () => {
                   </div>
                 </div>
                 <div className="text-sm text-slate-400 ">
-                  <a className="lowercase">@{Testimonial?.name || "username"}</a>
+                  <a className="lowercase">
+                    @{Testimonial?.name || "username"}
+                  </a>
                 </div>
               </div>
             </div>
@@ -129,15 +141,16 @@ const AllTestimonial = () => {
             <div className="w-full flex justify-between px-5 mt-2">
               <div className="inline-flex items-center text-sm text-gray-600 mt-2">
                 <Rating
-                  initialRating={Testimonial?.rating}
-                  readonly
+                  // initialRating={Testimonial?.rating}
+                  readOnly
+                  value={4.5}
                   className="flex items-center justify-center"
-                  emptySymbol={
-                    <FaRegStar className="text-lg mr-3 text-amber-500" />
-                  }
-                  fullSymbol={
-                    <FaStar className="text-lg mr-3 text-amber-500" />
-                  }
+                  // emptySymbol={
+                  //   <FaRegStar className="text-lg mr-3 text-amber-500" />
+                  // }
+                  // fullSymbol={
+                  //   <FaStar className="text-lg mr-3 text-amber-500" />
+                  // }
                 />
               </div>
             </div>

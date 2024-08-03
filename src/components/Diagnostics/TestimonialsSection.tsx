@@ -1,17 +1,20 @@
 "use client";
 import SectionHeader from "@/utils/SectionHeader";
+import TestimonialCard from "./TestimonialCard";
+import { useEffect, useState } from "react";
+import { baseApi } from "@/utils/baseUrl";
+
 // core version + navigation, pagination modules:
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 // import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/pagination";
-import TestimonialCard from "./TestimonialCard";
 
 const testimonialsData = [
   {
     name: "John Doe",
-    rating: 4,
+    rating: 2.5,
     photo:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQBrQJZIWlflMXDnp5Ilk_9dHmhFd1MSPjZw&s",
     message:
@@ -51,6 +54,21 @@ const testimonialsData = [
 ];
 
 const TestimonialsSection = () => {
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch(`${baseApi}/reviews`);
+        const data = await response.json();
+        setTestimonials(data?.data?.result);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
   return (
     <>
       <div className="mx-auto max-w-[950px] px-2 py-10 lg:py-24">
@@ -75,7 +93,7 @@ const TestimonialsSection = () => {
             modules={[Autoplay, Pagination]}
             className="testimonial-swiper vertical-pagination"
           >
-            {testimonialsData.map((testimonial, index) => (
+            {testimonials?.map((testimonial, index) => (
               <SwiperSlide key={index}>
                 <TestimonialCard testimonial={testimonial} />
               </SwiperSlide>
