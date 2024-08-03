@@ -1,6 +1,7 @@
 import { TMachine } from "@/types/machine.type";
 import MachineCard from "@/components/Machines/MachineCard";
 import { baseApi } from "@/utils/baseUrl";
+import SearchHandler from "@/utils/searchHandler";
 
 const getMachinesData = async () => {
   const res = await fetch(`${baseApi}/machine`);
@@ -13,11 +14,16 @@ const getMachinesData = async () => {
 const ContentArea = async () => {
   const machinesData = await getMachinesData();
   return (
+    <>
+    <div className="mb-10 z-50">
+      <SearchHandler/>
+    </div>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
       {machinesData?.data?.result.map((machine: TMachine) => (
         <MachineCard key={machine._id} machine={machine} />
       ))}
     </div>
+    </>
   );
 };
 

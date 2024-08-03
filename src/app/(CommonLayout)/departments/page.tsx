@@ -1,5 +1,6 @@
 import Breadcamp from "@/utils/Breadcamp";
 import DepartmentCard from "./DepartmentCard";
+import SearchHandler from "@/utils/searchHandler";
 
 const departmentsData = [
   {
@@ -41,6 +42,9 @@ const DepartmentsPage = () => {
     <>
       <Breadcamp title={"Our Departments"} subTitle="Departments" />
       <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
+        <div className="mb-10 z-50">
+          <SearchHandler />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {departmentsData.map((department) => (
             <DepartmentCard key={department._id} department={department} />
