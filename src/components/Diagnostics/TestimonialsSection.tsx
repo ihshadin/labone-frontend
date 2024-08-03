@@ -11,48 +11,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const testimonialsData = [
-  {
-    name: "John Doe",
-    rating: 2.5,
-    photo:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQBrQJZIWlflMXDnp5Ilk_9dHmhFd1MSPjZw&s",
-    message:
-      "The hospital provides excellent care with state-of-the-art facilities. I am grateful for the successful surgery and the care I received. The hospital provides excellent care with state-of-the-art facilities. I am grateful for the successful surgery and the care I received. The hospital provides excellent care with state-of-the-art facilities. I am grateful for the successful surgery and the care I received.",
-  },
-  {
-    name: "Jane Smith",
-    rating: 3.5,
-    photo:
-      "https://t4.ftcdn.net/jpg/01/43/23/83/360_F_143238306_lh0ap42wgot36y44WybfQpvsJB5A1CHc.jpg",
-    message:
-      "The staff was very supportive during my childbirth. I felt safe and well taken care of throughout my stay. The staff was very supportive during my childbirth. I felt safe and well taken care of throughout my stay. The staff was very supportive during my childbirth. I felt safe and well taken care of throughout my stay. The staff was very supportive during my childbirth. I felt safe and well taken care of throughout my stay.",
-  },
-  {
-    name: "Emily Johnson",
-    rating: 5,
-    photo: "https://labonehospital.com/img/bg/touch-illustration.png",
-    message:
-      "The cardiology department was outstanding. The doctors and nurses were very knowledgeable and caring.",
-  },
-  {
-    name: "Michael Brown",
-    rating: 4.5,
-    photo:
-      "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%2010.jpg",
-    message:
-      "I received exceptional care for my neurological condition. The ratcving plan was well explained and executed.",
-  },
-  {
-    name: "Sarah Davis",
-    rating: 3,
-    photo:
-      "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%207.jpg",
-    message:
-      "My experience at the orthopedic department was very positive. The surgery went smoothly and the follow-up care was excellent.",
-  },
-];
-
 const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);
 
