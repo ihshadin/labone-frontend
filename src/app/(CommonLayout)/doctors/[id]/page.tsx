@@ -1,4 +1,4 @@
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi } from "@/api/api";
 import Breadcamp from "@/utils/Breadcamp";
 import LabBtn from "@/utils/LabBtn";
 import { Image } from "@nextui-org/react";
