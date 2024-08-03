@@ -1,4 +1,4 @@
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi } from "@/api/api";
 import { TMachine } from "@/types/machine.type";
 import { Image } from "@nextui-org/react";
 import { RiArrowDropRightLine } from "react-icons/ri";

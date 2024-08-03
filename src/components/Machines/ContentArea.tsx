@@ -1,6 +1,6 @@
 import { TMachine } from "@/types/machine.type";
 import MachineCard from "@/components/Machines/MachineCard";
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi } from "@/api/api";
 
 const getMachinesData = async () => {
   const res = await fetch(`${baseApi}/machine`);

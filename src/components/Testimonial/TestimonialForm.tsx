@@ -1,33 +1,64 @@
 "use client";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { baseApi } from "@/api/api";
 import { useForm } from "react-hook-form";
-import { FaRegStar, FaStar } from "react-icons/fa";
-import Image from "next/image";
-import LabBtn from "@/utils/LabBtn";
+import { FaUserCircle } from "react-icons/fa";
 import { Input, Textarea } from "@nextui-org/react";
+import { uploadImageInCloudinary } from "@/utils/UploadImages/UploadImageInCloudinay";
+import { TTestimonial } from "@/types/testimonial.type";
 import { Rating, Star } from "@smastrom/react-rating";
+import Image from "next/image";
 import "@smastrom/react-rating/style.css";
 
-const customStar = (
-  <path d="M62 25.154H39.082L32 3l-7.082 22.154H2l18.541 13.693L13.459 61L32 47.309L50.541 61l-7.082-22.152L62 25.154z" />
-);
-
 const TestimonialForm = () => {
+  const { register, handleSubmit, reset } = useForm();
   const [rating, setRating] = useState(0);
   const [userName, setUserName] = useState("");
   const [message, setMessage] = useState("");
-  const { register, handleSubmit, reset } = useForm();
-  const [labOneUser, setLabOneUser] = useState(null);
+  const [imgPreview, setImgPreview] = useState("");
+  const [file, setFile] = useState<any>([]);
 
-  // check user is here or not
-  const FeedBackData = {
-    image: "https://labonehospital.com/img/bg/illlustration.jpg",
-    name: "LaboneUser",
-    userName: "LaboneUser001",
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const selectedFile = files[0];
+      setFile(selectedFile);
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImgPreview(reader.result as string);
+      };
+      reader.readAsDataURL(selectedFile);
+    }
   };
 
-  const onSubmit = (data: any) => {
-    reset();
+  const onSubmit = async (data: Partial<TTestimonial>) => {
+    try {
+      let imageLink;
+      if (file) {
+        imageLink = await uploadImageInCloudinary(file);
+      }
+      data.rating = rating;
+      data.photo = imageLink;
+      const response = await fetch(`${baseApi}/reviews`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setUserName("");
+        setMessage("");
+        setRating(0);
+        reset();
+      } else {
+        console.error("Failed to create testimonial");
+      }
+    } catch (error) {
+      console.error("An error occurred while creating testimonial", error);
+    }
   };
 
   return (
@@ -88,10 +119,11 @@ const TestimonialForm = () => {
               >
                 Upload your photo
               </label>
-              <Input
+              {/* <Input
                 type="file"
                 placeholder="Upload your photo"
-                {...register("photo", { required: true })}
+                // {...register("photo", { required: true })}
+                onChange={(e) => setFile(e.target?.files)}
                 labelPlacement="outside"
                 classNames={{
                   label: "mb-0.5",
@@ -112,9 +144,15 @@ const TestimonialForm = () => {
                     "group-data-[focus=true]:border-primary/50",
                   ].join(" "),
                 }}
+              /> */}
+              <input
+                onChange={handleFileChange}
+                type="file"
+                name="photo"
+                id="photo"
               />
             </div>
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-5 mt-5">
               <span className="text-xl font-semibold">Rate Us.</span>
               <div>
                 <Rating
@@ -125,7 +163,7 @@ const TestimonialForm = () => {
                   radius="large"
                   spaceInside="medium"
                   itemStyles={{
-                    itemShapes: customStar,
+                    itemShapes: Star,
                     boxBorderWidth: 2,
                     // itemStrokeWidth: 2,
                     activeFillColor: [
@@ -162,7 +200,7 @@ const TestimonialForm = () => {
               </button>
             </div>
           </form>
-          <div className="min-h-[350px] flex flex-col justify-between relative px-5 md:px-10 py-10 mt-10 md:mt-6 rounded-2xl text-primary border  hover:border-primary/50 transition-all duration-300 cursor-pointer bg-white/40">
+          <div className="min-h-[350px] flex flex-col justify-between relative px-5 md:px-10 py-10 mt-10 md:mt-6 mb-10 rounded-2xl text-primary border hover:border-primary/50 transition-all duration-300 cursor-pointer bg-white/40">
             <div>
               <Rating
                 style={{ maxWidth: 180 }}
@@ -172,7 +210,7 @@ const TestimonialForm = () => {
                 radius="large"
                 spaceInside="medium"
                 itemStyles={{
-                  itemShapes: customStar,
+                  itemShapes: Star,
                   boxBorderWidth: 2,
                   // itemStrokeWidth: 2,
                   activeFillColor: [
@@ -201,7 +239,7 @@ const TestimonialForm = () => {
                   inactiveBoxBorderColor: "#ddd",
                 }}
               />
-              <p className="min-h-16 text-slate-500 mt-3">
+              <p className="min-h-16 text-accent mt-3">
                 {message === "" ? "Your experience will show here..." : message}
               </p>
             </div>
@@ -213,13 +251,17 @@ const TestimonialForm = () => {
               </div>
               <div className="relative">
                 <div className="rounded-full border border-[#0fcda156] p-1 bg-white absolute">
-                  <Image
-                    height={80}
-                    width={80}
-                    src={FeedBackData?.image}
-                    className="rounded-full h-[76px] w-[76px] object-cover"
-                    alt=""
-                  />
+                  {imgPreview ? (
+                    <Image
+                      height={80}
+                      width={80}
+                      src={imgPreview}
+                      className="rounded-full h-[76px] w-[76px] object-cover"
+                      alt=""
+                    />
+                  ) : (
+                    <FaUserCircle className="text-accent h-[76px] w-[76px]" />
+                  )}
                 </div>
               </div>
             </div>

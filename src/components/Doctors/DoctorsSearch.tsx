@@ -1,5 +1,5 @@
 "use client";
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi } from "@/api/api";
 import { Image, Input } from "@nextui-org/react";
 import Link from "next/link";
 import React, { useState } from "react";
