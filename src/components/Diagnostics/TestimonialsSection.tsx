@@ -61,7 +61,6 @@ const TestimonialsSection = () => {
       try {
         const response = await fetch(`${baseApi}/reviews`);
         const data = await response.json();
-        console.log(data?.data);
         setTestimonials(data?.data?.result);
       } catch (error) {
         console.error("Error fetching testimonials:", error);

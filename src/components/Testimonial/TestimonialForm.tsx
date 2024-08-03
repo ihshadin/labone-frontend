@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegStar, FaStar } from "react-icons/fa";
-import Rating from "react-rating";
 import Image from "next/image";
 import LabBtn from "@/utils/LabBtn";
 import { Input, Textarea } from "@nextui-org/react";
+import { Rating } from "@smastrom/react-rating";
 
 const TestimonialForm = () => {
   const [rating, setRating] = useState(0);
@@ -130,18 +130,19 @@ const TestimonialForm = () => {
                   <span className="text-xl font-semibold px-1">Rate Us.</span>
                   <div className="flex">
                     <Rating
-                      onClick={(value) => setRating(value)}
-                      emptySymbol={
-                        <FaRegStar className="text-3xl mr-2 text-amber-500" />
-                      }
-                      fullSymbol={
-                        <FaStar className="text-3xl mr-2 text-amber-500" />
-                      }
+                      onChange={(value) => setRating(value)}
+                      value={rating}
+                      // emptySymbol={
+                      //   <FaRegStar className="text-3xl mr-2 text-amber-500" />
+                      // }
+                      // fullSymbol={
+                      //   <FaStar className="text-3xl mr-2 text-amber-500" />
+                      // }
                     />
                   </div>
                 </div>
                 <div className="text-center w-full">
-                  <LabBtn type="submit" text="submit"></LabBtn>
+                  <button className="lab-one-btn text-white">Submit</button>
                 </div>
               </form>
               <div className="md:w-1/2 min-h-[22rem] flex flex-col justify-between relative px-5 md:px-10 py-10 mt-10 md:mt-6 rounded-2xl text-primary border  hover:border-primary/50 transition-all duration-300 cursor-pointer bg-white">
@@ -159,15 +160,16 @@ const TestimonialForm = () => {
                       ~ {FeedBackData?.name || "Your Name"}
                     </h3>
                     <Rating
-                      initialRating={rating}
-                      readonly
+                      // initialRating={rating}
+                      readOnly
+                      value={rating}
                       className="flex items-center justify-center"
-                      emptySymbol={
-                        <FaRegStar className="text-xl md:text-2xl ml-3 text-amber-500" />
-                      }
-                      fullSymbol={
-                        <FaStar className="text-xl md:text-2xl ml-3 text-amber-500" />
-                      }
+                      // emptySymbol={
+                      //   <FaRegStar className="text-xl md:text-2xl ml-3 text-amber-500" />
+                      // }
+                      // fullSymbol={
+                      //   <FaStar className="text-xl md:text-2xl ml-3 text-amber-500" />
+                      // }
                     />
                   </div>
                   <div className="relative">

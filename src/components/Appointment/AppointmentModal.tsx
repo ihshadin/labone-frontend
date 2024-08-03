@@ -245,7 +245,10 @@ const AppointmentModal = ({ isOpen, setIsOpen }) => {
                     />
                   </div>
                 </form> */}
-                <AppointmentForm onClose={onClose} />
+                <AppointmentForm
+                  onClose={onClose}
+                  doctorId="66a7a50a6773a020dfd08f81"
+                />
               </ModalBody>
               {/* <ModalFooter>
                 <Button color="primary" onPress={onClose}>

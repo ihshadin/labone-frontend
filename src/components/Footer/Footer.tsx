@@ -68,22 +68,22 @@ const Footer = () => {
               <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>About Us</Link>
+                  <Link href={"/about-us"}>About Us</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Services</Link>
+                  <Link href={"/services"}>Services</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Departments</Link>
+                  <Link href={"/departments"}>Departments</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Diagnostics</Link>
+                  <Link href={"/diagnostics"}>Diagnostics</Link>
                 </li>
               </ul>
             </div>
@@ -96,22 +96,24 @@ const Footer = () => {
               <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>WHO</Link>
+                  <Link href={"https://www.who.int/"}>WHO</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>PG Hospital</Link>
+                  <Link href={"https://bsmmu.ac.bd/"}>PG Hospital</Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Blood Donate</Link>
+                  <Link href={"https://bdrcs.org/donate-blood/"}>
+                    Blood Donate
+                  </Link>
                 </li>
 
                 <li>
                   <RiArrowDropRightLine />
-                  <Link href={"#"}>Blood Bank</Link>
+                  <Link href={"https://bbms.dghs.gov.bd/"}>Blood Bank</Link>
                 </li>
               </ul>
             </div>
