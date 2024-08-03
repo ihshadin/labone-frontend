@@ -2,7 +2,7 @@
 import SectionHeader from "@/utils/SectionHeader";
 import TestimonialCard from "./TestimonialCard";
 import { useEffect, useState } from "react";
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi, getTestimonials } from "@/api/api";
 
 // core version + navigation, pagination modules:
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,17 +15,11 @@ const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const response = await fetch(`${baseApi}/reviews`);
-        const data = await response.json();
-        setTestimonials(data?.data?.result);
-      } catch (error) {
-        console.error("Error fetching testimonials:", error);
-      }
+    const getTestimonialsData = async () => {
+      const data = await getTestimonials(5);
+      setTestimonials(data);
     };
-
-    fetchTestimonials();
+    getTestimonialsData();
   }, []);
   return (
     <>

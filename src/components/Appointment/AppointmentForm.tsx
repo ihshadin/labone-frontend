@@ -5,7 +5,7 @@ import { Dispatch, useEffect, useState } from "react";
 import LabDatePicker from "@/utils/LabDatePicker";
 import { useDateFormatter } from "@react-aria/i18n";
 import { useForm } from "react-hook-form";
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi } from "@/api/api";
 import { TDoctor } from "@/types/doctors.type";
 
 type TAppointmentForm = {

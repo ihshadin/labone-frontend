@@ -1,7 +1,7 @@
 import React from "react";
 import Breadcamp from "@/utils/Breadcamp";
 import { Image } from "@nextui-org/react";
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi } from "@/api/api";
 
 const getMachineData = async (id: string) => {
   try {

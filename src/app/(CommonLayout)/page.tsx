@@ -1,4 +1,4 @@
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi } from "@/api/api";
 import { TMachine } from "@/types/machine.type";
 import HeroSection from "@/components/HomePage/HeroSection";
 import Schedules from "@/components/HomePage/Schedules";
