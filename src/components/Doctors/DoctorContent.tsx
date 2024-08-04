@@ -25,7 +25,7 @@ const DoctorContent = () => {
       .join("&");
 
     const res = await fetch(
-      `${baseApi}/doctor?limit=2${queryParams ? `&${queryParams}` : ""}`
+      `${baseApi}/doctor?limit=9${queryParams ? `&${queryParams}` : ""}`
     );
     const data = await res.json();
     setDoctors(data?.data?.result);
