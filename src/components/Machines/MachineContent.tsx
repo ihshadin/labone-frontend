@@ -25,7 +25,7 @@ const MachineContent = () => {
       .join("&");
 
     const res = await fetch(
-      `${baseApi}/machine?limit=1${queryParams ? `&${queryParams}` : ""}`
+      `${baseApi}/machine?limit=9${queryParams ? `&${queryParams}` : ""}`
     );
     const data = await res.json();
     setMachines(data?.data?.result);

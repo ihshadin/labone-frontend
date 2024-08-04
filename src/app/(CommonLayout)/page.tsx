@@ -1,8 +1,6 @@
 import { TMachine } from "@/types/machine.type";
 import HeroSection from "@/components/HomePage/HeroSection";
-import Schedules from "@/components/HomePage/Schedules";
 import LabBtn from "@/utils/LabBtn";
-import LiveTimer from "@/utils/LiveTimer";
 import SectionHeader from "@/utils/SectionHeader";
 import AppointmentForm from "@/components/Appointment/AppointmentForm";
 import DoctorsSection from "@/components/Diagnostics/DoctorsSection";
@@ -15,6 +13,7 @@ import SpecialService from "@/components/SpecialService/SpecialService";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
 import { getDoctors } from "@/api/doctors";
 import { getMachines } from "@/api/machines";
+import SchedulesContainer from "@/components/HomePage/SchedulesContainer";
 
 const spotlightData = {
   image: "https://labonehospital.com/img/bg/illlustration.jpg",
@@ -54,17 +53,7 @@ export default async function Home() {
               <AppointmentForm />
             </div>
           </div>
-          <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
-            <div className="flex items-center justify-between mb-8 ">
-              <h2 className="text-primary text-2xl font-semibold">
-                Today&apos;s schedule
-              </h2>
-              <LiveTimer />
-            </div>
-            <div className="mt-4 md:mt-5">
-              <Schedules />
-            </div>
-          </div>
+          <SchedulesContainer />
         </div>
       </div>
       <SpotlightSection data={spotlightData} />

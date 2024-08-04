@@ -7,8 +7,9 @@ import { TPagination } from "@/types/pagination.type";
 const LabonePagination = ({ meta, handlePaginationChange }: TPagination) => {
   return (
     meta?.totalPage > 1 && (
-      <div className="flex items-center justify-center gap-1.5 text-base mt-7 md:mt-10 [&_button]:py-2 [&_button]:px-5 [&_button]:rounded-xl [&_button]:text-white [&_button]:bg-gradient-to-t [&_button]:from-[#0a8848] [&_button]:to-[#02a351] [&_button]:shadow-lg [&_button]:flex [&_button]:items-center [&_button]:gap-1 [&_button]:group">
+      <div className="flex items-center justify-center gap-1.5 text-base mt-7 md:mt-10 [&_button]:py-2 [&_button]:px-5 [&_button]:rounded-xl [&_button]:text-white [&_button]:bg-gradient-to-t [&_button]:from-[#0a8848] [&_button]:to-[#02a351] [&_button]:shadow-lg [&_button]:flex [&_button]:items-center [&_button]:gap-1">
         <button
+          className="group"
           onClick={() =>
             handlePaginationChange(meta?.page > 1 ? meta?.page - 1 : meta?.page)
           }
@@ -29,6 +30,7 @@ const LabonePagination = ({ meta, handlePaginationChange }: TPagination) => {
           }}
         />
         <button
+          className="group"
           onClick={() =>
             handlePaginationChange(
               meta?.page < meta?.totalPage ? meta?.page + 1 : meta?.page
