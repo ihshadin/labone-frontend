@@ -1,5 +1,5 @@
-import ContentArea from "@/components/Doctors/ContentArea";
 import Breadcamp from "@/utils/Breadcamp";
+import ContentArea from "@/components/Doctors/ContentArea";
 
 const DoctorsPage = () => {
   return (
