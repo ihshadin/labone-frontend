@@ -9,17 +9,23 @@ const LiveTimer = () => {
     minutes: false,
     seconds: false,
   });
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     setTime(new Date());
 
     const intervalId = setInterval(() => {
       const newTime = new Date();
-      setTime(newTime);
-      setFlip({
-        hours: newTime.getHours() !== time?.getHours(),
-        minutes: newTime.getMinutes() !== time?.getMinutes(),
-        seconds: newTime.getSeconds() !== time?.getSeconds(),
+      setTime((prevTime) => {
+        if (prevTime) {
+          setFlip({
+            hours: newTime.getHours() !== prevTime.getHours(),
+            minutes: newTime.getMinutes() !== prevTime.getMinutes(),
+            seconds: newTime.getSeconds() !== prevTime.getSeconds(),
+          });
+        }
+        return newTime;
       });
 
       setTimeout(
@@ -27,10 +33,11 @@ const LiveTimer = () => {
         1000
       );
     }, 1000);
-    return () => clearInterval(intervalId);
-  }, [time]);
 
-  if (!time) {
+    return () => clearInterval(intervalId);
+  }, []);
+
+  if (!isMounted || !time) {
     return null; // or a loading spinner
   }
 

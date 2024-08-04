@@ -1,16 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
-import MachineCard from "@/components/Machines/MachineCard";
-import { TMachine } from "@/types/machine.type";
+import { useCallback, useEffect, useState } from "react";
+import DoctorCard from "@/components/Doctors/DoctorCard";
+import { TDoctor } from "@/types/doctors.type";
 import { TMeta, TQueryParam } from "@/types/global.type";
 import { baseApi } from "@/api/api";
-import SearchHandler from "@/utils/searchHandler";
+import SearchHandler from "@/utils/SearchHandler";
 import LabonePagination from "@/utils/Pagination/LabonePagination";
 
-const ContentArea = () => {
+const DoctorContent = () => {
   const [params, setParams] = useState<TQueryParam[]>([]);
   const [meta, setMeta] = useState<TMeta>({} as TMeta);
-  const [machines, setMachines] = useState([]);
+  const [doctors, setDoctors] = useState([]);
 
   const handlePaginationChange = (page: number) => {
     setParams((prevParams) => [
@@ -19,30 +19,31 @@ const ContentArea = () => {
     ]);
   };
 
-  const fetchMachines = async () => {
+  const fetchDoctors = useCallback(async () => {
     const queryParams = params
       .map((param) => `${param.name}=${param.value}`)
       .join("&");
 
     const res = await fetch(
-      `${baseApi}/machine?limit=1${queryParams ? `&${queryParams}` : ""}`
+      `${baseApi}/doctor?limit=2${queryParams ? `&${queryParams}` : ""}`
     );
     const data = await res.json();
-    setMachines(data?.data?.result);
+    setDoctors(data?.data?.result);
     setMeta(data?.data?.meta);
-  };
+  }, [params]);
 
   useEffect(() => {
-    fetchMachines();
-  }, [params]);
+    fetchDoctors();
+  }, [fetchDoctors]);
+
   return (
     <>
       <div className="mb-10">
         <SearchHandler setParams={setParams} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-        {machines?.map((machine: TMachine) => (
-          <MachineCard key={machine._id} machine={machine} />
+        {doctors?.map((doctor: TDoctor) => (
+          <DoctorCard key={doctor._id} doctor={doctor} />
         ))}
       </div>
       <LabonePagination
@@ -53,4 +54,4 @@ const ContentArea = () => {
   );
 };
 
-export default ContentArea;
+export default DoctorContent;

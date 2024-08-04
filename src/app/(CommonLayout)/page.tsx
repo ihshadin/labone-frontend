@@ -1,4 +1,3 @@
-import { baseApi } from "@/api/api";
 import { TMachine } from "@/types/machine.type";
 import HeroSection from "@/components/HomePage/HeroSection";
 import Schedules from "@/components/HomePage/Schedules";
@@ -60,7 +59,7 @@ export default async function Home() {
               <h2 className="text-primary text-2xl font-semibold">
                 Today&apos;s schedule
               </h2>
-              {/* <LiveTimer /> */}
+              <LiveTimer />
             </div>
             <div className="mt-4 md:mt-5">
               <Schedules />
