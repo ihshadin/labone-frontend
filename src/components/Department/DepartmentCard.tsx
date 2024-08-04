@@ -1,3 +1,4 @@
+import { TDepartment } from "@/types/department.type";
 import { TMachine } from "@/types/machine.type";
 import {
   Button,
@@ -10,7 +11,7 @@ import {
 } from "@nextui-org/react";
 // import Link from "next/link";
 
-const DepartmentCard = ({ department }) => {
+const DepartmentCard = ({ department }: { department: TDepartment }) => {
   return (
     <>
       {/* <Card className="w-full">

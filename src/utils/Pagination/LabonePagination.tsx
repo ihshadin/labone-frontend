@@ -1,84 +1,25 @@
 "use client";
 import React from "react";
-import { Button, Pagination, PaginationItemType } from "@nextui-org/react";
+import { Pagination } from "@nextui-org/react";
 import { TbChevronCompactLeft, TbChevronCompactRight } from "react-icons/tb";
 import { TPagination } from "@/types/pagination.type";
 
 const LabonePagination = ({ meta, handlePaginationChange }: TPagination) => {
-  const [currentPage, setCurrentPage] = React.useState(1);
-  // const renderItem = ({
-  //   ref,
-  //   key,
-  //   value,
-  //   isActive,
-  //   onNext,
-  //   onPrevious,
-  //   setPage,
-  //   className,
-  // }) => {
-  //   if (value === PaginationItemType.NEXT) {
-  //     return (
-  //       <button
-  //         key={key}
-  //         className={cn(className, "bg-default-200/50 min-w-8 w-8 h-8")}
-  //         onClick={onNext}
-  //       >
-  //         <TbChevronCompactLeft className="rotate-180" />
-  //       </button>
-  //     );
-  //   }
-
-  //   if (value === PaginationItemType.PREV) {
-  //     return (
-  //       <button
-  //         key={key}
-  //         className={cn(className, "bg-default-200/50 min-w-8 w-8 h-8")}
-  //         onClick={onPrevious}
-  //       >
-  //         <TbChevronCompactRight />
-  //       </button>
-  //     );
-  //   }
-
-  //   if (value === PaginationItemType.DOTS) {
-  //     return (
-  //       <button key={key} className={className}>
-  //         ...
-  //       </button>
-  //     );
-  //   }
-
-  //   // cursor is the default item
-  //   return (
-  //     <button
-  //       key={key}
-  //       ref={ref}
-  //       className={cn(
-  //         className,
-  //         isActive &&
-  //           "text-white bg-gradient-to-br from-indigo-500 to-pink-500 font-bold"
-  //       )}
-  //       onClick={() => setPage(value)}
-  //     >
-  //       {value}
-  //     </button>
-  //   );
-  // };
   return (
-    meta?.total > 1 && (
-      <div className="flex items-center justify-center gap-1.5 text-base mt-7 md:mt-10">
+    meta?.totalPage > 1 && (
+      <div className="flex items-center justify-center gap-1.5 text-base mt-7 md:mt-10 [&_button]:py-2 [&_button]:px-5 [&_button]:rounded-xl [&_button]:text-white [&_button]:bg-gradient-to-t [&_button]:from-[#0a8848] [&_button]:to-[#02a351] [&_button]:shadow-lg [&_button]:flex [&_button]:items-center [&_button]:gap-1 [&_button]:group">
         <button
           onClick={() =>
-            handlePaginationChange((prev) => (prev > 1 ? prev - 1 : prev))
+            handlePaginationChange(meta?.page > 1 ? meta?.page - 1 : meta?.page)
           }
-          className="py-2 px-5 rounded-xl text-white bg-gradient-to-b from-[#0a8848] to-[#02a351] shadow-lg"
         >
+          <TbChevronCompactLeft className=" transition-all duration-300 group-hover:-translate-x-2" />
           Previous
         </button>
         <Pagination
           initialPage={1}
-          total={meta?.total}
-          page={currentPage}
+          total={meta?.totalPage}
+          page={meta?.page}
           onChange={handlePaginationChange}
           classNames={{
             wrapper: "gap-1.5 overflow-visible h-8 rounded",
@@ -89,23 +30,14 @@ const LabonePagination = ({ meta, handlePaginationChange }: TPagination) => {
         />
         <button
           onClick={() =>
-            handlePaginationChange((prev) =>
-              prev < meta?.total ? prev + 1 : prev
+            handlePaginationChange(
+              meta?.page < meta?.totalPage ? meta?.page + 1 : meta?.page
             )
           }
-          className="py-2 px-5 rounded-xl text-white bg-gradient-to-t from-[#0a8848] to-[#02a351] shadow-lg"
         >
           Next
+          <TbChevronCompactRight className="transition-all duration-300 group-hover:translate-x-2" />
         </button>
-        {/* <Pagination showControls total={10} initialPage={1} /> */}
-        {/* <Pagination
-        total={meta?.total}
-        pageSize={meta?.limit}
-        defaultCurrent={1}
-        onChange={handlePaginationChange}
-        showLessItems={true}
-        showSizeChanger={false}
-      /> */}
       </div>
     )
   );

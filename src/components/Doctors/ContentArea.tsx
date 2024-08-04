@@ -1,18 +1,15 @@
 "use client";
-import DoctorCard from "@/components/Doctors/DoctorCard";
-import DoctorPagination from "./DoctorPagination";
-import { getDoctors } from "@/api/doctors";
-import { TDoctor } from "@/types/doctors.type";
 import { useEffect, useState } from "react";
+import DoctorCard from "@/components/Doctors/DoctorCard";
+import { TDoctor } from "@/types/doctors.type";
+import { TMeta, TQueryParam } from "@/types/global.type";
+import { baseApi } from "@/api/api";
 import SearchHandler from "@/utils/searchHandler";
 import LabonePagination from "@/utils/Pagination/LabonePagination";
-import { TQueryParam } from "@/types/global.type";
-import { baseApi } from "@/api/api";
 
 const ContentArea = () => {
   const [params, setParams] = useState<TQueryParam[]>([]);
-  const [meta, setMeta] = useState("");
-  const [searchText, setSearchText] = useState("");
+  const [meta, setMeta] = useState<TMeta>({} as TMeta);
   const [doctors, setDoctors] = useState([]);
 
   const handlePaginationChange = (page: number) => {
@@ -26,7 +23,10 @@ const ContentArea = () => {
     const queryParams = params
       .map((param) => `${param.name}=${param.value}`)
       .join("&");
-    const res = await fetch(`${baseApi}/doctor?search=${searchText}`);
+
+    const res = await fetch(
+      `${baseApi}/doctor?limit=2${queryParams ? `&${queryParams}` : ""}`
+    );
     const data = await res.json();
     setDoctors(data?.data?.result);
     setMeta(data?.data?.meta);
@@ -34,11 +34,12 @@ const ContentArea = () => {
 
   useEffect(() => {
     fetchDoctors();
-  }, [searchText]);
+  }, [params]);
+
   return (
     <>
       <div className="mb-10">
-        <SearchHandler setSearchText={setSearchText} />
+        <SearchHandler setParams={setParams} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
         {doctors?.map((doctor: TDoctor) => (
