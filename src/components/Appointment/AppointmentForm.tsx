@@ -23,7 +23,8 @@ const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
   const onSubmit = async (data) => {
     data.appointmentDate = date.toString();
     data.doctorId = selectDoc;
-    console.log(data);
+    console.log("data--=>", data);
+
     try {
       const response = await fetch(`${baseApi}/appointment`, {
         method: "POST",

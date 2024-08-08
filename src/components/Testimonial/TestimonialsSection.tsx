@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import SectionHeader from "@/utils/SectionHeader";
-import { getTestimonials } from "@/api/reviews";
 import TestimonialCard from "@/components/Testimonial/TestimonialCard";
 
 // core version + navigation, pagination modules:
@@ -10,6 +9,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 // import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/pagination";
+import { getTestimonials } from "@/api/reviews.api";
 
 const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);

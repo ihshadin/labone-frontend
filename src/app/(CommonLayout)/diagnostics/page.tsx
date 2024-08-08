@@ -14,8 +14,8 @@ import SpecialService from "@/components/SpecialService/SpecialService";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import Newsletter from "@/components/Newsletter/Newsletter";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
-import { getDoctors } from "@/api/doctors";
-import { getMachines } from "@/api/machines";
+import { getMachines } from "@/api/machines.api";
+import { getDoctors } from "@/api/doctors.api";
 
 const spotlightData = {
   image: "https://labonehospital.com/img/bg/illlustration.jpg",

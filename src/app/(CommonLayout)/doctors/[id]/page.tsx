@@ -1,5 +1,5 @@
 import { baseApi } from "@/api/api";
-import { getDoctor } from "@/api/doctors";
+import { getDoctor } from "@/api/doctors.api";
 import { TSchedule } from "@/types/schedule.type";
 import Breadcamp from "@/utils/Breadcamp";
 import LabBtn from "@/utils/LabBtn";

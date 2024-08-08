@@ -11,14 +11,15 @@ import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import SpecialService from "@/components/SpecialService/SpecialService";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
-import { getDoctors } from "@/api/doctors";
-import { getMachines } from "@/api/machines";
+
 import SchedulesContainer from "@/components/HomePage/SchedulesContainer";
+import { getMachines } from "@/api/machines.api";
+import { getDoctors } from "@/api/doctors.api";
 
 const spotlightData = {
   image: "https://labonehospital.com/img/bg/illlustration.jpg",
   subHeading: "About Us",
-  heading: "We Are Specialize in Medical Diagnositics",
+  heading: "We Are Specialize in Medical Diagnostics",
   description:
     "At our Lab One Hospital, we are dedicated to providing exceptional care and comfort to every patient. Our highly skilled and compassionate team of healthcare professionals is committed to delivering personalized, patient-centered experiences. With cutting-edge technology and a patient-first approach, we strive to be the premier choice for all of your healthcare needs.",
   featureList: [
