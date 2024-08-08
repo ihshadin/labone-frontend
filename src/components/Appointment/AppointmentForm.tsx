@@ -1,9 +1,8 @@
 "use client";
 import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
-import { getLocalTimeZone, today, now } from "@internationalized/date";
-import { Dispatch, useEffect, useState } from "react";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { useEffect, useState } from "react";
 import LabDatePicker from "@/utils/LabDatePicker";
-import { useDateFormatter } from "@react-aria/i18n";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { baseApi } from "@/api/api";
 import { TDoctor } from "@/types/doctors.type";
@@ -21,8 +20,7 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
   const [doctors, setDoctors] = useState([]);
   const [selDocInfo, setSelDocInfo] = useState<TDoctor | null>(null);
   const [selectDoc, setSelectDoc] = useState(selectDoctor || "");
-  // console.log(selDocInfo);
-  // console.log(selectDoc);
+
   const onSubmit: SubmitHandler<TAppointment> = async (data) => {
     data.appointmentDate = date.toString();
     data.doctorID = selectDoc;

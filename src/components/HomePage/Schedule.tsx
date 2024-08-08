@@ -1,8 +1,11 @@
+"use client";
+import { getSchedules } from "@/api/schedule.api";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LuCalendarClock } from "react-icons/lu";
 
 const Schedule = () => {
+  const [schedules, setSchedules] = useState([]);
   const schedulesData = [
     {
       name: "ডাঃ তোহমিনা আক্তার",
@@ -43,6 +46,18 @@ const Schedule = () => {
     },
     // Add the rest of the data in the same format
   ];
+
+  const getSchedulesData = async () => {
+    const data = await getSchedules();
+    console.log("data--=>", data);
+    setSchedules(data);
+  };
+
+  useEffect(() => {
+    getSchedulesData();
+  }, []);
+
+  console.log("schedules--=>", schedules);
 
   return (
     <div className="mb-10 p-6 bg-white rounded-lg shadow-lg">
