@@ -6,6 +6,7 @@ import { getSchedules } from "@/api/schedule.api";
 
 const SchedulesContainer = () => {
   const [schedules, setSchedules] = useState([]);
+  const [scheduleDay, setScheduleDay] = useState("");
 
   const weekDays = [
     { key: "Saturday", label: "Saturday" },
@@ -17,17 +18,16 @@ const SchedulesContainer = () => {
     { key: "Friday", label: "Friday" },
   ];
 
-  const getSchedulesData = async () => {
-    const data = await getSchedules();
-    console.log("data--=>", data);
+  const getSchedulesData = async (scheduleDay: string) => {
+    const data = await getSchedules(scheduleDay);
     setSchedules(data);
   };
 
   useEffect(() => {
-    getSchedulesData();
-  }, []);
+    getSchedulesData(scheduleDay);
+  }, [scheduleDay]);
 
-  console.log("schedules--=>", schedules);
+  console.log("scheduleDay--=>", scheduleDay);
 
   return (
     <>
@@ -45,7 +45,7 @@ const SchedulesContainer = () => {
                 "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
             }}
             //   defaultSelectedKeys={[defaultDoctor]}
-            //   onChange={(e) => handleDoctorChange(e.target.value)}
+            onChange={(e) => setScheduleDay(e.target.value)}
           >
             {weekDays?.map((day) => (
               <SelectItem key={day?.key} value={day?.key}>
@@ -56,7 +56,7 @@ const SchedulesContainer = () => {
         </div>
 
         <div className="mt-4 md:mt-5">
-          <SchedulesList />
+          <SchedulesList schedules={schedules} />
         </div>
       </div>
     </>

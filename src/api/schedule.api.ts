@@ -1,11 +1,15 @@
 import { baseApi } from "./api";
 
-export const getSchedules = async () => {
-  try {
-    const res = await fetch(`${baseApi}/schedule`);
-    const data = await res.json();
+const today = new Date().toLocaleDateString("en-us", { weekday: "long" });
 
-    console.log("data:", data);
+export const getSchedules = async (scheduleDay: string) => {
+  try {
+    const res = await fetch(
+      `${baseApi}/schedule?limit=0&${
+        scheduleDay ? `scheduleDay=${scheduleDay}` : `scheduleDay=${today}`
+      }`
+    );
+    const data = await res.json();
 
     return data?.data?.result;
   } catch (error) {
