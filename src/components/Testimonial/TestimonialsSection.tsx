@@ -9,7 +9,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 // import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/pagination";
-import { getTestimonials } from "@/api/reviews.api";
+import { getTestimonials } from "@/api/reviews";
 
 const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);

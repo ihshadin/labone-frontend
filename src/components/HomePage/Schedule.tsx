@@ -47,18 +47,6 @@ const Schedule = () => {
     // Add the rest of the data in the same format
   ];
 
-  const getSchedulesData = async () => {
-    const data = await getSchedules();
-    console.log("data--=>", data);
-    setSchedules(data);
-  };
-
-  useEffect(() => {
-    getSchedulesData();
-  }, []);
-
-  console.log("schedules--=>", schedules);
-
   return (
     <div className="mb-10 p-6 bg-white rounded-lg shadow-lg">
       <div className="widget-title text-center mb-6">

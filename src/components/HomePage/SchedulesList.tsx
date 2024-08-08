@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import AppointmentModal from "../Appointment/AppointmentModal";
 import Link from "next/link";
-import { LuCalendarCheck2, LuCalendarClock } from "react-icons/lu";
+import { LuCalendarCheck2 } from "react-icons/lu";
 import { getDoctors } from "@/api/doctors.api";
 import { TDoctor } from "@/types/doctors.type";
 
