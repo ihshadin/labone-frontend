@@ -23,7 +23,7 @@ const HeroSection = () => {
         modules={[Pagination]}
         className="hero-banner-slider"
       >
-        {/* <SwiperSlide>
+        <SwiperSlide>
           <div
             className="relative w-full h-[700px] bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImage.src})` }}
@@ -44,7 +44,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-        </SwiperSlide> */}
+        </SwiperSlide>
         <SwiperSlide>
           <div
             className="relative w-full h-[700px] bg-cover bg-center"
@@ -52,7 +52,7 @@ const HeroSection = () => {
           >
             <div className="w-full max-w-[1250px] mx-auto p-2 h-full flex justify-between items-center">
               <div className="w-[50%] flex flex-col justify-center">
-                <h2 className="text-left text-[#058946] font-tiroBangla font-[700] text-[65px] leading-[1.1] ">
+                <h2 className="text-left text-[#058946] font-[700] text-[65px] leading-[1.1] ">
                   Lab One Hospital
                   <span className="text-[#dc3545] block">
                     {" "}
@@ -61,7 +61,7 @@ const HeroSection = () => {
                   Our Focus
                 </h2>
                 <div>
-                  <p className="text-base text-left text-accent mt-[28px] mb-[18px] font-tiroBangla max-w-[550px]">
+                  <p className="text-base text-left text-accent mt-[28px] mb-[18px] max-w-[550px]">
                     Ensuring your optimal health through dedicated,
                     compassionate care and advanced medical treatments is our
                     mission
@@ -76,7 +76,7 @@ const HeroSection = () => {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div
             className="relative w-full h-[700px] bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImage.src})` }}
@@ -98,7 +98,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );

@@ -11,11 +11,12 @@ import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import SpecialService from "@/components/SpecialService/SpecialService";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
-
+import heartbit from "@/assets/images/graph-img.png"
 import SchedulesContainer from "@/components/HomePage/SchedulesContainer";
 import { getMachines } from "@/api/machines.api";
 import { getDoctors } from "@/api/doctors.api";
 import LiveTimer from "@/utils/LiveTimer";
+import { Image } from "@nextui-org/react";
 
 const spotlightData = {
   image: "https://labonehospital.com/img/bg/illlustration.jpg",
@@ -39,7 +40,15 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <div className="flex flex-col justify-center items-center py-8 md:py-12">
+      <div className="flex flex-col justify-center items-center py-8 md:py-12 relative" >
+        <Image
+        className="absolute -top-10 left-0 w-full max-w-full -z-10 !opacity-15"
+        src={heartbit.src}
+        removeWrapper
+        alt="labone"
+        />
+      {/* style={{backgroundImage:`url(${heartbit.src})`}} */}
+
         <LiveTimer />
       </div>
       <div className="mx-auto max-w-[1250px] px-2 pb-10 md:pb-16 lg:pb-20">
