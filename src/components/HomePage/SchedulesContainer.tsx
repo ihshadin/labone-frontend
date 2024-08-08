@@ -1,20 +1,33 @@
 "use client";
-import LiveTimer from "@/utils/LiveTimer";
 import SchedulesList from "@/components/HomePage/SchedulesList";
-import { useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
-import { Input, Select, SelectItem } from "@nextui-org/react";
+import { useEffect, useState } from "react";
+import { Select, SelectItem } from "@nextui-org/react";
+import { getSchedules } from "@/api/schedule.api";
 
 const SchedulesContainer = () => {
+  const [schedules, setSchedules] = useState([]);
+
   const weekDays = [
-    { key: "saturday", label: "Saturday" },
-    { key: "sunday", label: "Sunday" },
-    { key: "monday", label: "Monday" },
-    { key: "tuesday", label: "Tuesday" },
-    { key: "wednesday", label: "Wednesday" },
-    { key: "thursday", label: "Thursday" },
-    { key: "friday", label: "Friday" },
+    { key: "Saturday", label: "Saturday" },
+    { key: "Sunday", label: "Sunday" },
+    { key: "Monday", label: "Monday" },
+    { key: "Tuesday", label: "Tuesday" },
+    { key: "Wednesday", label: "Wednesday" },
+    { key: "Thursday", label: "Thursday" },
+    { key: "Friday", label: "Friday" },
   ];
+
+  const getSchedulesData = async () => {
+    const data = await getSchedules();
+    console.log("data--=>", data);
+    setSchedules(data);
+  };
+
+  useEffect(() => {
+    getSchedulesData();
+  }, []);
+
+  console.log("schedules--=>", schedules);
 
   return (
     <>
@@ -41,7 +54,19 @@ const SchedulesContainer = () => {
             ))}
           </Select>
         </div>
-        {/* <div className="grid md:grid-cols-2 items-center gap-3 md:gap-5">
+
+        <div className="mt-4 md:mt-5">
+          <SchedulesList />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default SchedulesContainer;
+
+{
+  /* <div className="grid md:grid-cols-2 items-center gap-3 md:gap-5">
           <Input
             type="text"
             placeholder="Search Doctor by Name"
@@ -75,13 +100,5 @@ const SchedulesContainer = () => {
               </SelectItem>
             ))}
           </Select>
-        </div> */}
-        <div className="mt-4 md:mt-5">
-          <SchedulesList />
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default SchedulesContainer;
+        </div> */
+}

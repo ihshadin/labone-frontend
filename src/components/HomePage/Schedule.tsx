@@ -1,8 +1,11 @@
+"use client";
+import { getSchedules } from "@/api/schedule.api";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LuCalendarClock } from "react-icons/lu";
 
 const Schedule = () => {
+  const [schedules, setSchedules] = useState([]);
   const schedulesData = [
     {
       name: "ডাঃ তোহমিনা আক্তার",
