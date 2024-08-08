@@ -19,7 +19,6 @@ const SchedulesContainer = () => {
   ];
 
   const getSchedulesData = async (scheduleDay: string) => {
-    
     const data = await getSchedules(scheduleDay);
     setSchedules(data);
   };
