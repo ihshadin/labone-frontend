@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { LuCalendarClock } from "react-icons/lu";
 
 const Schedule = () => {
   const schedulesData = [
@@ -75,6 +76,7 @@ const Schedule = () => {
             </div>
             <button className="bg-gradient-to-r from-[#0a8849] to-[#07ccec] text-white px-4 py-2 rounded-lg hover:bg-blue-600">
               Appointment
+              <LuCalendarClock />
             </button>
           </li>
         ))}
