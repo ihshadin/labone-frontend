@@ -66,24 +66,24 @@ const DoctorsSearch = () => {
   //     return res.json();
   //   };
 
-  const handleSearch = async (e) => {
-    console.log(e)
-  //   const query = e.target.value.toLowerCase();
-  //   if (query === "") {
-  //     setActiveSearch([]);
-  //     return;
-  //   }
-  //   setActiveSearch(
-  //     // await getDoctorData(query)
-  //     doctorsData
-  //       .filter(
-  //         (doctor) =>
-  //           doctor.firstName.includes(query) ||
-  //           doctor.lastName.includes(query) ||
-  //           doctor.degree.includes(query)
-  //       )
-  //       .slice(0, 8)
-  //   );
+  const handleSearch = async (e: any) => {
+    console.log(e);
+    //   const query = e.target.value.toLowerCase();
+    //   if (query === "") {
+    //     setActiveSearch([]);
+    //     return;
+    //   }
+    //   setActiveSearch(
+    //     // await getDoctorData(query)
+    //     doctorsData
+    //       .filter(
+    //         (doctor) =>
+    //           doctor.firstName.includes(query) ||
+    //           doctor.lastName.includes(query) ||
+    //           doctor.degree.includes(query)
+    //       )
+    //       .slice(0, 8)
+    //   );
   };
 
   return (

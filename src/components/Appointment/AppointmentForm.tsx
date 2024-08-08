@@ -16,14 +16,12 @@ type TAppointmentForm = {
 };
 
 const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm<TAppointment>();
   const [date, setDate] = useState(today(getLocalTimeZone()));
   const [doctors, setDoctors] = useState([]);
   const [selDocInfo, setSelDocInfo] = useState<TDoctor | null>(null);
   const [selectDoc, setSelectDoc] = useState(selectDoctor || "");
-  // console.log(selDocInfo);
-  // console.log(selectDoc);
-  const onSubmit: SubmitHandler<TAppointment> = async (data) => {
+  const onSubmit = async (data: TAppointment) => {
     data.appointmentDate = date.toString();
     data.doctorID = selectDoc;
 
