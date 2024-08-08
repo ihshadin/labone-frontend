@@ -15,6 +15,7 @@ import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
 import SchedulesContainer from "@/components/HomePage/SchedulesContainer";
 import { getMachines } from "@/api/machines.api";
 import { getDoctors } from "@/api/doctors.api";
+import LiveTimer from "@/utils/LiveTimer";
 
 const spotlightData = {
   image: "https://labonehospital.com/img/bg/illlustration.jpg",
@@ -38,9 +39,12 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <div className="mx-auto max-w-[1250px] px-2 py-10 md:py-16 lg:py-20">
+      <div className="flex flex-col justify-center items-center py-8 md:py-12">
+        <LiveTimer />
+      </div>
+      <div className="mx-auto max-w-[1250px] px-2 pb-10 md:pb-16 lg:pb-20">
         <div className="grid md:grid-cols-2 gap-4 md:gap-5">
-          <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
+          <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 rounded-xl">
             <div className=" text-center">
               <h2 className="text-primary text-2xl font-semibold">
                 Appointment Form

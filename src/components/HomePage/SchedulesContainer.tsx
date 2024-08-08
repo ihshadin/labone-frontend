@@ -18,14 +18,30 @@ const SchedulesContainer = () => {
 
   return (
     <>
-      <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
-        <div className="flex items-center justify-between mb-2 md:mb-2">
+      <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 rounded-xl">
+        <div className="grid md:grid-cols-2 items-center mb-2 md:mb-2">
           <h2 className="text-primary text-2xl font-semibold">
             Today&apos;s schedule
           </h2>
-          <LiveTimer />
+          <Select
+            placeholder="Search Doctor by Day"
+            classNames={{
+              label:
+                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+              trigger:
+                "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
+            }}
+            //   defaultSelectedKeys={[defaultDoctor]}
+            //   onChange={(e) => handleDoctorChange(e.target.value)}
+          >
+            {weekDays?.map((day) => (
+              <SelectItem key={day?.key} value={day?.key}>
+                {day?.label}
+              </SelectItem>
+            ))}
+          </Select>
         </div>
-        <div className="grid md:grid-cols-2 items-center gap-3 md:gap-5">
+        {/* <div className="grid md:grid-cols-2 items-center gap-3 md:gap-5">
           <Input
             type="text"
             placeholder="Search Doctor by Name"
@@ -59,7 +75,7 @@ const SchedulesContainer = () => {
               </SelectItem>
             ))}
           </Select>
-        </div>
+        </div> */}
         <div className="mt-4 md:mt-5">
           <SchedulesList />
         </div>
