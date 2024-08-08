@@ -1,5 +1,4 @@
 import { TSectionHeader } from "@/types/sectionHeader.type";
-import React from "react";
 
 const SectionHeader = ({ subHeading, heading, desc }: TSectionHeader) => {
   return (

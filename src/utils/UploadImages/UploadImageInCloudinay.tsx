@@ -6,16 +6,16 @@ export const uploadImageInCloudinary = async (
   file: any,
   toastId?: string | number
 ) => {
-  const imageFile = file[0]?.originFileObj;
+  // const imageFile = file[0]?.originFileObj;
   const imageData = new FormData();
-  imageData.append("file", imageFile);
-  imageData.append("upload_preset", upload_preset as string);
-  imageData.append("api_key", api_key as string);
+  imageData.append("file", file);
+  imageData.append("upload_preset", "labone_preset" as string);
+  imageData.append("api_key", "773395772622477" as string);
   imageData.append("timestamp", String(Date.now() / 1000));
 
   try {
     const response = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+      `https://api.cloudinary.com/v1_1/dfka3hvg1/image/upload`,
       {
         method: "POST",
         body: imageData,

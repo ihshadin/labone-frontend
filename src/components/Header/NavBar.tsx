@@ -68,7 +68,7 @@ const NavBar = () => {
         onMenuOpenChange={setIsMenuOpen}
         className={`[&_header]:max-w-[1250px] [&_header]:px-2 [&_header]:py-2 [&_header]:h-auto ${
           isSticky &&
-          "fixed left-0 top-0 w-full animate-slideDown data-[active=true]:text-primary"
+          "fixed left-0 top-0 w-full animate-slideDown data-[active=true]:text-primary shadow-[0px_5px_8px] shadow-primary/20"
         }`}
       >
         <NavbarContent className="!grow-0 !basis-auto">

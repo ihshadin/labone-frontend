@@ -1,9 +1,8 @@
-"use client";
 import { Card, CardHeader, CardBody, Avatar, Image } from "@nextui-org/react";
 import quoteImg from "@/assets/images/qutation.png";
-import { IoMdStar, IoMdStarOutline } from "react-icons/io";
 import { TTestimonial } from "@/types/testimonial.type";
-import { Rating, ThinStar } from "@smastrom/react-rating";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const TestimonialCard = ({ testimonial }: { testimonial: TTestimonial }) => {
   return (
@@ -21,18 +20,10 @@ const TestimonialCard = ({ testimonial }: { testimonial: TTestimonial }) => {
                   {testimonial?.name}
                 </h4>
                 <div className="text-orange-500">
-                  {/* <Rating
-                    emptySymbol={<IoMdStarOutline size={24} />}
-                    fullSymbol={<IoMdStar size={24} />}
-                    fractions={2}
-                    value={5}
-                    items={5}
-                    readOnly
-                  /> */}
                   <Rating
-                    style={{ width: 20 }}
+                    style={{ width: 100 }}
                     readOnly
-                    value={3.5}
+                    value={testimonial?.rating}
                     isRequired
                   />
                 </div>
