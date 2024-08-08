@@ -11,7 +11,8 @@ import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import SpecialService from "@/components/SpecialService/SpecialService";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
-import heartbit from "@/assets/images/graph-img.png"
+import heartbit from "@/assets/images/graph-img.png";
+import thetoscop from "@/assets/images/thetoscop.png";
 import SchedulesContainer from "@/components/HomePage/SchedulesContainer";
 import { getMachines } from "@/api/machines.api";
 import { getDoctors } from "@/api/doctors.api";
@@ -40,20 +41,27 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <div className="flex flex-col justify-center items-center py-8 md:py-12 relative" >
-        <Image
+      <div className="max-w-[1240px] mx-auto flex justify-center items-center mb-5 md:mb-8 mt-8 py-8 md:py-12 bg-white/30 bg-blend-color-burn border rounded-xl relative">
+        {/* <Image
+          className="absolute h-[100px] -top-4 left-[180]"
+          src={thetoscop.src}
+          removeWrapper
+          alt="labone"
+        /> */}
+        {/* <Image
         className="absolute -top-10 left-0 w-full max-w-full -z-10 !opacity-15"
         src={heartbit.src}
         removeWrapper
         alt="labone"
-        />
-      {/* style={{backgroundImage:`url(${heartbit.src})`}} */}
+        /> */}
+        {/* style={{backgroundImage:`url(${heartbit.src})`}} */}
 
         <LiveTimer />
+       
       </div>
-      <div className="mx-auto max-w-[1250px] px-2 pb-10 md:pb-16 lg:pb-20">
+      <div className="mx-auto max-w-[1250px] px-2 pb-7 md:pb-7 lg:pb-10">
         <div className="grid md:grid-cols-2 gap-4 md:gap-5">
-          <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 rounded-xl">
+          <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 rounded-xl shadow-md">
             <div className=" text-center">
               <h2 className="text-primary text-2xl font-semibold">
                 Appointment Form
@@ -63,12 +71,20 @@ export default async function Home() {
                 বুক করতে পারবেন
               </p>
             </div>
-            <div className="mt-4 md:mt-5">
+            <div className="mt-4 md:mt-5 ">
               <AppointmentForm />
             </div>
           </div>
           <SchedulesContainer />
         </div>
+      </div>
+      <div className="py-8 md:py-10 relative">
+        <Image
+          className="absolute -top-10 left-0 w-full max-w-full -z-10 !opacity-15"
+          src={heartbit.src}
+          removeWrapper
+          alt="labone"
+        />
       </div>
       <SpotlightSection data={spotlightData} />
       <SectionHeader

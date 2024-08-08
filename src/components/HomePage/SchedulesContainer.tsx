@@ -31,7 +31,7 @@ const SchedulesContainer = () => {
 
   return (
     <>
-      <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 rounded-xl">
+      <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 rounded-xl shadow-md">
         <div className="grid md:grid-cols-2 items-center mb-2 md:mb-2">
           <h2 className="text-primary text-2xl font-semibold">
             Today&apos;s schedule
