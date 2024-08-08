@@ -1,63 +1,41 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppointmentModal from "../Appointment/AppointmentModal";
 import Link from "next/link";
+import { LuCalendarCheck2, LuCalendarClock } from "react-icons/lu";
+import { getDoctors } from "@/api/doctors.api";
+import { TDoctor } from "@/types/doctors.type";
 
 const SchedulesList = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [doctors, setDoctors] = useState([]);
+  const [selectDoctor, setSelectDoctor] = useState("");
 
-  const schedulesData = [
-    {
-      name: "ডাঃ তোহমিনা আক্তার",
-      specialty:
-        "স্ত্রী রোগ, প্রসূতি বিদ্যা ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-      time: "বিকাল ৪ঃ৩০ - সন্ধ্যা ৭ঃ৩০",
-      photo: "/images/doctor1.jpg",
-    },
-    {
-      name: "সহঃ অধ্যাপক ডাঃ মোঃ কামরুজ্জামান",
-      specialty: "মেডিসিন, হৃদরোগ, উচ্চ রক্তচাপ, বাতজ্বর ও ডায়াবেটিস বিশেষজ্ঞ।",
-      time: "বিকাল ৪ঃ৩০ - সন্ধ্যা ৭ঃ০০",
-      photo: "/images/doctor2.jpg",
-    },
-    {
-      name: "সহঃ অধ্যাপক ডাঃ মোঃ কামরুজ্জামান",
-      specialty: "মেডিসিন, হৃদরোগ, উচ্চ রক্তচাপ, বাতজ্বর ও ডায়াবেটিস বিশেষজ্ঞ।",
-      time: "বিকাল ৪ঃ৩০ - সন্ধ্যা ৭ঃ০০",
-      photo: "/images/doctor2.jpg",
-    },
-    {
-      name: "সহঃ অধ্যাপক ডাঃ মোঃ কামরুজ্জামান",
-      specialty: "মেডিসিন, হৃদরোগ, উচ্চ রক্তচাপ, বাতজ্বর ও ডায়াবেটিস বিশেষজ্ঞ।",
-      time: "বিকাল ৪ঃ৩০ - সন্ধ্যা ৭ঃ০০",
-      photo: "/images/doctor2.jpg",
-    },
-    {
-      name: "সহঃ অধ্যাপক ডাঃ মোঃ কামরুজ্জামান",
-      specialty: "মেডিসিন, হৃদরোগ, উচ্চ রক্তচাপ, বাতজ্বর ও ডায়াবেটিস বিশেষজ্ঞ।",
-      time: "বিকাল ৪ঃ৩০ - সন্ধ্যা ৭ঃ০০",
-      photo: "/images/doctor2.jpg",
-    },
-  ];
-
-  const handleOpenModal = () => {
-    // setModalContent(content);
+  const handleOpenModal = (id: string) => {
+    setSelectDoctor(id);
     setIsOpen(true);
   };
+
+  const getDoctorsData = async () => {
+    const data = await getDoctors(0);
+    setDoctors(data);
+  };
+
+  useEffect(() => {
+    getDoctorsData();
+  }, []);
 
   return (
     <>
       <ul className="flex flex-col gap-3.5 divide-y [&>*:not(:first-child)]:pt-3.5">
-        {schedulesData.map((item, index) => (
-          <li key={index} className="flex items-center gap-3">
+        {doctors.map((doctor: TDoctor) => (
+          <li key={doctor?._id} className="flex items-center gap-3">
             <Image
               height={60}
               width={60}
-              src={
-                "https://labonehospital.com/admin/doctorimg/Lab%20one%20Hospital%20doctor%201.jpg"
-              }
-              alt={item?.name}
+              src={doctor?.image}
+              alt={doctor?.firstName}
               className="w-[60px] h-[60px] rounded-full object-cover"
             />
             <div className="flex-1">
@@ -65,16 +43,17 @@ const SchedulesList = () => {
                 href="/#"
                 className="block text-base font-semibold font-tiroBangla"
               >
-                {item?.name}
+                {doctor?.firstName + " " + doctor?.lastName}
               </Link>
-              <p className="text-xs font-medium">{item.specialty}</p>
-              <p className="text-sm text-primary font-medium">{item.time}</p>
+              <p className="text-xs font-medium">{doctor?.specialization}</p>
+              {/* <p className="text-sm text-primary font-medium">{doctor?.time}</p> */}
             </div>
             <button
-              onClick={() => handleOpenModal()}
-              className="bg-gradient-to-r from-[#0a8849] to-[#07ccec] text-sm font-medium text-white px-3 py-1.5 rounded-full"
+              onClick={() => handleOpenModal(doctor?._id)}
+              className="font-medium text-primary border hover:border-primary/60 px-1.5 py-1.5 rounded-full"
             >
-              Appointment
+              {/* Appointment */}
+              <LuCalendarCheck2 size={18} />
             </button>
           </li>
         ))}
@@ -82,7 +61,7 @@ const SchedulesList = () => {
       <AppointmentModal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        // content={modalContent}
+        selectDoctor={selectDoctor}
       />
     </>
   );
