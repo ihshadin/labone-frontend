@@ -35,7 +35,7 @@
 /* Card Background color change */
 .labCustomGradient {
   background: rgba(255, 255, 255, 0.1) !important;
-  position: relative;
+  /* position: relative; */
   border: 1px solid #c2c2c27a;
 }
 .labCustomGradient::after {

@@ -15,10 +15,13 @@ import LabBtn from "@/utils/LabBtn";
 import logo from "@/assets/images/labOneLogoThik.png";
 import { HiMiniXMark } from "react-icons/hi2";
 import { FaBarsStaggered } from "react-icons/fa6";
+import { usePathname } from "next/navigation";
+import DoctorsSearch from "@/utils/DoctorsSearch";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const pathname = usePathname();
 
   const menuItems = [
     {
@@ -88,10 +91,13 @@ const NavBar = () => {
           {menuItems.map((item, index) => (
             <NavbarMenuItem
               key={`${item}-${index}`}
+              isActive={pathname == item?.link}
               className="font-medium text-accent"
             >
               <Link
-                className="active:!text-primary text-accent data-[focus-within=true]:text-primary"
+                className={`font-medium hover:text-primary ${
+                  pathname === item?.link ? "text-primary" : "text-accent"
+                }`}
                 href={item.link}
               >
                 {item.text}
@@ -99,9 +105,10 @@ const NavBar = () => {
             </NavbarMenuItem>
           ))}
         </NavbarContent>
-        <NavbarContent justify="end" className="!grow-0 w-auto ml-10">
+        <NavbarContent justify="end" className="!grow-0 w-auto ml-6">
           <NavbarItem className="hidden lg:inline-block ">
-            <LabBtn link="/" text="Appointment" />
+            {/* <LabBtn link="/" text="Appointment" /> */}
+            <DoctorsSearch />
           </NavbarItem>
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
