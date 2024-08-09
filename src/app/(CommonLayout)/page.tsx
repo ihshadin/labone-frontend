@@ -13,6 +13,7 @@ import SpecialService from "@/components/SpecialService/SpecialService";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
 import heartbit from "@/assets/images/graph-img.png";
 import thetoscop from "@/assets/images/thetoscop.png";
+import watchbg from "@/assets/images/watchBG.png"
 import SchedulesContainer from "@/components/HomePage/SchedulesContainer";
 import { getMachines } from "@/api/machines.api";
 import { getDoctors } from "@/api/doctors.api";
@@ -41,7 +42,7 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <div className="max-w-[1240px] mx-auto flex justify-center items-center mb-5 md:mb-8 mt-8 py-8 md:py-12 bg-white/30 bg-blend-color-burn border rounded-xl shadow-md relative">
+      <div className="max-w-[1240px] mx-auto flex justify-center items-center mb-5 md:mb-8 mt-8 py-8 md:py-12 bg-white/30 bg-blend-color-burn border rounded-xl shadow-md bg-contain bg-no-repeat" style={{backgroundImage:`url(${watchbg.src})`}}>
         {/* <Image
           className="absolute h-[100px] -top-4 left-[180]"
           src={thetoscop.src}
