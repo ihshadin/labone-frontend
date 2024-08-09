@@ -1,9 +1,6 @@
-import { baseApi } from "@/utils/baseUrl";
 import { TMachine } from "@/types/machine.type";
 import HeroSection from "@/components/HomePage/HeroSection";
-import Schedules from "@/components/HomePage/Schedules";
 import LabBtn from "@/utils/LabBtn";
-import LiveTimer from "@/utils/LiveTimer";
 import SectionHeader from "@/utils/SectionHeader";
 import AppointmentForm from "@/components/Appointment/AppointmentForm";
 import DoctorsSection from "@/components/Diagnostics/DoctorsSection";
@@ -13,12 +10,19 @@ import Newsletter from "@/components/Newsletter/Newsletter";
 import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import SpecialService from "@/components/SpecialService/SpecialService";
-import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
+import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
+import heartbit from "@/assets/images/graph-img.png";
+import thetoscop from "@/assets/images/thetoscop.png";
+import SchedulesContainer from "@/components/HomePage/SchedulesContainer";
+import { getMachines } from "@/api/machines.api";
+import { getDoctors } from "@/api/doctors.api";
+import LiveTimer from "@/utils/LiveTimer";
+import { Image } from "@nextui-org/react";
 
 const spotlightData = {
   image: "https://labonehospital.com/img/bg/illlustration.jpg",
   subHeading: "About Us",
-  heading: "We Are Specialize in Medical Diagnositics",
+  heading: "We Are Specialize in Medical Diagnostics",
   description:
     "At our Lab One Hospital, we are dedicated to providing exceptional care and comfort to every patient. Our highly skilled and compassionate team of healthcare professionals is committed to delivering personalized, patient-centered experiences. With cutting-edge technology and a patient-first approach, we strive to be the premier choice for all of your healthcare needs.",
   featureList: [
@@ -30,31 +34,34 @@ const spotlightData = {
   btnLink: "/about-us",
 };
 
-const getDoctorData = async () => {
-  const res = await fetch(`${baseApi}/doctor?limit=7`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-};
-const getMachineData = async () => {
-  const res = await fetch(`${baseApi}/machine?limit=3`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-};
-
 export default async function Home() {
-  const data = await getDoctorData();
-  const machineData = await getMachineData();
+  const machines = await getMachines(3);
+  const doctors = await getDoctors(10);
 
   return (
     <>
       <HeroSection />
-      <div className="mx-auto max-w-[1250px] px-2 py-10 md:py-16 lg:py-20">
+      <div className="max-w-[1240px] mx-auto flex justify-center items-center mb-5 md:mb-8 mt-8 py-8 md:py-12 bg-white/30 bg-blend-color-burn border rounded-xl relative">
+        {/* <Image
+          className="absolute h-[100px] -top-4 left-[180]"
+          src={thetoscop.src}
+          removeWrapper
+          alt="labone"
+        /> */}
+        {/* <Image
+        className="absolute -top-10 left-0 w-full max-w-full -z-10 !opacity-15"
+        src={heartbit.src}
+        removeWrapper
+        alt="labone"
+        /> */}
+        {/* style={{backgroundImage:`url(${heartbit.src})`}} */}
+
+        <LiveTimer />
+       
+      </div>
+      <div className="mx-auto max-w-[1250px] px-2 pb-7 md:pb-7 lg:pb-10">
         <div className="grid md:grid-cols-2 gap-4 md:gap-5">
-          <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
+          <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 rounded-xl shadow-md">
             <div className=" text-center">
               <h2 className="text-primary text-2xl font-semibold">
                 Appointment Form
@@ -64,22 +71,20 @@ export default async function Home() {
                 বুক করতে পারবেন
               </p>
             </div>
-            <div className="mt-4 md:mt-5">
+            <div className="mt-4 md:mt-5 ">
               <AppointmentForm />
             </div>
           </div>
-          <div className="bg-white/30 bg-blend-color-burn border p-3 md:p-5 my-10 rounded-xl">
-            <div className="flex items-center justify-between mb-8 ">
-              <h2 className="text-primary text-2xl font-semibold">
-                Today&apos;s schedule
-              </h2>
-              {/* <LiveTimer /> */}
-            </div>
-            <div className="mt-4 md:mt-5">
-              <Schedules />
-            </div>
-          </div>
+          <SchedulesContainer />
         </div>
+      </div>
+      <div className="py-8 md:py-10 relative">
+        <Image
+          className="absolute -top-10 left-0 w-full max-w-full -z-10 !opacity-15"
+          src={heartbit.src}
+          removeWrapper
+          alt="labone"
+        />
       </div>
       <SpotlightSection data={spotlightData} />
       <SectionHeader
@@ -95,7 +100,7 @@ export default async function Home() {
           heading="We Use Modern Machines"
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 py-8 md:py-12">
-          {machineData?.data?.result?.map((machine: TMachine) => (
+          {machines?.map((machine: TMachine) => (
             <MachineCard key={machine._id} machine={machine} />
           ))}
         </div>
@@ -103,7 +108,7 @@ export default async function Home() {
           <LabBtn text="See All Machines" link="/machines" />
         </div>
       </div>
-      <DoctorsSection doctors={data?.data?.result} />
+      <DoctorsSection doctors={doctors} />
       <Newsletter />
       <TestimonialsSection />
       <FAQSection />

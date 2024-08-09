@@ -1,13 +1,11 @@
 import SectionHeader from "@/utils/SectionHeader";
-import { Image } from "@nextui-org/react";
-import bgImg from "@/assets/images/an-bg.png";
-import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
 import FAQSection from "@/components/Diagnostics/FAQSection";
 import GallerySlider from "@/components/GallerySlider/GallerySlider";
 import Breadcamp from "@/utils/Breadcamp";
 import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import Newsletter from "@/components/Newsletter/Newsletter";
+import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
 
 const labPhotos = [
   "https://labonehospital.com/admin/doctorimg/9%20lab.jpg",

@@ -1,29 +1,30 @@
 "use client";
 import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
-import { getLocalTimeZone, today, now } from "@internationalized/date";
-import { Dispatch, useEffect, useState } from "react";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { useEffect, useState } from "react";
 import LabDatePicker from "@/utils/LabDatePicker";
-import { useDateFormatter } from "@react-aria/i18n";
 import { useForm } from "react-hook-form";
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi } from "@/api/api";
 import { TDoctor } from "@/types/doctors.type";
+import { getDoctors } from "@/api/doctors.api";
+import { TAppointment } from "@/types/appointment.type";
 
 type TAppointmentForm = {
   onClose?: any;
-  defaultDoctor?: string;
+  selectDoctor?: string;
 };
 
-const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
-  const { register, handleSubmit, reset } = useForm();
+const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
+  const { register, handleSubmit, reset } = useForm<TAppointment>();
   const [date, setDate] = useState(today(getLocalTimeZone()));
   const [doctors, setDoctors] = useState([]);
-  const [selDocInfo, setSelDocInfo] = useState({});
-  const [selectDoc, setSelectDoc] = useState("");
+  const [selDocInfo, setSelDocInfo] = useState<TDoctor | null>(null);
+  const [selectDoc, setSelectDoc] = useState(selectDoctor || "");
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: TAppointment) => {
     data.appointmentDate = date.toString();
-    data.doctorId = selectDoc;
-    console.log(data);
+    data.doctorID = selectDoc;
+
     try {
       const response = await fetch(`${baseApi}/appointment`, {
         method: "POST",
@@ -34,32 +35,38 @@ const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
       });
 
       if (response.ok) {
-        console.log("Appointment successfully created");
         reset();
         if (onClose) onClose();
       } else {
-        console.error("Failed to create appointment");
       }
     } catch (error) {
       console.error("An error occurred while creating appointment", error);
     }
   };
-  console.log(defaultDoctor);
+
   const handleDoctorChange = (id: string) => {
-    const selectedDoctor = doctors.find(({ _id }) => _id === id);
-    setSelDocInfo(selectedDoctor ? selectedDoctor : "");
+    const selectedDoctor = doctors.find(({ _id }) => _id == id) || null;
+    setSelDocInfo(selectedDoctor);
     setSelectDoc(id);
   };
 
   const getDoctorsData = async () => {
-    const res = await fetch(`${baseApi}/doctor`);
-    const data = await res.json();
-    setDoctors(data?.data?.result);
+    const data = await getDoctors(0);
+    setDoctors(data);
   };
 
   useEffect(() => {
     getDoctorsData();
   }, []);
+
+  useEffect(() => {
+    if (selectDoctor) {
+      const selectedDoctor =
+        doctors.find(({ _id }) => _id === selectDoctor) || null;
+      setSelDocInfo(selectedDoctor);
+      setSelectDoc(selectDoctor);
+    }
+  }, [selectDoctor, doctors]);
 
   return (
     <>
@@ -110,7 +117,7 @@ const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
           <Input
             type="number"
             label="Contact Number"
-            {...register("contactNumber", { required: true })}
+            {...register("mobileNumber", { required: true })}
             placeholder="Write here..."
             labelPlacement="outside"
             classNames={{
@@ -145,7 +152,7 @@ const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
               trigger:
                 "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
             }}
-            defaultSelectedKeys={[defaultDoctor]}
+            defaultSelectedKeys={[selectDoctor || ""]}
             onChange={(e) => handleDoctorChange(e.target.value)}
           >
             {doctors?.map((doctor: TDoctor) => (
@@ -177,7 +184,7 @@ const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
           <Textarea
             type="text"
             label="Add Notes"
-            {...register("addNotes", { required: true })}
+            {...register("message", { required: true })}
             placeholder="Write in details if possible (Optional)"
             labelPlacement="outside"
             classNames={{
