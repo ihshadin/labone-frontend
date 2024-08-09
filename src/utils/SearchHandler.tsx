@@ -3,7 +3,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 const SearchHandler = ({ setParams }: TSetParams) => {
   return (
-    <form className="w-[500px] relative">
+    <form className="md:w-[500px] relative">
       <div className="relative">
         <input
           type="search"
