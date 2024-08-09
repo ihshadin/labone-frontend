@@ -2,18 +2,12 @@ import { getDoctor } from "@/api/doctors.api";
 import { TSchedule } from "@/types/schedule.type";
 import AppointmentModalSection from "@/utils/AppointmentModal/AppointmentModalSection";
 import Breadcamp from "@/utils/Breadcamp";
-import LabBtn from "@/utils/LabBtn";
-import {
-  formatEndTimePeriod,
-  formatStartTimePeriod,
-} from "@/utils/TimeRangeFormate";
+import { formatSingleTimePeriod } from "@/utils/TimeRangeFormate";
 import { Image } from "@nextui-org/react";
 import React from "react";
 
 const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
   const doctor = await getDoctor(params?.id);
-
-  console.log("doctor:--", doctor);
 
   return (
     <>
@@ -58,17 +52,19 @@ const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
               {doctor?.schedules?.map((schedule: TSchedule) => (
                 <li key={schedule?._id}>
                   <div className="flex gap-3 md:gap-2 p-2">
-                    <p className="font-bold capitalize w-[90px]">
-                      {schedule?.scheduleDay} {">"}
+                    <p className="font-bold capitalize ">
+                      {schedule?.scheduleDay}
                     </p>
                     <p>
-                      <span className="font-bold"></span>{" "}
-                      {formatStartTimePeriod(schedule?.startTime)}
+                      <span className="font-bold"></span>
+                      {"( "}
+                      {formatSingleTimePeriod(schedule?.startTime)}
                     </p>
                     <p>-</p>
                     <p>
                       <span className="font-bold"></span>{" "}
-                      {formatEndTimePeriod(schedule?.endTime)}
+                      {formatSingleTimePeriod(schedule?.endTime)}
+                      {" )"}
                     </p>
                   </div>
                 </li>

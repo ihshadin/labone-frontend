@@ -25,10 +25,12 @@
 /* Hero Section Pagination style */
 .swiper.hero-pagination .swiper-pagination .swiper-pagination-bullet {
   border-radius: 0;
+  height: 5px;
 }
 .swiper.hero-pagination .swiper-pagination .swiper-pagination-bullet-active {
   background: #0a8848 !important;
-  width: 50px;
+  width: 40px;
+  height: 5px;
   border-radius: 0;
 }
 

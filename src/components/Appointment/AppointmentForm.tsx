@@ -47,7 +47,7 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
       if (response.ok) {
         reset();
         if (onClose) onClose();
-        toast.success("Appointment Create Successful!");
+        toast.success("Appointment Added Successful!");
       } else {
         // Handle the error here
       }
@@ -237,8 +237,8 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
                   (schedule) =>
                     `${schedule?.scheduleDay}  (${formatCustomTimePeriod(
                       schedule?.startTime,
-                      schedule?.endTime,
-                    )})`,
+                      schedule?.endTime
+                    )})`
                 )
                 .join(" & ")}
             </p>
