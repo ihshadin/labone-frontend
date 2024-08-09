@@ -10,6 +10,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { getTestimonials } from "@/api/reviews";
+import LabBtn from "@/utils/LabBtn";
 
 const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -51,6 +52,9 @@ const TestimonialsSection = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+        <div className="w-[225px] mx-auto pt-5">
+          <LabBtn link="/testimonials" text="Leave your review" />
         </div>
       </div>
     </>

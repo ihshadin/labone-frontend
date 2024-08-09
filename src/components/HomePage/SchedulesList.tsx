@@ -33,8 +33,8 @@ const SchedulesList = ({ schedules }: { schedules: TSchedule[] }) => {
             />
             <div className="flex-1">
               <Link
-                href="/#"
-                className="block text-base font-semibold font-tiroBangla"
+                href={`/doctors/${schedule?.doctorID?._id}`}
+                className="block text-base font-semibold font-tiroBangla hover:underline"
               >
                 {schedule?.doctorID?.firstName +
                   " " +
@@ -43,7 +43,6 @@ const SchedulesList = ({ schedules }: { schedules: TSchedule[] }) => {
               <p className="text-xs font-medium">
                 {schedule?.doctorID?.specialization}
               </p>
-              {/* <p className="text-sm text-primary font-medium">{doctorID?.time}</p> */}
               <p className="text-sm text-primary font-medium">
                 {formatCustomTimePeriod(schedule?.startTime, schedule?.endTime)}
               </p>
