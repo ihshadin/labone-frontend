@@ -70,7 +70,7 @@ const LiveTimer = () => {
   const { dayName, hours, minutes, seconds, ampm } = formatTimeParts(time);
 
   return (
-    <div className="flex items-center gap-2 text-3xl font-medium *:py-1 *:px-2 *:rounded-lg *:border *:border-primary/20 [&_>_*:hover]:border-primary/40 [&_>_*:hover]:bg-primary/5 *:cursor-pointer">
+    <div className="flex items-center gap-2 text-xl md:text-3xl font-medium *:py-1 *:px-2 *:rounded-lg *:border *:border-primary/20 [&_>_*:hover]:border-primary/40 [&_>_*:hover]:bg-primary/5 *:cursor-pointer">
       <span>{dayName}</span>
       <span className="bg-primary/10">
         <span className={`inline-block ${flip.hours ? "flip" : ""}`}>

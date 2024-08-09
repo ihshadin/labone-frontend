@@ -40,9 +40,14 @@ const DoctorContent = () => {
 
   return (
     <>
-      <div className=" grid gap-10 md:grid-cols-2 ml-auto md:gap-x-80 justify-between items-center mb-10">
-        <SearchHandler setParams={setParams} />
-        <DepartmentFilter/>
+      <div className=" grid mx-auto gap-10 md:grid-cols-2 ml-auto md:gap-x-80 justify-between items-center mb-10">
+        <div className="flex justify-start">
+          <SearchHandler setParams={setParams} />
+        </div>
+        <div className="flex justify-end">
+        <DepartmentFilter />
+        </div>
+       
         {/* <div className="flex gap-2 relative w-[230px] py-3 px-6 rounded-full backdrop-filter bg-primary/10 bg-opacity-85 text-accent  border-1 border-primary/30 focus:outline-0 focus:outline-primary focus:border-primary/70 duration-300 transition-all ">
           <button className="absolute right-1 top-1/2 -translate-y-1/2 p-3 bg-primary text-white rounded-full">
             <TbFilterPin />
