@@ -130,13 +130,8 @@ const NavBar = () => {
               </Link>
             </NavbarMenuItem>
           ))}
-          <NavbarItem className="inline-block md:hidden">
-            <Link
-              href="/"
-              className="px-5 py-2 text-white bg-gradient-to-r from-primary to-[#07CCEC] rounded-full"
-            >
-              Appointment
-            </Link>
+          <NavbarItem className="inline-block lg:hidden">
+            <DoctorsSearch />
           </NavbarItem>
         </NavbarMenu>
       </Navbar>

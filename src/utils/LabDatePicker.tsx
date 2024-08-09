@@ -51,11 +51,12 @@ const LabDatePicker = ({ date, setDate, label }: DatePickerParams) => {
         onChange={setDate}
         label={label}
         labelPlacement="outside"
+        className="max-w-[500px] w-full"
+        size="md"
+        classNames={{
+          calendarContent: "w-[260px]",
+        }}
       />
-      {/* <p className="text-default-500 text-sm">
-        Selected date:{" "}
-        {value ? formatter.format(value.toDate(getLocalTimeZone())) : "--"}
-      </p> */}
     </div>
   );
 };
