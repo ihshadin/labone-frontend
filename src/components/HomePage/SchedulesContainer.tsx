@@ -27,7 +27,7 @@ const SchedulesContainer = () => {
     getSchedulesData(scheduleDay);
   }, [scheduleDay]);
 
-  console.log("scheduleDay--=>", scheduleDay);
+  // console.log("scheduleDay--=>", scheduleDay);
 
   return (
     <>

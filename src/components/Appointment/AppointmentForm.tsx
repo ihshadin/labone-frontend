@@ -8,6 +8,7 @@ import { baseApi } from "@/api/api";
 import { TDoctor } from "@/types/doctors.type";
 import { getDoctors } from "@/api/doctors.api";
 import { TAppointment } from "@/types/appointment.type";
+import { formatCustomTimePeriod } from "@/utils/TimeRangeFormate";
 
 type TAppointmentForm = {
   onClose?: any;
@@ -170,7 +171,10 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
               {selDocInfo?.schedules
                 ?.map(
                   (schedule) =>
-                    `${schedule?.scheduleDay}  (${schedule?.startTime} - ${schedule?.endTime})`
+                    `${schedule?.scheduleDay}  (${formatCustomTimePeriod(
+                      schedule?.startTime,
+                      schedule?.endTime
+                    )})`
                 )
                 .join(" & ")}
             </p>

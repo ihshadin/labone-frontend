@@ -1,13 +1,18 @@
-import { baseApi } from "@/api/api";
 import { getDoctor } from "@/api/doctors.api";
 import { TSchedule } from "@/types/schedule.type";
 import Breadcamp from "@/utils/Breadcamp";
 import LabBtn from "@/utils/LabBtn";
+import {
+  formatEndTimePeriod,
+  formatStartTimePeriod,
+} from "@/utils/TimeRangeFormate";
 import { Image } from "@nextui-org/react";
 import React from "react";
 
 const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
   const doctor = await getDoctor(params?.id);
+
+  console.log("doctor:--", doctor);
 
   return (
     <>
@@ -40,7 +45,7 @@ const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
               </li>
               <li>
                 <span className="font-bold">Hospital: </span>
-                <span>{doctor?.hospital}</span>
+                <span>LabOne Hospital</span>
               </li>
             </ul>
             <ul className=" rounded-xl border white shadow-lg px-3 md:px-6 py-4 md:py-8">
@@ -52,22 +57,24 @@ const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
               {doctor?.schedules?.map((schedule: TSchedule) => (
                 <li key={schedule?._id}>
                   <div className="flex gap-3 md:gap-2 p-2">
-                    <p className="font-bold capitalize">
-                      {schedule?.scheduleDay}
+                    <p className="font-bold capitalize w-[90px]">
+                      {schedule?.scheduleDay} {">"}
                     </p>
                     <p>
-                      <span className="font-bold"></span> {schedule?.startTime}
+                      <span className="font-bold"></span>{" "}
+                      {formatStartTimePeriod(schedule?.startTime)}
                     </p>
                     <p>-</p>
                     <p>
-                      <span className="font-bold"></span> {schedule?.endTime}
+                      <span className="font-bold"></span>{" "}
+                      {formatEndTimePeriod(schedule?.endTime)}
                     </p>
                   </div>
                 </li>
               ))}
             </ul>
             <div className="mt-10 md:flex items-start justify-start">
-              <LabBtn text="Appoint Now" link="/about-us" />
+              <LabBtn text="Appoint Now" />
             </div>
           </div>
         </div>
