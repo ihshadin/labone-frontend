@@ -2,6 +2,7 @@ import { Image } from "@nextui-org/react";
 import icon1 from "@/assets/images/cunt-icon01.png";
 import icon2 from "@/assets/images/cunt-icon02.png";
 import icon3 from "@/assets/images/cunt-icon03.png";
+import icon4 from "@/assets/images/cabin-icon.png";
 import shape from "@/assets/images/box-shape.png";
 
 const AchivementSection = () => {
@@ -49,7 +50,7 @@ const AchivementSection = () => {
             <Image
               removeWrapper
               className="w-12 mx-auto object-cover rounded-none"
-              src={icon3.src}
+              src={icon4.src}
               alt="Services image"
             />
             <h5 className="text-4xl font-bold text-primary text-center mt-2 mb-0.5">
