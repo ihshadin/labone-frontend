@@ -6,6 +6,7 @@ import { TMeta, TQueryParam } from "@/types/global.type";
 import { baseApi } from "@/api/api";
 import SearchHandler from "@/utils/SearchHandler";
 import LabonePagination from "@/utils/Pagination/LabonePagination";
+import DepartmentFilter from "./DepartmentFilter";
 
 const DoctorContent = () => {
   const [params, setParams] = useState<TQueryParam[]>([]);
@@ -38,8 +39,9 @@ const DoctorContent = () => {
 
   return (
     <>
-      <div className="mb-10">
+      <div className=" grid gap-10 md:grid-cols-2 md:gap-x-80 justify-between items-center mb-10">
         <SearchHandler setParams={setParams} />
+        <DepartmentFilter/>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
         {doctors?.map((doctor: TDoctor) => (
