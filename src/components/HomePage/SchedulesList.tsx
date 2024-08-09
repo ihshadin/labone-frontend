@@ -17,12 +17,10 @@ const SchedulesList = ({ schedules }: { schedules: TSchedule[] }) => {
     setIsOpen(true);
   };
 
-  console.log("schedules==", schedules);
-
   return (
     <>
       <ul className="flex flex-col gap-3.5 divide-y overflow-y-scroll h-[430px] customScroll [&>*:not(:first-child)]:pt-3.5">
-        {schedules.map((schedule: TSchedule) => (
+        {schedules?.map((schedule: TSchedule) => (
           <li key={schedule?.doctorID?._id} className="flex items-center gap-3">
             <Image
               height={60}
