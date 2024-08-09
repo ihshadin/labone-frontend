@@ -9,6 +9,7 @@ import { TDoctor } from "@/types/doctors.type";
 import { getDoctors } from "@/api/doctors.api";
 import { TAppointment } from "@/types/appointment.type";
 import { formatCustomTimePeriod } from "@/utils/TimeRangeFormate";
+import toast from "react-hot-toast";
 
 type TAppointmentForm = {
   onClose?: any;
@@ -16,9 +17,17 @@ type TAppointmentForm = {
 };
 
 const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
-  const { register, handleSubmit, reset } = useForm<TAppointment>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    clearErrors,
+    formState: { errors },
+  } = useForm<TAppointment>();
+
   const [date, setDate] = useState(today(getLocalTimeZone()));
-  const [doctors, setDoctors] = useState([]);
+  const [doctors, setDoctors] = useState<TDoctor[]>([]);
   const [selDocInfo, setSelDocInfo] = useState<TDoctor | null>(null);
   const [selectDoc, setSelectDoc] = useState(selectDoctor || "");
 
@@ -38,17 +47,25 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
       if (response.ok) {
         reset();
         if (onClose) onClose();
+        toast.success("Appointment Create Successful!");
       } else {
+        // Handle the error here
       }
     } catch (error) {
-      console.error("An error occurred while creating appointment", error);
+      toast.error("An error occurred while creating appointment");
     }
   };
 
   const handleDoctorChange = (id: string) => {
-    const selectedDoctor = doctors.find(({ _id }) => _id == id) || null;
+    const selectedDoctor = doctors.find(({ _id }) => _id === id) || null;
     setSelDocInfo(selectedDoctor);
     setSelectDoc(id);
+    setValue("doctorID", id);
+
+    // Clear the error when a doctor is selected
+    if (id) {
+      clearErrors("doctorID");
+    }
   };
 
   const getDoctorsData = async () => {
@@ -72,11 +89,21 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col justify-between">
           <Input
             type="text"
-            label="Patient Name"
-            {...register("patientName", { required: true })}
+            label={
+              errors.patientName ? (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.patientName.message}
+                </p>
+              ) : (
+                "Patient Name"
+              )
+            }
+            {...register("patientName", {
+              required: "Patient name is required",
+            })}
             placeholder="Write here..."
             labelPlacement="outside"
             classNames={{
@@ -94,47 +121,70 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
           />
         </div>
 
-        <div className="flex items-center justify-between gap-3">
-          <Input
-            type="number"
-            label="Patient Age"
-            {...register("patientAge", { required: true })}
-            placeholder="Write here..."
-            labelPlacement="outside"
-            classNames={{
-              base: "w-[35%]",
-              label:
-                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-              inputWrapper: [
-                "border",
-                "bg-white",
-                "hover:border-primary/50",
-                "group-data-[hover=true]:bg-white",
-                "group-data-[focus=true]:bg-white",
-                "group-data-[focus=true]:border-primary/50",
-              ],
-            }}
-          />
-          <Input
-            type="number"
-            label="Contact Number"
-            {...register("mobileNumber", { required: true })}
-            placeholder="Write here..."
-            labelPlacement="outside"
-            classNames={{
-              base: "w-[65%]",
-              label:
-                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-              inputWrapper: [
-                "border",
-                "bg-white",
-                "hover:border-primary/50",
-                "group-data-[hover=true]:bg-white",
-                "group-data-[focus=true]:bg-white",
-                "group-data-[focus=true]:border-primary/50",
-              ],
-            }}
-          />
+        <div className="flex justify-between gap-3">
+          <div className="w-[35%]">
+            <Input
+              type="number"
+              label={
+                errors.patientAge ? (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.patientAge.message}
+                  </p>
+                ) : (
+                  "Patient Age"
+                )
+              }
+              {...register("patientAge", {
+                required: "Patient age is required",
+              })}
+              placeholder="Write here..."
+              labelPlacement="outside"
+              classNames={{
+                label:
+                  "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+                inputWrapper: [
+                  "border",
+                  "bg-white",
+                  "hover:border-primary/50",
+                  "group-data-[hover=true]:bg-white",
+                  "group-data-[focus=true]:bg-white",
+                  "group-data-[focus=true]:border-primary/50",
+                ],
+              }}
+            />
+          </div>
+
+          <div className="w-[65%]">
+            <Input
+              type="number"
+              label={
+                errors.mobileNumber ? (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.mobileNumber.message}
+                  </p>
+                ) : (
+                  "Contact Number"
+                )
+              }
+              {...register("mobileNumber", {
+                required: "Contact number is required",
+              })}
+              placeholder="Write here..."
+              labelPlacement="outside"
+              classNames={{
+                label:
+                  "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+                inputWrapper: [
+                  "border",
+                  "bg-white",
+                  "hover:border-primary/50",
+                  "group-data-[hover=true]:bg-white",
+                  "group-data-[focus=true]:bg-white",
+                  "group-data-[focus=true]:border-primary/50",
+                ],
+              }}
+            />
+          </div>
         </div>
 
         <div className="flex items-center justify-between gap-3">
@@ -143,38 +193,52 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
             date={date}
             setDate={setDate}
           />
-          <Select
-            label="Select Doctor"
-            placeholder="Select a Doctor"
-            labelPlacement="outside"
-            classNames={{
-              label:
-                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-              trigger:
-                "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
-            }}
-            defaultSelectedKeys={[selectDoctor || ""]}
-            onChange={(e) => handleDoctorChange(e.target.value)}
-          >
-            {doctors?.map((doctor: TDoctor) => (
-              <SelectItem key={doctor._id} value={doctor._id}>
-                {doctor.firstName + " " + doctor.lastName}
-              </SelectItem>
-            ))}
-          </Select>
+
+          <div className="w-full">
+            <Select
+              label={
+                errors.doctorID ? (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.doctorID.message}
+                  </p>
+                ) : (
+                  "Select Doctor"
+                )
+              }
+              placeholder="Select a Doctor"
+              labelPlacement="outside"
+              classNames={{
+                label:
+                  "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+                trigger:
+                  "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
+              }}
+              value={selectDoc}
+              defaultSelectedKeys={[selectDoctor || ""]}
+              {...register("doctorID", {
+                required: "Doctor is required",
+              })}
+              onChange={(e) => handleDoctorChange(e.target.value)}
+            >
+              {doctors?.map((doctor: TDoctor) => (
+                <SelectItem key={doctor._id} value={doctor._id}>
+                  {doctor.firstName + " " + doctor.lastName}
+                </SelectItem>
+              ))}
+            </Select>
+          </div>
         </div>
 
         {selDocInfo && (
           <div>
             <p>
-              {/* Saturday (12:05 AM - 11:55 PM) & Saturday (12:05 AM - 11:55 PM) */}
               {selDocInfo?.schedules
                 ?.map(
                   (schedule) =>
                     `${schedule?.scheduleDay}  (${formatCustomTimePeriod(
                       schedule?.startTime,
-                      schedule?.endTime
-                    )})`
+                      schedule?.endTime,
+                    )})`,
                 )
                 .join(" & ")}
             </p>
@@ -184,11 +248,19 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
           </div>
         )}
 
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col justify-between">
           <Textarea
             type="text"
-            label="Add Notes"
-            {...register("message", { required: true })}
+            label={
+              errors.message ? (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.message.message}
+                </p>
+              ) : (
+                "Add Notes"
+              )
+            }
+            {...register("message", { required: "Notes are required" })}
             placeholder="Write in details if possible (Optional)"
             labelPlacement="outside"
             classNames={{
