@@ -57,7 +57,6 @@ export default async function Home() {
         {/* style={{backgroundImage:`url(${heartbit.src})`}} */}
 
         <LiveTimer />
-       
       </div>
       <div className="mx-auto max-w-[1250px] px-2 pb-7 md:pb-7 lg:pb-10">
         <div className="grid md:grid-cols-2 gap-4 md:gap-5">
