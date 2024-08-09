@@ -41,7 +41,7 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <div className="max-w-[1240px] mx-auto flex justify-center items-center mb-5 md:mb-8 mt-8 py-8 md:py-12 bg-white/30 bg-blend-color-burn border rounded-xl relative">
+      <div className="max-w-[1240px] mx-auto flex justify-center items-center mb-5 md:mb-8 mt-8 py-8 md:py-12 bg-white/30 bg-blend-color-burn border rounded-xl shadow-md relative">
         {/* <Image
           className="absolute h-[100px] -top-4 left-[180]"
           src={thetoscop.src}
