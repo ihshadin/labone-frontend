@@ -1,5 +1,6 @@
 import { getDoctor } from "@/api/doctors.api";
 import { TSchedule } from "@/types/schedule.type";
+import AppointmentModalSection from "@/utils/AppointmentModal/AppointmentModalSection";
 import Breadcamp from "@/utils/Breadcamp";
 import LabBtn from "@/utils/LabBtn";
 import {
@@ -74,7 +75,7 @@ const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
               ))}
             </ul>
             <div className="mt-10 md:flex items-start justify-start">
-              <LabBtn text="Appoint Now" />
+              <AppointmentModalSection doctorID={doctor?._id} />
             </div>
           </div>
         </div>
