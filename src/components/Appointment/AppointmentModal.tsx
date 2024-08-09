@@ -13,6 +13,7 @@ const AppointmentModal = ({
       <Modal
         isOpen={isOpen}
         onOpenChange={setIsOpen}
+        scrollBehavior="inside"
         placement="top-center"
         backdrop="blur"
         size="3xl"
