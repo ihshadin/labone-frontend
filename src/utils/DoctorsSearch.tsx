@@ -34,11 +34,11 @@ const DoctorsSearch = () => {
 
   return (
     <>
-      <div className="w-[250px] relative">
+      <div className="w-full lg:w-[250px] relative">
         <div className="relative">
           <input
             type="search"
-            placeholder="Type Here"
+            placeholder="Search by Doctor Name"
             className="w-full text-base py-1.5 px-4 rounded-full bg-primary/5 text-accent border-1 border-primary/30 focus:outline-0 focus:outline-primary focus:border-primary/70 duration-300 transition-all "
             onChange={(e: any) => setSearchText(e?.target?.value)}
           />
@@ -46,7 +46,7 @@ const DoctorsSearch = () => {
         </div>
 
         {searchText?.length > 0 && (
-          <ul className="z-50 absolute top-12 p-4 text-accent w-[550px] rounded-xl right-0 bg-white/90 flex flex-col gap-3.5 divide-y overflow-y-auto max-h-[400px] customScroll shadow-2xl [&>*:not(:first-child)]:pt-3.5">
+          <ul className="z-50 absolute top-12 p-4 text-accent w-full md:w-[550px] rounded-xl right-0 bg-white/90 flex flex-col gap-3.5 divide-y overflow-y-auto max-h-[400px] customScroll shadow-2xl [&>*:not(:first-child)]:pt-3.5">
             {doctors?.map((doctor: TDoctor) => (
               <>
                 <li key={doctor?._id} className="flex items-center gap-3">

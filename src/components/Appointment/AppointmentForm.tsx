@@ -10,6 +10,7 @@ import { getDoctors } from "@/api/doctors.api";
 import { TAppointment } from "@/types/appointment.type";
 import { formatCustomTimePeriod } from "@/utils/TimeRangeFormate";
 import toast from "react-hot-toast";
+import { FaAngleRight } from "react-icons/fa6";
 
 type TAppointmentForm = {
   onClose?: any;
@@ -284,8 +285,9 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
               Close
             </span>
           )}
-          <button className="px-5 py-1.5 rounded-full bg-gradient-to-r from-primary to-[#07CCEC] text-white">
-            Appointment
+          <button className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-[#07CCEC] hover:bg-gradient-to-l text-white flex items-center gap-1 duration-300 transition-all group">
+            Appointment{" "}
+            <FaAngleRight className="group-hover:translate-x-1.5 duration-300" />
           </button>
         </div>
       </form>

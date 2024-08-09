@@ -5,7 +5,7 @@ import preImage from "@/assets/images/pre-doctor.jpg";
 const DoctorCard = ({ doctor }: { doctor: TDoctor }) => {
   return (
     <>
-      <Card className="w-full max-w-[380px]">
+      <Card className="w-full max-w-[400px]">
         <CardHeader className="absolute z-10 top-1 flex-col items-start">
           <span className="text-[10px] text-white uppercase font-medium bg-primary py-0.5 px-2 rounded-full font-tiroBangla">
             {doctor?.specialization || preImage.src}

@@ -32,27 +32,23 @@ const HeroSection = () => {
             className="relative w-full h-[700px] bg-cover bg-center"
             style={{ backgroundImage: `url(${heroBackground.src})` }}
           >
-            <div className="w-full max-w-[1250px] mx-auto p-2 h-full flex justify-between items-center">
-              <div className="w-[50%] flex flex-col justify-center">
-                <h2 className="text-left text-[#058946] font-[700] text-[65px] leading-[1.1] ">
+            <div className="w-full max-w-[1250px] mx-auto px-2 py-14 h-full flex flex-col md:flex-row justify-between items-center">
+              <div className="md:w-[50%] flex flex-col justify-center">
+                <h2 className="text-left text-[#058946] font-bold text-4xl md:text-[65px] leading-[1.1]">
                   Lab One Hospital
-                  <span className="text-[#dc3545] block">
-                    {" "}
-                    Your Health,{" "}
-                  </span>{" "}
+                  <span className="text-[#dc3545] block">Your Health,</span>
                   Our Focus
                 </h2>
                 <div>
-                  <p className="text-base text-left text-accent mt-[28px] mb-[18px] max-w-[550px]">
+                  <p className="text-base text-left text-accent mt-3 md:mt-7 mb-[18px] max-w-[550px]">
                     Ensuring your optimal health through dedicated,
                     compassionate care and advanced medical treatments is our
                     mission
                   </p>
-                  <LabBtn link="/appointment" text="Call Us" />
+                  <LabBtn link="tel:0198685963" text="Call Us" />
                 </div>
               </div>
-
-              <div className="w-[50%]">
+              <div className="md:w-[50%]">
                 <Image src={heroBanner.src} alt="LabOne" />
               </div>
             </div>
@@ -60,12 +56,16 @@ const HeroSection = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div
-            className="relative w-full h-[700px] bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroImage.src})` }}
+            className="relative w-full h-[700px] md:bg-cover md:bg-center"
+            style={
+              window.innerWidth >= 768
+                ? { backgroundImage: `url(${heroImage.src})` }
+                : {}
+            }
           >
-            <div className="w-full max-w-[1250px] mx-auto p-2 h-full flex flex-col justify-center">
-              <div className="w-[50%]">
-                <h2 className="text-left text-[#058946] font-tiroBangla font-[700] text-[65px] leading-[1.1] md:w-[380px]">
+            <div className="w-full max-w-[1250px] mx-auto p-2 h-full flex flex-col justify-center gap-10">
+              <div className="w-full md:w-[50%]">
+                <h2 className="text-left text-[#058946] font-tiroBangla font-bold text-5xl md:text-[65px] leading-[1.1] md:w-[380px]">
                   ল্যাব ওয়ান
                   <span className="text-[#dc3545]"> হাসপাতালে </span> আপনাকে
                   স্বাগতম
@@ -74,8 +74,11 @@ const HeroSection = () => {
                   <p className="text-base text-left text-accent mt-[28px] mb-[18px] font-tiroBangla">
                     সুখে দুখে আপনার পাশে ল্যাব ওয়ান হাসপাতাল
                   </p>
-                  <LabBtn link="/appointment" text="Call Us" />
+                  <LabBtn link="tel:0198685963" text="Call Us" />
                 </div>
+              </div>
+              <div className="md:hidden">
+                <Image src={heroImage.src} alt="LabOne" />
               </div>
             </div>
           </div>
@@ -98,7 +101,7 @@ const HeroSection = () => {
                   <p className="text-[16px] text-left text-accent mt-[28px] mb-[18px] font-tiroBangla">
                     সুখে দুখে আপনার পাশে
                   </p>
-                  <LabBtn link="/appointment" text="Call Us" />
+                  <LabBtn link="tel:0198685963" text="Call Us" />
                 </div>
               </div>
             </div>

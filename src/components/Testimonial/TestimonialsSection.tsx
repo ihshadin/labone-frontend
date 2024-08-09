@@ -41,7 +41,7 @@ const TestimonialsSection = () => {
             }}
             loop={true}
             pagination={{
-              clickable: true,
+              dynamicBullets: true,
             }}
             modules={[Autoplay, Pagination]}
             className="testimonial-swiper vertical-pagination"

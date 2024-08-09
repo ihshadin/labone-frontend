@@ -10,6 +10,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import LabBtn from "@/utils/LabBtn";
 
 const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
   return (
@@ -39,9 +40,6 @@ const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
               },
             }}
             loop={true}
-            pagination={{
-              clickable: true,
-            }}
             modules={[Navigation]}
             className="doctors-swiper"
           >
@@ -51,6 +49,9 @@ const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+        <div className="w-[225px] mx-auto pt-8 md:pt-12">
+          <LabBtn link="/doctors" text="Sell All Doctors" />
         </div>
       </div>
     </>
