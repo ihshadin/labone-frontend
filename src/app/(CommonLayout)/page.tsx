@@ -13,7 +13,7 @@ import SpecialService from "@/components/SpecialService/SpecialService";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
 import heartbit from "@/assets/images/graph-img.png";
 import thetoscop from "@/assets/images/thetoscop.png";
-import watchbg from "@/assets/images/watchBG.png"
+import watchbg from "@/assets/images/watchBG.png";
 import SchedulesContainer from "@/components/HomePage/SchedulesContainer";
 import { getMachines } from "@/api/machines.api";
 import { getDoctors } from "@/api/doctors.api";
@@ -42,21 +42,10 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <div className="max-w-[1240px] flex justify-center items-center mb-5 md:mb-5 mt-5 py-8 mx-2 md:mx-auto md:py-12 bg-white/30 bg-blend-color-burn border rounded-xl shadow-md bg-contain bg-no-repeat" style={{backgroundImage:`url(${watchbg.src})`}}>
-        {/* <Image
-          className="absolute h-[100px] -top-4 left-[180]"
-          src={thetoscop.src}
-          removeWrapper
-          alt="labone"
-        /> */}
-        {/* <Image
-        className="absolute -top-10 left-0 w-full max-w-full -z-10 !opacity-15"
-        src={heartbit.src}
-        removeWrapper
-        alt="labone"
-        /> */}
-        {/* style={{backgroundImage:`url(${heartbit.src})`}} */}
-
+      <div
+        className="max-w-[1240px] flex justify-center items-center mb-5 md:mb-5 mt-5 py-8 mx-2 md:mx-auto md:py-12 bg-white/30 bg-blend-color-burn border rounded-xl shadow-md bg-contain bg-no-repeat"
+        style={{ backgroundImage: `url(${watchbg.src})` }}
+      >
         <LiveTimer />
       </div>
       <div className="mx-auto max-w-[1250px] px-2 pb-7 md:pb-7 lg:pb-10">

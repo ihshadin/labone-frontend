@@ -57,11 +57,7 @@ const HeroSection = () => {
         <SwiperSlide>
           <div
             className="relative w-full h-[700px] md:bg-cover md:bg-center"
-            style={
-              window.innerWidth >= 768
-                ? { backgroundImage: `url(${heroImage.src})` }
-                : {}
-            }
+            style={{ backgroundImage: `url(${heroImage.src})` }}
           >
             <div className="w-full max-w-[1250px] mx-auto p-2 h-full flex flex-col justify-center gap-10">
               <div className="w-full md:w-[50%]">
