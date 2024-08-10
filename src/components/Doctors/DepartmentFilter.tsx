@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
-import DepartmentList from "./DepartmentList";
 import { TbFilterPin } from "react-icons/tb";
 import { getDepartment } from "@/api/department.api";
 import { RxCross1 } from "react-icons/rx";
@@ -65,10 +64,6 @@ const DepartmentFilter = ({ setParams }: TSetParams) => {
             className="p-2.5 md:mr-3 w-10 h-10 bg-primary/90  hover:bg-primary/70 transition-all duration-300 !text-white rounded-full"
           />
         )}
-      </div>
-
-      <div className="mt-4 md:mt-5">
-        <DepartmentList />
       </div>
     </>
   );

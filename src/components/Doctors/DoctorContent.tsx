@@ -1,13 +1,11 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DoctorCard from "@/components/Doctors/DoctorCard";
 import { TDoctor } from "@/types/doctors.type";
 import { TMeta, TQueryParam } from "@/types/global.type";
-import { baseApi } from "@/api/api";
 import SearchHandler from "@/utils/SearchHandler";
 import LabonePagination from "@/utils/Pagination/LabonePagination";
 import DepartmentFilter from "./DepartmentFilter";
-import { TbFilterPin } from "react-icons/tb";
 import { getNewDoctors } from "@/api/doctors.api";
 
 const DoctorContent = () => {
