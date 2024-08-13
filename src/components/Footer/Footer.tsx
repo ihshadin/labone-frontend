@@ -143,9 +143,9 @@ const Footer = () => {
                 </li>
                 <li>
                   <RiMapPinLine className="flex-shrink-0 self-start mt-1" />
-                  <Link href={"#"} className="text-sm text-left">
+                  <span className="text-sm text-left">
                     Tetuibari, DEPZ Road Mojarmil Bus Stand, Kashimpur, Gazipur
-                  </Link>
+                  </span>
                 </li>
               </ul>
             </div>
