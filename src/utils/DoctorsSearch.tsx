@@ -37,7 +37,7 @@ const DoctorsSearch = () => {
       <div className="w-full lg:w-[250px] relative">
         <div className="relative">
           <input
-            type="search"
+            type="text"
             placeholder="Search by Doctor Name"
             className="w-full text-base py-1.5 px-4 rounded-full bg-primary/5 text-accent border-1 border-primary/30 focus:outline-0 focus:outline-primary focus:border-primary/70 duration-300 transition-all "
             onChange={(e: any) => setSearchText(e?.target?.value)}

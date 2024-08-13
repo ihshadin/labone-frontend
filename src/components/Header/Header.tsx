@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa6";
 import { RiMailAddLine, RiPhoneLine } from "react-icons/ri";
 import NavBar from "./NavBar";
+import NoticeMarquee from "../Marquee/NoticeMarquee";
 
 const Header = () => {
   return (
@@ -53,8 +54,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {/* NavBar */}
       <NavBar />
+      <NoticeMarquee />
     </header>
   );
 };
