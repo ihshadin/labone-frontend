@@ -43,20 +43,23 @@ const Footer = () => {
             </p>
 
             <div className="mt-4 md:mt-6 flex justify-center lg:justify-start gap-5 *:text-accent/90 hover:*:text-accent">
-              <Link href={"https://facebook.com"} target="_blank">
-                <FaSquareFacebook size={20} />
+              <Link
+                href={"https://www.facebook.com/labonehospital"}
+                target="_blank"
+              >
+                <FaSquareFacebook />
               </Link>
 
-              <Link href={"https://facebook.com"} target="_blank">
-                <FaInstagram size={20} />
+              <Link href={"https://www.instagram.com/"} target="_blank">
+                <FaInstagram />
               </Link>
 
-              <Link href={"https://facebook.com"} target="_blank">
-                <FaLinkedin size={20} />
+              <Link href={"https://www.linkedin.com/"} target="_blank">
+                <FaLinkedin />
               </Link>
 
-              <Link href={"https://facebook.com"} target="_blank">
-                <FaXTwitter size={20} />
+              <Link href={"https://x.com/"} target="_blank">
+                <FaXTwitter />
               </Link>
             </div>
           </div>
@@ -152,7 +155,10 @@ const Footer = () => {
         <div className="mt-10 border-t border-gray-100 pt-3">
           <p className="text-center text-xs/relaxed text-gray-800 font-medium">
             <span>Labone Hospital ©{new Date().getFullYear()} Created by </span>
-            <Link href={"https://websyner.com"} className="text-primary">
+            <Link
+              href={"https://www.linkedin.com/company/websyner"}
+              className="text-primary"
+            >
               WebSyner
             </Link>
           </p>
