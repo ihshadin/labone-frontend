@@ -45,7 +45,7 @@ const HeroSection = () => {
                     compassionate care and advanced medical treatments is our
                     mission
                   </p>
-                  <LabBtn link="tel:0198685963" text="Call Us" />
+                  <LabBtn link="tel:01987009911" text="Call Us" />
                 </div>
               </div>
               <div className="md:w-[50%]">
@@ -70,7 +70,7 @@ const HeroSection = () => {
                   <p className="text-base text-left text-accent mt-[28px] mb-[18px] font-tiroBangla">
                     সুখে দুখে আপনার পাশে ল্যাব ওয়ান হাসপাতাল
                   </p>
-                  <LabBtn link="tel:0198685963" text="Call Us" />
+                  <LabBtn link="tel:01987009911" text="Call Us" />
                 </div>
               </div>
               <div className="md:hidden">
@@ -97,7 +97,7 @@ const HeroSection = () => {
                   <p className="text-[16px] text-left text-accent mt-[28px] mb-[18px] font-tiroBangla">
                     সুখে দুখে আপনার পাশে
                   </p>
-                  <LabBtn link="tel:0198685963" text="Call Us" />
+                  <LabBtn link="tel:01987009911" text="Call Us" />
                 </div>
               </div>
             </div>
