@@ -6,6 +6,7 @@ import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import Newsletter from "@/components/Newsletter/Newsletter";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
+import GoogleMaps from "@/components/GoogleMap/GoogleMaps";
 
 const labPhotos = [
   "https://labonehospital.com/admin/doctorimg/9%20lab.jpg",
@@ -63,6 +64,7 @@ const AboutUsPage = () => {
       <Newsletter />
       <TestimonialsSection />
       <FAQSection />
+      <GoogleMaps/>
     </>
   );
 };
