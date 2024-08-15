@@ -9,8 +9,8 @@ import { Autoplay, Pagination } from "swiper/modules";
 // import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/pagination";
-import { getTestimonials } from "@/api/reviews";
 import LabBtn from "@/utils/LabBtn";
+import { getTestimonials } from "@/api/reviews.api";
 
 const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);
