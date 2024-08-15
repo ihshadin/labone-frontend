@@ -286,7 +286,7 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
             </span>
           )}
           <button className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-[#07CCEC] hover:bg-gradient-to-l text-white flex items-center gap-1 duration-300 transition-all group">
-            Appointment{" "}
+            Appointment
             <FaAngleRight className="group-hover:translate-x-1.5 duration-300" />
           </button>
         </div>
