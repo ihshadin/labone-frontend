@@ -5,7 +5,6 @@ import Marquee from "react-fast-marquee";
 
 const NoticeMarquee = async () => {
   const notices: TNotices[] = await getNotice();
-  // console.log("notices--=>", notices);
 
   return (
     <div className="flex flex-nowrap items-center font-tiroBangla max-w-[1250px] mx-auto">

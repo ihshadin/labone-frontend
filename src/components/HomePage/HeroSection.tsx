@@ -16,6 +16,12 @@ import { TBanners } from "@/types/hero.type";
 const HeroSection = () => {
   const [banners, setBanner] = useState<TBanners[]>([]);
 
+  const getFontClass = (text: string) => {
+    // Check if the text contains Bengali characters
+    const isBangla = /[\u0980-\u09FF]/.test(text);
+    return isBangla ? "font-tiroBangla" : "font-archivo";
+  };
+
   const getBannerData = async () => {
     const data = await getBanner();
     setBanner(data);
@@ -97,7 +103,11 @@ const HeroSection = () => {
             >
               <div className="w-full max-w-[1250px] mx-auto px-2 py-14 h-full flex flex-col md:flex-row justify-between items-center">
                 <div className="md:w-[50%] flex flex-col justify-center">
-                  <h2 className="text-left text-[#058946] font-bold text-4xl md:text-[65px] leading-[1.1]">
+                  <h2
+                    className={`text-left text-[#058946] font-bold text-4xl md:text-[65px] leading-[1.1] ${getFontClass(
+                      banner?.title
+                    )}`}
+                  >
                     {banner?.title.split('"')[0]}
                     <span className="text-[#dc3545] block">
                       {banner?.title.split('"')[1]}

@@ -44,31 +44,33 @@ const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
               </li>
             </ul>
             <ul className=" rounded-xl border white shadow-lg px-3 md:px-6 py-4 md:py-8">
-              <div className="grid items-center">
+              <div className="grid items-center mb-2">
                 <h6 className="font-medium uppercase text-base text-primary tracking-[2px] py-2.5 px-5 inline-block transition-all relative bg-primary/15 w-full duration-300">
                   Doctor Availability
                 </h6>
               </div>
-              {doctor?.schedules?.map((schedule: TSchedule) => (
-                <li key={schedule?._id}>
-                  <div className="flex gap-3 md:gap-2 p-2">
-                    <p className="font-bold capitalize ">
-                      {schedule?.scheduleDay}
-                    </p>
-                    <p>
-                      <span className="font-bold"></span>
-                      {"( "}
-                      {formatSingleTimePeriod(schedule?.startTime)}
-                    </p>
-                    <p>-</p>
-                    <p>
-                      <span className="font-bold"></span>{" "}
-                      {formatSingleTimePeriod(schedule?.endTime)}
-                      {" )"}
-                    </p>
-                  </div>
-                </li>
-              ))}
+              {doctor?.schedules?.length > 0
+                ? doctor?.schedules?.map((schedule: TSchedule) => (
+                    <li key={schedule?._id}>
+                      <div className="flex gap-3 md:gap-2 p-2">
+                        <p className="font-bold capitalize ">
+                          {schedule?.scheduleDay}
+                        </p>
+                        <p className="font-tiroBangla">
+                          <span className="font-bold"></span>
+                          {"( "}
+                          {formatSingleTimePeriod(schedule?.startTime)}
+                        </p>
+                        <p>-</p>
+                        <p className="font-tiroBangla">
+                          <span className="font-bold"></span>{" "}
+                          {formatSingleTimePeriod(schedule?.endTime)}
+                          {" )"}
+                        </p>
+                      </div>
+                    </li>
+                  ))
+                : "No shedule yet"}
             </ul>
             <div className="mt-10 md:flex items-start justify-start">
               <AppointmentModalSection doctorID={doctor?._id} />

@@ -9,11 +9,33 @@ import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
 import GoogleMaps from "@/components/GoogleMap/GoogleMaps";
 
 const labPhotos = [
-  "https://labonehospital.com/admin/doctorimg/9%20lab.jpg",
-  "https://labonehospital.com/admin/doctorimg/10%20lab.jpg",
-  "https://labonehospital.com/admin/doctorimg/11%20lab.jpg",
-  "https://labonehospital.com/admin/doctorimg/1%20lab.jpg",
-  "https://labonehospital.com/admin/doctorimg/2%20lab.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/ikhhdwweb0gpcjur4gay.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/fhnlwtdpqylfap1qysjw.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/q4mwpeacnlia9mntigi0.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/mmf4ne1q4mrqgtsbrfnw.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/rlau2jdweuu7xls2wimj.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/exrwmbibgk1jv3rrvjpz.jpg",
+];
+
+const nicuPhotos = [
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/djlnugyrujoqaql1ydd3.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/irqmqrp0rp0czlhuwedt.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/dmii1zfp7w70df53lqpy.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/ituatglb06vw310mqb0t.jpg",
+];
+const otPhotos = [
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/fgdai1wdrcbpovgvpwcg.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/pai2mml2zidszdtnifxn.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/iaivi9hbu54rgzngjwiv.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/dfe8pyhxvltktl32jxrc.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/zhcxxxzsvyn2ectmbgii.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/i2tpmdkztmxutms8qbhx.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/ris4yyobboc8mcvvvvwu.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/nunykhki2jrhgnvkimgv.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/pyx7zbuqjkqk2faxvpho.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/nztgpugccz9a4ivsxm1o.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/sqkohbvyhj28bjbbulap.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/t2opmxczciafft3whasr.jpg",
 ];
 
 const spotlightData = {
@@ -52,19 +74,19 @@ const AboutUsPage = () => {
           heading="Neonatal intensive care unit (NICU)"
         />
         <div className="mt-6 md:mt-10">
-          <GallerySlider photos={labPhotos} />
+          <GallerySlider photos={nicuPhotos} />
         </div>
       </div>
       <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
         <SectionHeader subHeading="ot" heading="Operation theater" />
         <div className="mt-6 md:mt-10">
-          <GallerySlider photos={labPhotos} />
+          <GallerySlider photos={otPhotos} />
         </div>
       </div>
       <Newsletter />
       <TestimonialsSection />
       <FAQSection />
-      <GoogleMaps/>
+      <GoogleMaps />
     </>
   );
 };

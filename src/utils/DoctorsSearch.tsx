@@ -68,28 +68,15 @@ const DoctorsSearch = () => {
                       {doctor?.specialization}
                     </p>
                     <p className="text-sm text-primary font-medium flex flex-col">
-                      {/* {formatCustomTimePeriod(
-                      doctor?.startTime,
-                      schedule?.endTime
-                    )} */}
-                      {/* {doctor?.schedules?.map((schedule) => (
-                      <span key={schedule?._id}>
-                        {schedule?.scheduleDay +
+                      {doctor?.schedules.length > 0
+                        ? doctor?.schedules?.[0]?.scheduleDay +
                           " ( " +
                           formatCustomTimePeriod(
-                            schedule?.startTime,
-                            schedule?.endTime
+                            doctor?.schedules?.[0]?.startTime,
+                            doctor?.schedules?.[0]?.endTime
                           ) +
-                          " )"}
-                      </span>
-                    ))} */}
-                      {doctor?.schedules?.[0]?.scheduleDay +
-                        " ( " +
-                        formatCustomTimePeriod(
-                          doctor?.schedules?.[0]?.startTime,
-                          doctor?.schedules?.[0]?.endTime
-                        ) +
-                        " )..."}
+                          " )..."
+                        : "No shedule yet"}
                     </p>
                   </div>
                   <button

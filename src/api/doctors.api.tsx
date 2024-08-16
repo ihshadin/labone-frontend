@@ -31,7 +31,7 @@ export const getNewDoctors = async (params: any[]) => {
 
 export const getDoctor = async (id: string) => {
   try {
-    const res = await fetch(`${baseApi}/doctor/${id}`);
+    const res = await fetch(`${baseApi}/doctor/${id}`, { cache: "no-cache" });
     const data = await res.json();
     return data?.data;
   } catch (error) {
