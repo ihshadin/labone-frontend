@@ -10,12 +10,12 @@ export const uploadImageInCloudinary = async (
   const imageData = new FormData();
   imageData.append("file", file);
   imageData.append("upload_preset", "labone_preset" as string);
-  imageData.append("api_key", "773395772622477" as string);
+  imageData.append("api_key", "855284155988226" as string);
   imageData.append("timestamp", String(Date.now() / 1000));
 
   try {
     const response = await fetch(
-      `https://api.cloudinary.com/v1_1/dfka3hvg1/image/upload`,
+      `https://api.cloudinary.com/v1_1/dz4ckryd6/image/upload`,
       {
         method: "POST",
         body: imageData,

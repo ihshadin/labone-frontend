@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Rating, Star } from "@smastrom/react-rating";
 import { TTestimonial } from "@/types/testimonial.type";
 import "../../styles/AllTestimonials.css";
-import { getTestimonials } from "@/api/reviews";
+import { getTestimonials } from "@/api/reviews.api";
 
 const AllTestimonial = async () => {
   const testimonials = await getTestimonials();

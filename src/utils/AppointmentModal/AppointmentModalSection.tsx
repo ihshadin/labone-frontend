@@ -1,6 +1,7 @@
 "use client";
-import AppointmentModal from "@/components/Appointment/AppointmentModal";
 import React, { useState } from "react";
+import AppointmentModal from "@/components/Appointment/AppointmentModal";
+import "@/styles/lab-btn.css";
 
 const AppointmentModalSection = ({ doctorID }: { doctorID: string }) => {
   const [isOpen, setIsOpen] = useState(false);
