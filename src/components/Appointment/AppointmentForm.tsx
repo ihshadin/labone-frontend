@@ -8,7 +8,10 @@ import { baseApi } from "@/api/api";
 import { TDoctor } from "@/types/doctors.type";
 import { getDoctors } from "@/api/doctors.api";
 import { TAppointment } from "@/types/appointment.type";
-import { formatCustomTimePeriod } from "@/utils/TimeRangeFormate";
+import {
+  formatCustomTimePeriod,
+  formatSingleTimePeriod,
+} from "@/utils/TimeRangeFormate";
 import toast from "react-hot-toast";
 import { FaAngleRight } from "react-icons/fa6";
 
@@ -232,17 +235,30 @@ const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
 
         {selDocInfo && (
           <div>
-            <p>
-              {selDocInfo?.schedules
-                ?.map(
-                  (schedule) =>
-                    `${schedule?.scheduleDay}  (${formatCustomTimePeriod(
-                      schedule?.startTime,
-                      schedule?.endTime
-                    )})`
-                )
-                .join(" & ")}
-            </p>
+            <ul>
+              {selDocInfo?.schedules?.length > 0
+                ? selDocInfo?.schedules?.map((schedule) => (
+                    <li key={schedule?._id}>
+                      <div className="flex gap-3 md:gap-2">
+                        <p className="font-bold capitalize ">
+                          {schedule?.scheduleDay}
+                        </p>
+                        <p className="font-tiroBangla">
+                          <span className="font-bold"></span>
+                          {"( "}
+                          {formatSingleTimePeriod(schedule?.startTime)}
+                        </p>
+                        <p>-</p>
+                        <p className="font-tiroBangla">
+                          <span className="font-bold"></span>{" "}
+                          {formatSingleTimePeriod(schedule?.endTime)}
+                          {" )"}
+                        </p>
+                      </div>
+                    </li>
+                  ))
+                : "No schedule yet"}
+            </ul>
             <p className="text-sm font-medium font-tiroBangla text-primary">
               {selDocInfo?.specialization}
             </p>

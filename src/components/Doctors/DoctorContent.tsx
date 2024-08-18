@@ -10,7 +10,8 @@ import { getNewDoctors } from "@/api/doctors.api";
 
 const DoctorContent = () => {
   const [params, setParams] = useState<TQueryParam[]>([
-    { name: "page", value: 9 },
+    { name: "page", value: 1 },
+    { name: "limit", value: 9 },
   ]);
   const [meta, setMeta] = useState<TMeta>({} as TMeta);
   const [doctors, setDoctors] = useState([]);
@@ -21,19 +22,6 @@ const DoctorContent = () => {
       { name: "page", value: page },
     ]);
   };
-
-  // const fetchDoctors = useCallback(async () => {
-  //   const queryParams = params
-  //     .map((param) => `${param.name}=${param.value}`)
-  //     .join("&");
-
-  //   const res = await fetch(
-  //     `${baseApi}/doctor?limit=9${queryParams ? `&${queryParams}` : ""}`
-  //   );
-  //   const data = await res.json();
-  //   setDoctors(data?.data?.result);
-  //   setMeta(data?.data?.meta);
-  // }, [params]);
 
   const fetchDoctors = async (params: any[]) => {
     const data = await getNewDoctors(params);

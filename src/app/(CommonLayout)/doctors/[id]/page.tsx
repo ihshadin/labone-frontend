@@ -23,7 +23,7 @@ const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
             />
           </div>
           <div className="md:col-span-5">
-            <h2 className="text-xl md:text-3xl font-bold mb-1 md:mb-2">
+            <h2 className="text-xl md:text-3xl font-bold mb-1 md:mb-2 font-tiroBangla">
               {doctor?.firstName + " " + doctor?.lastName}
             </h2>
             <p className="inline-block text-xs md:text-sm text-white uppercase font-medium font-tiroBangla bg-primary px-5 py-1 rounded-full">

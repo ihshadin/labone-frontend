@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import AppointmentModal from "@/components/Appointment/AppointmentModal";
 import "@/styles/lab-btn.css";
 
-const AppointmentModalSection = ({ doctorID }: { doctorID: string }) => {
+const AppointmentModalSection = ({ doctorID }: { doctorID?: string }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectDoctor, setSelectDoctor] = useState("");
+  const [selectDoctor, setSelectDoctor] = useState(doctorID);
 
-  const handleOpenModal = (id: string) => {
-    setSelectDoctor(id);
+  const handleOpenModal = () => {
+    setSelectDoctor(doctorID);
     setIsOpen(true);
   };
 
@@ -16,7 +16,7 @@ const AppointmentModalSection = ({ doctorID }: { doctorID: string }) => {
     <>
       <div>
         <button
-          onClick={() => handleOpenModal(doctorID)}
+          onClick={() => handleOpenModal()}
           className="lab-one-btn text-white"
         >
           <span>Appointment</span>
