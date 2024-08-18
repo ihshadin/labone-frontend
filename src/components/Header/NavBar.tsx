@@ -11,12 +11,12 @@ import {
   Link,
 } from "@nextui-org/react";
 import Image from "next/image";
-import LabBtn from "@/utils/LabBtn";
 import logo from "@/assets/images/labOneLogoThik.png";
 import { HiMiniXMark } from "react-icons/hi2";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
 import DoctorsSearch from "@/utils/DoctorsSearch";
+import AppointmentModalSection from "@/utils/AppointmentModal/AppointmentModalSection";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -107,8 +107,8 @@ const NavBar = () => {
         </NavbarContent>
         <NavbarContent justify="end" className="!grow-0 w-auto ml-6">
           <NavbarItem className="hidden lg:inline-block ">
-            {/* <LabBtn link="/" text="Appointment" /> */}
-            <DoctorsSearch />
+            <AppointmentModalSection />
+            {/* <DoctorsSearch /> */}
           </NavbarItem>
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -131,7 +131,8 @@ const NavBar = () => {
             </NavbarMenuItem>
           ))}
           <NavbarItem className="inline-block lg:hidden">
-            <DoctorsSearch />
+            {/* <DoctorsSearch /> */}
+            <AppointmentModalSection />
           </NavbarItem>
         </NavbarMenu>
       </Navbar>

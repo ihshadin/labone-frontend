@@ -56,7 +56,11 @@ const SchedulesContainer = () => {
         </div>
 
         <div className="mt-4 md:mt-5">
-          <SchedulesList schedules={schedules} />
+          {schedules?.length > 0 ? (
+            <SchedulesList schedules={schedules} />
+          ) : (
+            <p>There is no schedule on {scheduleDay}</p>
+          )}
         </div>
       </div>
     </>
