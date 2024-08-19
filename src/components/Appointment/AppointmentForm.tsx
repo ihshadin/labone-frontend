@@ -8,10 +8,7 @@ import { baseApi } from "@/api/api";
 import { TDoctor } from "@/types/doctors.type";
 import { getDoctors } from "@/api/doctors.api";
 import { TAppointment } from "@/types/appointment.type";
-import {
-  formatCustomTimePeriod,
-  formatSingleTimePeriod,
-} from "@/utils/TimeRangeFormate";
+import { formatSingleTimePeriod } from "@/utils/TimeRangeFormate";
 import toast from "react-hot-toast";
 import { FaAngleRight } from "react-icons/fa6";
 

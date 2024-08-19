@@ -14,6 +14,7 @@ import {
 } from "react-icons/ri";
 import "@/styles/footer.css";
 import logoIcon from "@/assets/images/favicon.png";
+import logoHorizontal from "@/assets/images/logo-horizontal.png";
 
 const Footer = () => {
   return (
@@ -28,12 +29,25 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between gap-8 lg:gap-32">
           <div className="baseis-[30%] md:basis-[35%]">
             <Link href="/">
-              <div className="flex items-center justify-center md:justify-start gap-1.5 cursor-pointer py-2">
-                <Image className="w-[62px]" src={logoIcon} alt="logo" />
-                <div className="text-2xl leading-[1em] italic font-extrabold">
+              <div className="flex items-center justify-center md:justify-start gap-2.5 cursor-pointer py-2">
+                <Image
+                  className="w-[62px]"
+                  src={logoIcon}
+                  width={62}
+                  height={62}
+                  alt="logo"
+                />
+                <Image
+                  className="w-[130px]"
+                  src={logoHorizontal.src}
+                  width={130}
+                  height={50}
+                  alt="logo"
+                />
+                {/* <div className="text-2xl leading-[1em] italic font-extrabold">
                   <h2 className="text-primary">Lab One</h2>
                   <h3 className="text-secondary">Hospital</h3>
-                </div>
+                </div> */}
                 {/* <img className="w-14" src={logoIcon} alt="logo" /> */}
               </div>
             </Link>
