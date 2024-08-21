@@ -26,8 +26,8 @@ const DepartmentFilter = ({ setParams }: TSetParams) => {
 
   const handleDepartmentChange = (e: any) => {
     setParams((prevParams) => [
-      ...prevParams.filter((param) => param.name !== "departmentID"),
       { name: "departmentID", value: e.target.value },
+      { name: "page", value: 1 },
     ]);
   };
 
@@ -54,7 +54,10 @@ const DepartmentFilter = ({ setParams }: TSetParams) => {
           <RxCross1
             onClick={() => {
               setFilterOpen(false);
-              setParams([{ name: "page", value: 9 }]);
+              setParams([
+                { name: "page", value: 1 },
+                { name: "limit", value: 9 },
+              ]);
             }}
             className="p-3 md:mr-3 w-10 h-10 bg-secondary/80  hover:bg-secondary/60 transition-all duration-300 !text-white rounded-full"
           />

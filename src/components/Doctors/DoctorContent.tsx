@@ -8,11 +8,8 @@ import LabonePagination from "@/utils/Pagination/LabonePagination";
 import DepartmentFilter from "./DepartmentFilter";
 import { getNewDoctors } from "@/api/doctors.api";
 
-const DoctorContent = () => {
-  const [params, setParams] = useState<TQueryParam[]>([
-    { name: "page", value: 1 },
-    { name: "limit", value: 9 },
-  ]);
+const DoctorContent = ({ departmentId }: { departmentId: string | null }) => {
+  const [params, setParams] = useState<TQueryParam[]>([]);
   const [meta, setMeta] = useState<TMeta>({} as TMeta);
   const [doctors, setDoctors] = useState([]);
 
@@ -23,15 +20,28 @@ const DoctorContent = () => {
     ]);
   };
 
-  const fetchDoctors = async (params: any[]) => {
+  useEffect(() => {
+    if (departmentId) {
+      setParams([{ name: "departmentID", value: departmentId }]);
+    } else {
+      setParams([
+        { name: "limit", value: 9 },
+        { name: "page", value: 1 },
+      ]);
+    }
+  }, [departmentId]);
+
+  useEffect(() => {
+    if (params.length > 0) {
+      fetchDoctors(params);
+    }
+  }, [params]);
+
+  const fetchDoctors = async (params: TQueryParam[]) => {
     const data = await getNewDoctors(params);
     setDoctors(data?.result);
     setMeta(data?.meta);
   };
-
-  useEffect(() => {
-    fetchDoctors(params);
-  }, [params]);
 
   return (
     <>
