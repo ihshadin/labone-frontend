@@ -38,6 +38,14 @@ const otPhotos = [
   "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/t2opmxczciafft3whasr.jpg",
 ];
 
+const emPhoto = [
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335575/Labone-about/t3szcrldkgejbovlxtyi.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335673/xcksptacpzihzwn6v0yi.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335672/qgi79pa8c11hdebtkfo4.avif",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335672/g8ybk8nikk4fwqchlufi.jpg",
+  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335671/rawvkfumktqjgll9lqpp.jpg",
+];
+
 const spotlightData = {
   image: "https://labonehospital.com/img/bg/illlustration.jpg",
   subHeading: "About Labone Diagnositc",
@@ -81,6 +89,15 @@ const AboutUsPage = () => {
         <SectionHeader subHeading="ot" heading="Operation theater" />
         <div className="mt-6 md:mt-10">
           <GallerySlider photos={otPhotos} />
+        </div>
+      </div>
+      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+        <SectionHeader
+          subHeading="Emergency Unit"
+          heading="LabOne Hospital Emergency Unit is open 24/7"
+        />
+        <div className="mt-6 md:mt-10">
+          <GallerySlider photos={emPhoto} />
         </div>
       </div>
       <Newsletter />
