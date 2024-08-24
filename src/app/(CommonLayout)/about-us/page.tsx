@@ -23,6 +23,7 @@ const nicuPhotos = [
   "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/dmii1zfp7w70df53lqpy.jpg",
   "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/ituatglb06vw310mqb0t.jpg",
 ];
+
 const otPhotos = [
   "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/fgdai1wdrcbpovgvpwcg.jpg",
   "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/pai2mml2zidszdtnifxn.jpg",
