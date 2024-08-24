@@ -15,7 +15,7 @@ import logo from "@/assets/images/labOneLogoThik.png";
 import { HiMiniXMark } from "react-icons/hi2";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
-import DoctorsSearch from "@/utils/DoctorsSearch";
+// import DoctorsSearch from "@/utils/DoctorsSearch";
 import AppointmentModalSection from "@/utils/AppointmentModal/AppointmentModalSection";
 
 const NavBar = () => {
@@ -52,16 +52,20 @@ const NavBar = () => {
       link: "/diagnostics",
       text: "Diagnostics",
     },
+    {
+      link: "/gallery",
+      text: "Gallery",
+    },
   ];
 
   // Submenu items for "More"
-  const moreMenuItems = [
-    { link: "/reception", text: "Reception" },
-    { link: "/radiology-imaging", text: "Radiology & Imaging" },
-    { link: "/emergency-unit", text: "Emergency Unit" },
-    { link: "/pharmacy", text: "Pharmacy" },
-    { link: "/it-dept", text: "IT dept." },
-  ];
+  // const moreMenuItems = [
+  //   { link: "/reception", text: "Reception" },
+  //   { link: "/radiology-imaging", text: "Radiology & Imaging" },
+  //   { link: "/emergency-unit", text: "Emergency Unit" },
+  //   { link: "/pharmacy", text: "Pharmacy" },
+  //   { link: "/it-dept", text: "IT dept." },
+  // ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,9 +119,8 @@ const NavBar = () => {
           ))}
 
           {/* More dropdown menu */}
-          <NavbarMenuItem className="relative group font-medium text-accent">
+          {/* <NavbarMenuItem className="relative group font-medium text-accent">
             <span className="cursor-pointer">More+</span>
-            {/* Added transition delay for the submenu to remain visible when mouse leaves */}
             <div className="absolute left-0 mt-2 w-40 bg-white border border-gray-200 shadow-md rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500 ease-in-out ">
               {moreMenuItems.map((item, index) => (
                 <Link
@@ -129,7 +132,7 @@ const NavBar = () => {
                 </Link>
               ))}
             </div>
-          </NavbarMenuItem>
+          </NavbarMenuItem> */}
         </NavbarContent>
 
         <NavbarContent justify="end" className="!grow-0 w-auto ml-6">
