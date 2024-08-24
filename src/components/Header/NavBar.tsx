@@ -54,6 +54,15 @@ const NavBar = () => {
     },
   ];
 
+  // Submenu items for "More"
+  const moreMenuItems = [
+    { link: "/reception", text: "Reception" },
+    { link: "/radiology-imaging", text: "Radiology & Imaging" },
+    { link: "/emergency-unit", text: "Emergency Unit" },
+    { link: "/pharmacy", text: "Pharmacy" },
+    { link: "/it-dept", text: "IT dept." },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 150);
@@ -90,7 +99,7 @@ const NavBar = () => {
         >
           {menuItems.map((item, index) => (
             <NavbarMenuItem
-              key={`${item}-${index}`}
+              key={`${item.link}-${index}`}
               isActive={pathname == item?.link}
               className="font-medium text-accent"
             >
@@ -104,7 +113,25 @@ const NavBar = () => {
               </Link>
             </NavbarMenuItem>
           ))}
+
+          {/* More dropdown menu */}
+          <NavbarMenuItem className="relative group font-medium text-accent">
+            <span className="cursor-pointer">More+</span>
+            {/* Added transition delay for the submenu to remain visible when mouse leaves */}
+            <div className="absolute left-0 mt-2 w-40 bg-white border border-gray-200 shadow-md rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500 ease-in-out ">
+              {moreMenuItems.map((item, index) => (
+                <Link
+                  key={`${item.link}-${index}`}
+                  href={item.link}
+                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+                >
+                  {item.text}
+                </Link>
+              ))}
+            </div>
+          </NavbarMenuItem>
         </NavbarContent>
+
         <NavbarContent justify="end" className="!grow-0 w-auto ml-6">
           <NavbarItem className="hidden lg:inline-block ">
             <AppointmentModalSection />
@@ -124,7 +151,7 @@ const NavBar = () => {
         </NavbarContent>
         <NavbarMenu>
           {menuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
+            <NavbarMenuItem key={`${item.link}-${index}`}>
               <Link className="w-full" href={item.link}>
                 {item.text}
               </Link>
