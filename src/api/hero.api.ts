@@ -14,7 +14,6 @@ export const getBanner = async () => {
 export const getNotice = async () => {
   try {
     const res = await fetch(`${baseApi}/notice`, {
-      next: { revalidate: 10 },
       cache: "no-cache",
     });
     const data = await res.json();
