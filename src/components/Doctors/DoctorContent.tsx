@@ -20,6 +20,12 @@ const DoctorContent = ({ departmentId }: { departmentId: string | null }) => {
     ]);
   };
 
+  const fetchDoctors = async (params: TQueryParam[]) => {
+    const data = await getNewDoctors(params);
+    setDoctors(data?.result);
+    setMeta(data?.meta);
+  };
+
   useEffect(() => {
     if (departmentId) {
       setParams([{ name: "departmentID", value: departmentId }]);
@@ -36,12 +42,6 @@ const DoctorContent = ({ departmentId }: { departmentId: string | null }) => {
       fetchDoctors(params);
     }
   }, [params]);
-
-  const fetchDoctors = async (params: TQueryParam[]) => {
-    const data = await getNewDoctors(params);
-    setDoctors(data?.result);
-    setMeta(data?.meta);
-  };
 
   return (
     <>
