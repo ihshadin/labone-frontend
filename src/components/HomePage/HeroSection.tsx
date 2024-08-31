@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import heroBackground from "../../assets/images/Bannar-backg.png";
 import heroBanner from "../../assets/images/Hero-bannar.png";
 import heroImage from "../../assets/images/labone-bg.png";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import LabBtn from "@/utils/LabBtn";
 import { Image } from "@nextui-org/react";
 import { useEffect, useState } from "react";
@@ -31,16 +31,19 @@ const HeroSection = () => {
     getBannerData();
   }, []);
 
-  // console.log("banner--=> ", banners);
-
   return (
     <div className="">
       <Swiper
         pagination={{
           clickable: true,
         }}
+        autoplay={{
+          delay: 5000,
+          // disableOnInteraction: false,
+          //   pauseOnMouseEnter: true,
+        }}
         loop={true}
-        modules={[Pagination]}
+        modules={[Autoplay, Pagination]}
         className="hero-banner-slider hero-pagination"
       >
         <SwiperSlide>

@@ -1,6 +1,5 @@
 import React from "react";
 import Breadcamp from "@/utils/Breadcamp";
-import { Image } from "@nextui-org/react";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 
@@ -35,27 +34,30 @@ const services = {
   ],
 };
 const spotlightData = {
-  image: "https://labonehospital.com/img/bg/illlustration.jpg",
+  image:
+    "https://res.cloudinary.com/dz4ckryd6/image/upload/v1725081332/qqbj3dzdof0nivqa0kcn.jpg",
   subHeading: "Doctors",
-  heading: "We Are Specialize in Medical Diagnositics",
+  heading: "Expert Care from Dedicated Professionals",
   description:
-    "At our Lab One Hospital, we are dedicated to providing exceptional care and comfort to every patient. Our highly skilled and compassionate team of healthcare professionals is committed to delivering personalized, patient-centered experiences. With cutting-edge technology and a patient-first approach, we strive to be the premier choice for all of your healthcare needs.",
+    "At Lab One Hospital, our team of highly qualified doctors is at the heart of our commitment to patient care. With diverse specialties and a shared dedication to excellence, our doctors provide personalized treatment plans, ensuring the best possible outcomes for every patient.",
   featureList: [
-    "We are dedicated to the commitment of patient.",
-    "Our Doctors are very much professional on their job.",
+    "Board-certified specialists with extensive experience.",
+    "Personalized care tailored to each patient’s needs.",
     "We have 24/7 emergency service.",
   ],
 };
 const spotlightData2 = {
-  image: "https://labonehospital.com/admin/machineimage/machine1.jpg",
+  image:
+    "https://res.cloudinary.com/dz4ckryd6/image/upload/v1725012025/ijo3jg4mzgd7qx5uswfw.jpg",
   subHeading: "Machines",
-  heading: "We Are Specialize in Medical Diagnositics",
+  heading: "Advanced Medical Equipment for Diagnoses",
   description:
-    "At our Lab One Hospital, we are dedicated to providing exceptional care and comfort to every patient. Our highly skilled and compassionate team of healthcare professionals is committed to delivering personalized, patient-centered experiences. With cutting-edge technology and a patient-first approach, we strive to be the premier choice for all of your healthcare needs.",
+    "At Lab One Hospital, we take pride in our state-of-the-art diagnostic machines, ensuring accuracy and reliability in every diagnosis. Our advanced technology empowers our medical team to deliver precise and timely results, enhancing patient care and outcomes.",
   featureList: [
-    "We are dedicated to the commitment of patient.",
-    "Our Doctors are very much professional on their job.",
-    "We have 24/7 emergency service.",
+    "High-resolution imaging for detailed analysis.",
+    "Fully automated systems for seamless and efficient diagnostics.",
+    "Real-time data integration for immediate clinical insights.",
+    "Cutting-edge laboratory equipment for swift and accurate test results.",
   ],
 };
 

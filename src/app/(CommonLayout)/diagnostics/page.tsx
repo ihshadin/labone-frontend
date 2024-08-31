@@ -1,13 +1,8 @@
-import { baseApi } from "@/api/api";
 import { TMachine } from "@/types/machine.type";
-import { Image } from "@nextui-org/react";
-import { RiArrowDropRightLine } from "react-icons/ri";
 import LabBtn from "@/utils/LabBtn";
 import SectionHeader from "@/utils/SectionHeader";
-import serviceLine from "@/assets/images/sr-line.png";
 import MachineCard from "@/components/Machines/MachineCard";
 import DoctorsSection from "@/components/Diagnostics/DoctorsSection";
-import bgImg from "@/assets/images/an-bg.png";
 import FAQSection from "@/components/Diagnostics/FAQSection";
 import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 import SpecialService from "@/components/SpecialService/SpecialService";
@@ -15,10 +10,12 @@ import AchivementSection from "@/components/AchivementSection/AchivementSection"
 import Newsletter from "@/components/Newsletter/Newsletter";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
 import { getMachines } from "@/api/machines.api";
-import { getDoctors } from "@/api/doctors.api";
+import { getDgDoctors } from "@/api/dg-doctors.api";
+import { getDgMachines } from "@/api/dg-machines.api";
 
 const spotlightData = {
-  image: "https://labonehospital.com/img/bg/illlustration.jpg",
+  image:
+    "https://res.cloudinary.com/dz4ckryd6/image/upload/v1725081332/qqbj3dzdof0nivqa0kcn.jpg",
   subHeading: "About Labone Diagnositc",
   heading: "We Are Specialize in Medical Diagnositics",
   description:
@@ -32,17 +29,9 @@ const spotlightData = {
   btnLink: "/about-us",
 };
 
-const getMachineData = async () => {
-  const res = await fetch(`${baseApi}/machine?limit=3`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-};
-
 const DiagnosticsPage = async () => {
-  const machines = await getMachines(3);
-  const doctors = await getDoctors(10);
+  const machines = await getDgMachines();
+  const doctors = await getDgDoctors();
 
   return (
     <>
