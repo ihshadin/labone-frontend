@@ -1,83 +1,110 @@
 "use client";
-import LabBtn from "@/utils/LabBtn";
-import {
-  DatePicker,
-  Input,
-  Select,
-  SelectItem,
-  Textarea,
-} from "@nextui-org/react";
-import { getLocalTimeZone, today, now } from "@internationalized/date";
-import { useState } from "react";
+import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { useEffect, useState } from "react";
 import LabDatePicker from "@/utils/LabDatePicker";
-import { useDateFormatter } from "@react-aria/i18n";
+import { useForm } from "react-hook-form";
+import { baseApi } from "@/api/api";
+import { TDoctor } from "@/types/doctors.type";
+import { getDoctors } from "@/api/doctors.api";
+import { TAppointment } from "@/types/appointment.type";
+import { formatSingleTimePeriod } from "@/utils/TimeRangeFormate";
+import toast from "react-hot-toast";
+import { FaAngleRight } from "react-icons/fa6";
 
-const AppointmentForm = ({ onClose }) => {
-  let defaultDate = today(getLocalTimeZone());
-  const [date, setDate] = useState(defaultDate);
-  const [selectedSpecialization, setSelectedSpecialization] = useState("");
+type TAppointmentForm = {
+  onClose?: any;
+  selectDoctor?: string;
+};
 
-  //   let formatter = useDateFormatter({ dateStyle: "short" });
-  //   const formattedDate = formatter.format(date.toDate(getLocalTimeZone()));
-  //   console.log("formattedDate---=>", formattedDate);
+const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    clearErrors,
+    formState: { errors },
+  } = useForm<TAppointment>();
 
-  const genderList = [
-    { key: "male", label: "Male" },
-    { key: "female", label: "Female" },
-    { key: "others", label: "Others" },
-  ];
+  const [date, setDate] = useState(today(getLocalTimeZone()));
+  const [doctors, setDoctors] = useState<TDoctor[]>([]);
+  const [selDocInfo, setSelDocInfo] = useState<TDoctor | null>(null);
+  const [selectDoc, setSelectDoc] = useState(selectDoctor || "");
 
-  const departmentList = [
-    { key: "csc", label: "Csc" },
-    { key: "eee", label: "Eee" },
-    { key: "extra", label: "Extra" },
-  ];
+  const onSubmit = async (data: TAppointment) => {
+    data.appointmentDate = date.toString();
+    data.doctorID = selectDoc;
 
-  const doctorList = [
-    {
-      key: "Dr. Moshiur Rahman",
-      label: "Dr. Moshiur Rahman",
-      specialization:
-        "স্ত্রী রোগ, প্রসূতি বিদ্যা ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-    {
-      key: "Dr. Imam Hossain",
-      label: "Dr. Imam Hossain",
-      specialization:
-        "রোগ, প্রসূতি বিদ্যা ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-    {
-      key: "Dr. Mehedi Hasan",
-      label: "Dr. Mehedi Hasan",
-      specialization: "প্রসূতি বিদ্যা ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-    {
-      key: "Dr. Faruq Khan",
-      label: "Dr. Faruq Khan",
-      specialization: "বিদ্যা ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-    {
-      key: "Dr. Jahid Hasan",
-      label: "Dr. Jahid Hasan",
-      specialization: "ও গাইনি ক্যান্সার বিশেষজ্ঞ ও সার্জন।",
-    },
-  ];
+    try {
+      const response = await fetch(`${baseApi}/appointment`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-  const handleDoctorChange = (doctorId) => {
-    const selectedDoctor = doctorList.find((doctor) => doctor.key === doctorId);
-    setSelectedSpecialization(
-      selectedDoctor ? selectedDoctor.specialization : ""
-    );
+      if (response.ok) {
+        reset();
+        if (onClose) onClose();
+        toast.success("Appointment Added Successful!");
+      } else {
+        // Handle the error here
+      }
+    } catch (error) {
+      toast.error("An error occurred while creating appointment");
+    }
   };
+
+  const handleDoctorChange = (id: string) => {
+    const selectedDoctor = doctors.find(({ _id }) => _id === id) || null;
+    setSelDocInfo(selectedDoctor);
+    setSelectDoc(id);
+    setValue("doctorID", id);
+
+    // Clear the error when a doctor is selected
+    if (id) {
+      clearErrors("doctorID");
+    }
+  };
+
+  const getDoctorsData = async () => {
+    const data = await getDoctors(0);
+    setDoctors(data);
+  };
+
+  useEffect(() => {
+    getDoctorsData();
+  }, []);
+
+  useEffect(() => {
+    if (selectDoctor) {
+      const selectedDoctor =
+        doctors.find(({ _id }) => _id === selectDoctor) || null;
+      setSelDocInfo(selectedDoctor);
+      setSelectDoc(selectDoctor);
+    }
+  }, [selectDoctor, doctors]);
 
   return (
     <>
-      <form className="flex flex-col gap-4">
-        <div className="flex items-center justify-between gap-3">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        <div className="flex flex-col justify-between">
           <Input
             type="text"
-            label="Patient Name"
-            required
+            label={
+              errors.patientName ? (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.patientName.message}
+                </p>
+              ) : (
+                "Patient Name"
+              )
+            }
+            {...register("patientName", {
+              required: "Patient name is required",
+            })}
             placeholder="Write here..."
             labelPlacement="outside"
             classNames={{
@@ -95,45 +122,70 @@ const AppointmentForm = ({ onClose }) => {
           />
         </div>
 
-        <div className="flex items-center justify-between gap-3">
-          <Input
-            type="number"
-            label="Patient Age"
-            placeholder="Write here..."
-            labelPlacement="outside"
-            classNames={{
-              base: "w-[35%]",
-              label:
-                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-              inputWrapper: [
-                "border",
-                "bg-white",
-                "hover:border-primary/50",
-                "group-data-[hover=true]:bg-white",
-                "group-data-[focus=true]:bg-white",
-                "group-data-[focus=true]:border-primary/50",
-              ],
-            }}
-          />
-          <Input
-            type="number"
-            label="Contact Number"
-            placeholder="Write here..."
-            labelPlacement="outside"
-            classNames={{
-              base: "w-[65%]",
-              label:
-                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-              inputWrapper: [
-                "border",
-                "bg-white",
-                "hover:border-primary/50",
-                "group-data-[hover=true]:bg-white",
-                "group-data-[focus=true]:bg-white",
-                "group-data-[focus=true]:border-primary/50",
-              ],
-            }}
-          />
+        <div className="flex justify-between gap-3">
+          <div className="w-[35%]">
+            <Input
+              type="number"
+              label={
+                errors.patientAge ? (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.patientAge.message}
+                  </p>
+                ) : (
+                  "Patient Age"
+                )
+              }
+              {...register("patientAge", {
+                required: "Patient age is required",
+              })}
+              placeholder="Write here..."
+              labelPlacement="outside"
+              classNames={{
+                label:
+                  "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+                inputWrapper: [
+                  "border",
+                  "bg-white",
+                  "hover:border-primary/50",
+                  "group-data-[hover=true]:bg-white",
+                  "group-data-[focus=true]:bg-white",
+                  "group-data-[focus=true]:border-primary/50",
+                ],
+              }}
+            />
+          </div>
+
+          <div className="w-[65%]">
+            <Input
+              type="number"
+              label={
+                errors.mobileNumber ? (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.mobileNumber.message}
+                  </p>
+                ) : (
+                  "Contact Number"
+                )
+              }
+              {...register("mobileNumber", {
+                required: "Contact number is required",
+              })}
+              placeholder="Write here..."
+              labelPlacement="outside"
+              classNames={{
+                label:
+                  "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+                inputWrapper: [
+                  "border",
+                  "bg-white",
+                  "hover:border-primary/50",
+                  "group-data-[hover=true]:bg-white",
+                  "group-data-[focus=true]:bg-white",
+                  "group-data-[focus=true]:border-primary/50",
+                ],
+              }}
+            />
+          </div>
         </div>
 
         <div className="flex items-center justify-between gap-3">
@@ -142,40 +194,87 @@ const AppointmentForm = ({ onClose }) => {
             date={date}
             setDate={setDate}
           />
-          <Select
-            label="Select Doctor"
-            placeholder="Select a Doctor"
-            //   defaultSelectedKeys={["Dr. Imam Hossain"]}
-            labelPlacement="outside"
-            classNames={{
-              label:
-                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-              trigger:
-                "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
-            }}
-            onChange={(e) => handleDoctorChange(e.target.value)}
-          >
-            {doctorList.map((doctor) => (
-              <SelectItem key={doctor.key}>{doctor.label}</SelectItem>
-            ))}
-          </Select>
+
+          <div className="w-full">
+            <Select
+              label={
+                errors.doctorID ? (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.doctorID.message}
+                  </p>
+                ) : (
+                  "Select Doctor"
+                )
+              }
+              placeholder="Select a Doctor"
+              labelPlacement="outside"
+              classNames={{
+                label:
+                  "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+                trigger:
+                  "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
+              }}
+              value={selectDoc}
+              defaultSelectedKeys={[selectDoctor || ""]}
+              {...register("doctorID", {
+                required: "Doctor is required",
+              })}
+              onChange={(e) => handleDoctorChange(e.target.value)}
+            >
+              {doctors?.map((doctor: TDoctor) => (
+                <SelectItem key={doctor._id} value={doctor._id}>
+                  {doctor.firstName + " " + doctor.lastName}
+                </SelectItem>
+              ))}
+            </Select>
+          </div>
         </div>
 
-        {selectedSpecialization && (
+        {selDocInfo && (
           <div>
-            <p>
-              Saturday (12:05 AM - 11:55 PM) & Saturday (12:05 AM - 11:55 PM)
-            </p>
+            <ul>
+              {selDocInfo?.schedules?.length > 0
+                ? selDocInfo?.schedules?.map((schedule) => (
+                    <li key={schedule?._id}>
+                      <div className="flex gap-3 md:gap-2">
+                        <p className="font-bold capitalize ">
+                          {schedule?.scheduleDay}
+                        </p>
+                        <p className="font-tiroBangla">
+                          <span className="font-bold"></span>
+                          {"( "}
+                          {formatSingleTimePeriod(schedule?.startTime)}
+                        </p>
+                        <p>-</p>
+                        <p className="font-tiroBangla">
+                          <span className="font-bold"></span>{" "}
+                          {formatSingleTimePeriod(schedule?.endTime)}
+                          {" )"}
+                        </p>
+                      </div>
+                    </li>
+                  ))
+                : "No schedule yet"}
+            </ul>
             <p className="text-sm font-medium font-tiroBangla text-primary">
-              {selectedSpecialization}
+              {selDocInfo?.specialization}
             </p>
           </div>
         )}
 
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col justify-between">
           <Textarea
             type="text"
-            label="Add Notes"
+            label={
+              errors.message ? (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.message.message}
+                </p>
+              ) : (
+                "Add Notes"
+              )
+            }
+            {...register("message", { required: "Notes are required" })}
             placeholder="Write in details if possible (Optional)"
             labelPlacement="outside"
             classNames={{
@@ -194,13 +293,14 @@ const AppointmentForm = ({ onClose }) => {
           {onClose && (
             <span
               onClick={onClose}
-              className="px-5 py-1.5 rounded-full bg-gradient-to-r from-secondary to-secondary/50 text-white"
+              className="px-5 py-1.5 rounded-full bg-gradient-to-r from-secondary to-secondary/50 text-white cursor-pointer"
             >
               Close
             </span>
           )}
-          <button className="px-5 py-1.5 rounded-full bg-gradient-to-r from-primary to-[#07CCEC] text-white">
+          <button className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-[#07CCEC] hover:bg-gradient-to-l text-white flex items-center gap-1 duration-300 transition-all group">
             Appointment
+            <FaAngleRight className="group-hover:translate-x-1.5 duration-300" />
           </button>
         </div>
       </form>

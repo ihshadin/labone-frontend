@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa6";
 import { RiMailAddLine, RiPhoneLine } from "react-icons/ri";
 import NavBar from "./NavBar";
+import NoticeMarquee from "../Marquee/NoticeMarquee";
 
 const Header = () => {
   return (
@@ -31,27 +32,30 @@ const Header = () => {
           </div>
           <div className="self-end">
             <div className="flex justify-center lg:justify-start gap-5 *:text-lg *:p-2 *:rounded-full *:bg-white *:text-primary hover:*:text-primary/80">
-              <Link href={"https://facebook.com"} target="_blank">
+              <Link
+                href={"https://www.facebook.com/labonehospital"}
+                target="_blank"
+              >
                 <FaSquareFacebook />
               </Link>
 
-              <Link href={"https://facebook.com"} target="_blank">
+              <Link href={"https://www.instagram.com/"} target="_blank">
                 <FaInstagram />
               </Link>
 
-              <Link href={"https://facebook.com"} target="_blank">
+              <Link href={"https://www.linkedin.com/"} target="_blank">
                 <FaLinkedin />
               </Link>
 
-              <Link href={"https://facebook.com"} target="_blank">
+              <Link href={"https://x.com/"} target="_blank">
                 <FaXTwitter />
               </Link>
             </div>
           </div>
         </div>
       </div>
-      {/* NavBar */}
       <NavBar />
+      <NoticeMarquee />
     </header>
   );
 };

@@ -51,20 +51,12 @@ const LabDatePicker = ({ date, setDate, label }: DatePickerParams) => {
         onChange={setDate}
         label={label}
         labelPlacement="outside"
-        // classNames={{
-        //   base
-        // }}
-        dateInputClassNames={{
-          label:
-            "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-          inputWrapper:
-            "border bg-white hover:border-primary/50 hover:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
+        className="max-w-[500px] w-full"
+        size="md"
+        classNames={{
+          calendarContent: "w-[260px]",
         }}
       />
-      {/* <p className="text-default-500 text-sm">
-        Selected date:{" "}
-        {value ? formatter.format(value.toDate(getLocalTimeZone())) : "--"}
-      </p> */}
     </div>
   );
 };

@@ -1,4 +1,4 @@
 export type TButton = {
-  link: string;
+  link?: string;
   text: string;
 };

@@ -15,12 +15,12 @@ const layout = ({
       <Header />
       <div className="min-h-[calc(100vh-456px)]">
         <div className="labone-body-gradient"></div>
-        <div className="labone-body-gradient-lines">
+        {/* <div className="labone-body-gradient-lines">
           <div className="labone-body-gradient-line"></div>
           <div className="labone-body-gradient-line"></div>
           <div className="labone-body-gradient-line"></div>
           <div className="labone-body-gradient-line"></div>
-        </div>
+        </div> */}
         {children}
       </div>
       <Footer />

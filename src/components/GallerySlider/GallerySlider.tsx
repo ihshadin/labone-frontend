@@ -1,13 +1,13 @@
 "use client";
 import { Image } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 // import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const GallerySlider = ({ photos }) => {
+const GallerySlider = ({ photos }: { photos: string[] }) => {
   return (
     <>
       <Swiper
@@ -40,7 +40,7 @@ const GallerySlider = ({ photos }) => {
         modules={[Autoplay, Navigation]}
         className="gallery-slider"
       >
-        {photos.map((photo) => (
+        {photos?.map((photo: string) => (
           <SwiperSlide key={photo}>
             <Image
               removeWrapper

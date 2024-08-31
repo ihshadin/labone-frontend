@@ -1,26 +1,29 @@
 "use client";
 import { Accordion, AccordionItem, Image } from "@nextui-org/react";
-import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import faqImg from "@/assets/images/touch-illustration.png";
 
 const FAQSection = () => {
   return (
     <>
       <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-5 md:gap-14">
+        <div className="grid md:grid-cols-2 items-center gap-8 md:gap-14">
           <div>
             <Image
               removeWrapper
               className="w-full object-cover"
-              src={"https://labonehospital.com/img/bg/touch-illustration.png"}
-              alt="Services image"
+              src={faqImg.src}
+              alt="FAQ Image"
             />
           </div>
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-3 md:mb-7">
+            <h6 className="text-center font-medium uppercase text-xs md:text-base text-primary tracking-[2px] py-1.5 md:py-2.5 px-3 md:px-5 inline-block transition-all cursor-context-menu relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
+              FAQ
+            </h6>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-3 md:mb-6">
               Frequently Asked Questions
             </h2>
             <p>We Answered some common questions that you might asked.</p>
-            <div className="mt-7 md:mt-12">
+            <div className="mt-7 md:mt-10">
               <Accordion
                 defaultExpandedKeys={["theme"]}
                 showDivider={false}

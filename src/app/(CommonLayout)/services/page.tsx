@@ -1,7 +1,7 @@
 import React from "react";
 import Breadcamp from "@/utils/Breadcamp";
-import { Image } from "@nextui-org/react";
 import { RiArrowDropRightLine } from "react-icons/ri";
+import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 
 const services = {
   serviceTitle: "আমাদের সার্ভিসসমূহ",
@@ -33,6 +33,33 @@ const services = {
     "সার্বক্ষনিক এম্বুলেন্স ব্যবস্থা",
   ],
 };
+const spotlightData = {
+  image:
+    "https://res.cloudinary.com/dz4ckryd6/image/upload/v1725081332/qqbj3dzdof0nivqa0kcn.jpg",
+  subHeading: "Doctors",
+  heading: "Expert Care from Dedicated Professionals",
+  description:
+    "At Lab One Hospital, our team of highly qualified doctors is at the heart of our commitment to patient care. With diverse specialties and a shared dedication to excellence, our doctors provide personalized treatment plans, ensuring the best possible outcomes for every patient.",
+  featureList: [
+    "Board-certified specialists with extensive experience.",
+    "Personalized care tailored to each patient’s needs.",
+    "We have 24/7 emergency service.",
+  ],
+};
+const spotlightData2 = {
+  image:
+    "https://res.cloudinary.com/dz4ckryd6/image/upload/v1725012025/ijo3jg4mzgd7qx5uswfw.jpg",
+  subHeading: "Machines",
+  heading: "Advanced Medical Equipment for Diagnoses",
+  description:
+    "At Lab One Hospital, we take pride in our state-of-the-art diagnostic machines, ensuring accuracy and reliability in every diagnosis. Our advanced technology empowers our medical team to deliver precise and timely results, enhancing patient care and outcomes.",
+  featureList: [
+    "High-resolution imaging for detailed analysis.",
+    "Fully automated systems for seamless and efficient diagnostics.",
+    "Real-time data integration for immediate clinical insights.",
+    "Cutting-edge laboratory equipment for swift and accurate test results.",
+  ],
+};
 
 const ServicesPage = () => {
   return (
@@ -58,138 +85,8 @@ const ServicesPage = () => {
           </ul>
         </div>
       </div>
-      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-10">
-        <div className="grid md:grid-cols-2 items-center gap-8 md:gap-14">
-          <div>
-            <Image
-              removeWrapper
-              className="w-full object-cover"
-              src={"https://labonehospital.com/img/bg/illlustration.jpg"}
-              alt="Services image"
-            />
-          </div>
-          <div>
-            <h6 className="text-center font-medium uppercase text-xs md:text-base text-primary tracking-[2px] py-1.5 md:py-2.5 px-3 md:px-5 inline-block transition-all cursor-context-menu relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
-              Doctors
-            </h6>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-1.5 md:mt-3 mb-3 lg:mb-7">
-              We Are Specialize in Medical Diagnositics
-            </h2>
-            <p>
-              At our Lab One Hospital, we are dedicated to providing exceptional
-              care and comfort to every patient. Our highly skilled and
-              compassionate team of healthcare professionals is committed to
-              delivering personalized, patient-centered experiences. With
-              cutting-edge technology and a patient-first approach, we strive to
-              be the premier choice for all of your healthcare needs.
-            </p>
-            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-start [&_svg]:mt-1">
-              <li>
-                <RiArrowDropRightLine />
-                <span>We are dedicated to the commitment of patient.</span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>
-                  Our Doctors are very much professional on their job..
-                </span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>We have 24/7 emergency service.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-8 md:gap-14">
-          <div className="order-2 md:order-1">
-            <h6 className="text-center font-medium uppercase text-xs md:text-base text-primary tracking-[2px] py-1.5 md:py-2.5 px-3 md:px-5 inline-block transition-all cursor-context-menu relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
-              Machines
-            </h6>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-1.5 md:mt-3 mb-3 lg:mb-7">
-              We Are Specialize in Medical Diagnositics
-            </h2>
-            <p>
-              At our Lab One Hospital, we are dedicated to providing exceptional
-              care and comfort to every patient. Our highly skilled and
-              compassionate team of healthcare professionals is committed to
-              delivering personalized, patient-centered experiences. With
-              cutting-edge technology and a patient-first approach, we strive to
-              be the premier choice for all of your healthcare needs.
-            </p>
-            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-start [&_svg]:mt-1">
-              <li>
-                <RiArrowDropRightLine />
-                <span>We are dedicated to the commitment of patient.</span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>
-                  Our Doctors are very much professional on their job..
-                </span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>We have 24/7 emergency service.</span>
-              </li>
-            </ul>
-          </div>
-          <div className="order-1 md:order-2">
-            <Image
-              removeWrapper
-              className="w-full object-cover"
-              src={"https://labonehospital.com/admin/machineimage/machine1.jpg"}
-              alt="Services image"
-            />
-          </div>
-        </div>
-      </div>
-      {/* <div className="mx-auto max-w-[1250px] px-2 py-14 md:py-20 lg:py-28">
-        <div className="grid md:grid-cols-2 items-center gap-14">
-          <div>
-            <Image
-              removeWrapper
-              className="w-full object-cover"
-              src={"https://labonehospital.com/img/bg/illlustration.jpg"}
-              alt="Services image"
-            />
-          </div>
-          <div>
-            <h6 className="font-medium uppercase text-primary tracking-[2px] py-2.5 px-5 inline-block transition-all cursor-w-resize relative before:block before:w-[40%] before:absolute before:inset-0 before:bg-primary/15 before:-z-10 hover:before:w-full before:duration-300">
-              About us
-            </h6>
-            <h2 className="text-5xl font-bold mt-3 mb-7">
-              We Are Specialize in Medical Diagnositics
-            </h2>
-            <p>
-              At our Lab One Hospital, we are dedicated to providing exceptional
-              care and comfort to every patient. Our highly skilled and
-              compassionate team of healthcare professionals is committed to
-              delivering personalized, patient-centered experiences. With
-              cutting-edge technology and a patient-first approach, we strive to
-              be the premier choice for all of your healthcare needs.
-            </p>
-            <ul className="mt-2 md:mt-5 space-y-1 hover:*:text-primary *:transition-all hover:*:translate-x-1 *:flex *:gap-1 *:items-center">
-              <li>
-                <RiArrowDropRightLine />
-                <span>We are dedicated to the commitment of patient.</span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>
-                  Our Doctors are very much professional on their job..
-                </span>
-              </li>
-              <li>
-                <RiArrowDropRightLine />
-                <span>We have 24/7 emergency service.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> */}
+      <SpotlightSection data={spotlightData} />
+      <SpotlightSection data={spotlightData2} layout="reverse" />
     </>
   );
 };

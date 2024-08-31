@@ -1,0 +1,19 @@
+.test1 {
+  margin: 0 auto;
+  -moz-columns: 3;
+  columns: 3;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+}
+@media (max-width: 1024px) {
+  .test1 {
+    -moz-columns: 2;
+    columns: 2;
+  }
+}
+@media (max-width: 767px) {
+  .test1 {
+    -moz-columns: 1;
+    columns: 1;
+  }
+}

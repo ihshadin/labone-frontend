@@ -27,9 +27,6 @@ const Breadcamp = ({
             <span>
               <FaAngleRight />
             </span>
-            {/* <span className="text-primary/80 hover:text-primary">
-              {middlePageText}
-            </span> */}
             <Link className="font-medium " href={middlePageLink || "#"}>
               {middlePageText}
             </Link>

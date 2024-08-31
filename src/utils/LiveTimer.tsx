@@ -2,22 +2,30 @@
 import React, { useEffect, useState } from "react";
 import "../styles/live-timer.css";
 
-const LiveTimer: React.FC = () => {
-  const [time, setTime] = useState<Date>(new Date());
+const LiveTimer = () => {
+  const [time, setTime] = useState<Date | null>(null);
   const [flip, setFlip] = useState({
     hours: false,
     minutes: false,
     seconds: false,
   });
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    setTime(new Date());
+
     const intervalId = setInterval(() => {
       const newTime = new Date();
-      setTime(newTime);
-      setFlip({
-        hours: newTime.getHours() !== time.getHours(),
-        minutes: newTime.getMinutes() !== time.getMinutes(),
-        seconds: newTime.getSeconds() !== time.getSeconds(),
+      setTime((prevTime) => {
+        if (prevTime) {
+          setFlip({
+            hours: newTime.getHours() !== prevTime.getHours(),
+            minutes: newTime.getMinutes() !== prevTime.getMinutes(),
+            seconds: newTime.getSeconds() !== prevTime.getSeconds(),
+          });
+        }
+        return newTime;
       });
 
       setTimeout(
@@ -25,8 +33,13 @@ const LiveTimer: React.FC = () => {
         1000
       );
     }, 1000);
+
     return () => clearInterval(intervalId);
-  }, [time]);
+  }, []);
+
+  if (!isMounted || !time) {
+    return null; // or a loading spinner
+  }
 
   const formatTimeParts = (date: Date) => {
     const days = [
@@ -57,7 +70,7 @@ const LiveTimer: React.FC = () => {
   const { dayName, hours, minutes, seconds, ampm } = formatTimeParts(time);
 
   return (
-    <div className="flex items-center gap-2 text-base font-medium *:py-1 *:px-2 *:rounded-lg *:border *:border-primary/20 [&_>_*:hover]:border-primary/40 [&_>_*:hover]:bg-primary/5 *:cursor-pointer">
+    <div className="flex items-center gap-2 text-xl md:text-3xl font-medium *:py-1 *:px-2 *:rounded-lg *:border *:border-primary/20 [&_>_*:hover]:border-primary/40 [&_>_*:hover]:bg-primary/5 *:cursor-pointer">
       <span>{dayName}</span>
       <span className="bg-primary/10">
         <span className={`inline-block ${flip.hours ? "flip" : ""}`}>
