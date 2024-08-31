@@ -9,47 +9,9 @@ import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
 import GoogleMaps from "@/components/GoogleMap/GoogleMaps";
 import { getAboutsData } from "@/api/about.api";
 
-const labPhotos = [
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/ikhhdwweb0gpcjur4gay.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/fhnlwtdpqylfap1qysjw.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/q4mwpeacnlia9mntigi0.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/mmf4ne1q4mrqgtsbrfnw.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/rlau2jdweuu7xls2wimj.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723805378/Labone-about/exrwmbibgk1jv3rrvjpz.jpg",
-];
-
-const nicuPhotos = [
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/djlnugyrujoqaql1ydd3.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/irqmqrp0rp0czlhuwedt.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/dmii1zfp7w70df53lqpy.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806192/nicu/ituatglb06vw310mqb0t.jpg",
-];
-
-const otPhotos = [
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/fgdai1wdrcbpovgvpwcg.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/pai2mml2zidszdtnifxn.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/iaivi9hbu54rgzngjwiv.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/dfe8pyhxvltktl32jxrc.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/zhcxxxzsvyn2ectmbgii.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/i2tpmdkztmxutms8qbhx.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/ris4yyobboc8mcvvvvwu.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/nunykhki2jrhgnvkimgv.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/pyx7zbuqjkqk2faxvpho.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/nztgpugccz9a4ivsxm1o.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/sqkohbvyhj28bjbbulap.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1723806686/theater/t2opmxczciafft3whasr.jpg",
-];
-
-const emPhoto = [
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335575/Labone-about/t3szcrldkgejbovlxtyi.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335673/xcksptacpzihzwn6v0yi.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335672/qgi79pa8c11hdebtkfo4.avif",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335672/g8ybk8nikk4fwqchlufi.jpg",
-  "https://res.cloudinary.com/dz4ckryd6/image/upload/v1724335671/rawvkfumktqjgll9lqpp.jpg",
-];
-
 const spotlightData = {
-  image: "https://labonehospital.com/img/bg/illlustration.jpg",
+  image:
+    "https://res.cloudinary.com/dz4ckryd6/image/upload/v1725081332/qqbj3dzdof0nivqa0kcn.jpg",
   subHeading: "About Labone Diagnositc",
   heading: "We Are Specialize in Medical Diagnositics",
   description:

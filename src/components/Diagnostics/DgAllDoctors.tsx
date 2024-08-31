@@ -1,20 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
-import DoctorCard from "@/components/Doctors/DoctorCard";
+import SearchHandler from "@/utils/SearchHandler";
+import React, { useEffect, useState } from "react";
+import DepartmentFilter from "../Doctors/DepartmentFilter";
+import LabonePagination from "@/utils/Pagination/LabonePagination";
+import DoctorCard from "../Doctors/DoctorCard";
 import { TDoctor } from "@/types/doctors.type";
 import { TMeta, TQueryParam } from "@/types/global.type";
-import SearchHandler from "@/utils/SearchHandler";
-import LabonePagination from "@/utils/Pagination/LabonePagination";
-import DepartmentFilter from "./DepartmentFilter";
-import { getNewDoctors } from "@/api/doctors.api";
+import { getDgDoctors } from "@/api/dg-doctors.api";
 
-const DoctorContent = ({
-  departmentId,
-}: {
-  departmentId: string | null;
-  diagnostic?: boolean;
-}) => {
-  const [params, setParams] = useState<TQueryParam[]>([]);
+const DgAllDoctors = () => {
+  const [params, setParams] = useState<TQueryParam[]>([
+    { name: "limit", value: 9 },
+    { name: "page", value: 1 },
+  ]);
   const [meta, setMeta] = useState<TMeta>({} as TMeta);
   const [doctors, setDoctors] = useState([]);
 
@@ -26,26 +24,13 @@ const DoctorContent = ({
   };
 
   const fetchDoctors = async (params: TQueryParam[]) => {
-    const data = await getNewDoctors(params);
+    const data = await getDgDoctors(params);
     setDoctors(data?.result);
     setMeta(data?.meta);
   };
 
   useEffect(() => {
-    if (departmentId) {
-      setParams([{ name: "departmentID", value: departmentId }]);
-    } else {
-      setParams([
-        { name: "limit", value: 9 },
-        { name: "page", value: 1 },
-      ]);
-    }
-  }, [departmentId]);
-
-  useEffect(() => {
-    if (params.length > 0) {
-      fetchDoctors(params);
-    }
+    fetchDoctors(params);
   }, [params]);
 
   return (
@@ -61,7 +46,11 @@ const DoctorContent = ({
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
         {doctors?.map((doctor: TDoctor) => (
-          <DoctorCard key={doctor._id} doctor={doctor} />
+          <DoctorCard
+            link="diagnostics/doctors"
+            key={doctor._id}
+            doctor={doctor}
+          />
         ))}
       </div>
       <LabonePagination
@@ -72,4 +61,4 @@ const DoctorContent = ({
   );
 };
 
-export default DoctorContent;
+export default DgAllDoctors;

@@ -15,7 +15,6 @@ import logo from "@/assets/images/labOneLogoThik.png";
 import { HiMiniXMark } from "react-icons/hi2";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
-// import DoctorsSearch from "@/utils/DoctorsSearch";
 import AppointmentModalSection from "@/utils/AppointmentModal/AppointmentModalSection";
 
 const NavBar = () => {
@@ -57,16 +56,6 @@ const NavBar = () => {
       text: "Gallery",
     },
   ];
-
-  // Submenu items for "More"
-  // const moreMenuItems = [
-  //   { link: "/reception", text: "Reception" },
-  //   { link: "/radiology-imaging", text: "Radiology & Imaging" },
-  //   { link: "/emergency-unit", text: "Emergency Unit" },
-  //   { link: "/pharmacy", text: "Pharmacy" },
-  //   { link: "/it-dept", text: "IT dept." },
-  // ];
-
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 150);
@@ -82,7 +71,7 @@ const NavBar = () => {
     <>
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
-        className={`[&_header]:max-w-[1250px] [&_header]:px-2 [&_header]:py-2 [&_header]:h-auto ${
+        className={`[&_header]:max-w-[1250px] [&_header]:px-2 [&_header]:py-2 [&_header]:h-auto  ${
           isSticky &&
           "fixed left-0 top-0 w-full animate-slideDown data-[active=true]:text-primary shadow-[0px_5px_8px] shadow-primary/20"
         }`}
@@ -117,22 +106,6 @@ const NavBar = () => {
               </Link>
             </NavbarMenuItem>
           ))}
-
-          {/* More dropdown menu */}
-          {/* <NavbarMenuItem className="relative group font-medium text-accent">
-            <span className="cursor-pointer">More+</span>
-            <div className="absolute left-0 mt-2 w-40 bg-white border border-gray-200 shadow-md rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500 ease-in-out ">
-              {moreMenuItems.map((item, index) => (
-                <Link
-                  key={`${item.link}-${index}`}
-                  href={item.link}
-                  className="block px-4 py-2 text-sm hover:bg-gray-100"
-                >
-                  {item.text}
-                </Link>
-              ))}
-            </div>
-          </NavbarMenuItem> */}
         </NavbarContent>
 
         <NavbarContent justify="end" className="!grow-0 w-auto ml-6">
@@ -152,7 +125,7 @@ const NavBar = () => {
             }
           />
         </NavbarContent>
-        <NavbarMenu>
+        <NavbarMenu className="top-[56px]">
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item.link}-${index}`}>
               <Link className="w-full" href={item.link}>

@@ -2,7 +2,6 @@
 import { TDepartment } from "@/types/department.type";
 import { Card, CardBody, Image } from "@nextui-org/react";
 import Link from "next/link";
-// import Link from "next/link";
 
 const DepartmentCard = ({ department }: { department: TDepartment }) => {
   return (
@@ -18,7 +17,7 @@ const DepartmentCard = ({ department }: { department: TDepartment }) => {
       >
         <CardBody className="p-2">
           <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
-            <div className="hidden relative col-span-6 md:col-span-3 shadow-none *:shadow-none rounded-lg">
+            <div className="hidden md:flex relative col-span-6 md:col-span-3 shadow-none *:shadow-none rounded-lg">
               <Image
                 alt="Album cover"
                 className="p-2 object-cover shadow-none !rounded-full"
@@ -34,7 +33,7 @@ const DepartmentCard = ({ department }: { department: TDepartment }) => {
                   <h3 className="text-primary hover:text-primary/90 text-xl md:text-2xl font-bold">
                     {department.name}
                   </h3>
-                  <p className="text-sm md:text-base text-accent line-clamp-3">
+                  <p className="text-[13px] md:text-base text-accent line-clamp-3">
                     {department.details}
                   </p>
                 </div>

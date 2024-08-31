@@ -2,7 +2,7 @@ import { baseApi } from "./api";
 
 export const getBanner = async () => {
   try {
-    const res = await fetch(`${baseApi}/banner`);
+    const res = await fetch(`${baseApi}/banner`, { cache: "no-cache" });
     const data = await res.json();
 
     return data?.data?.result;
@@ -13,9 +13,7 @@ export const getBanner = async () => {
 
 export const getNotice = async () => {
   try {
-    const res = await fetch(`${baseApi}/notice`, {
-      cache: "no-cache",
-    });
+    const res = await fetch(`${baseApi}/notice`, { cache: "no-cache" });
     const data = await res.json();
 
     return data?.data?.result;
