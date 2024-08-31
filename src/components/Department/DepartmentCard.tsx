@@ -2,7 +2,6 @@
 import { TDepartment } from "@/types/department.type";
 import { Card, CardBody, Image } from "@nextui-org/react";
 import Link from "next/link";
-// import Link from "next/link";
 
 const DepartmentCard = ({ department }: { department: TDepartment }) => {
   return (

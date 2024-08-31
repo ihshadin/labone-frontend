@@ -12,7 +12,6 @@ import AchivementSection from "@/components/AchivementSection/AchivementSection"
 import SpecialService from "@/components/SpecialService/SpecialService";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
 import heartbit from "@/assets/images/graph-img.png";
-import thetoscop from "@/assets/images/thetoscop.png";
 import watchbg from "@/assets/images/watchBG.png";
 import SchedulesContainer from "@/components/HomePage/SchedulesContainer";
 import { getMachines } from "@/api/machines.api";
@@ -21,7 +20,8 @@ import LiveTimer from "@/utils/LiveTimer";
 import { Image } from "@nextui-org/react";
 
 const spotlightData = {
-  image: "https://labonehospital.com/img/bg/illlustration.jpg",
+  image:
+    "https://res.cloudinary.com/dz4ckryd6/image/upload/v1725081332/qqbj3dzdof0nivqa0kcn.jpg",
   subHeading: "About Us",
   heading: "We Are Specialize in Medical Diagnostics",
   description:
