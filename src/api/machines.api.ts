@@ -15,11 +15,8 @@ export const getMachines = async (limit?: number) => {
 export const getMachine = async (id: string) => {
   try {
     const res = await fetch(`${baseApi}/machine/${id}`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
     return res.json();
   } catch (error) {
-    throw error;
+    console.error("Error fetching Machine data:", error);
   }
 };

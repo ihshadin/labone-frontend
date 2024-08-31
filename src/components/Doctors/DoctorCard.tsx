@@ -1,9 +1,8 @@
 import { TDoctor } from "@/types/doctors.type";
-import { Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
-import preImage from "@/assets/images/pre-doctor.jpg";
+import { Card, CardFooter, Image } from "@nextui-org/react";
 import Link from "next/link";
 
-const DoctorCard = ({ doctor }: { doctor: TDoctor }) => {
+const DoctorCard = ({ doctor, link }: { doctor: TDoctor; link?: string }) => {
   return (
     <>
       <Card className="w-full max-w-[400px] group">
@@ -22,7 +21,7 @@ const DoctorCard = ({ doctor }: { doctor: TDoctor }) => {
         <CardFooter className="bg-white pb-8 pt-5 group-hover:-translate-y-3 transition-all">
           <div className="w-full">
             <Link
-              href={`/doctors/${doctor?._id}`}
+              href={`/${link ? link : "doctors"}/${doctor?._id}`}
               className="block text-primary hover:text-primary/90 text-base md:text-2xl line-clamp-1 font-bold text-center font-tiroBangla"
             >
               {doctor?.firstName + " " + doctor?.lastName}

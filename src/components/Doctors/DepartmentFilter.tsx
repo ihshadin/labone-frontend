@@ -19,13 +19,13 @@ const DepartmentFilter = ({ setParams }: TSetParams) => {
     getDepartmentData();
   }, []);
 
-  const departmentList = departments.map(({ _id, name }) => ({
+  const departmentList = departments?.map(({ _id, name }) => ({
     key: _id,
     label: name,
   }));
 
   const handleDepartmentChange = (e: any) => {
-    setParams((prevParams) => [
+    setParams(() => [
       { name: "departmentID", value: e.target.value },
       { name: "page", value: 1 },
     ]);

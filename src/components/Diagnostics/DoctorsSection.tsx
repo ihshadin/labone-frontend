@@ -18,7 +18,7 @@ const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
       <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
         <SectionHeader
           subHeading="Our Doctor"
-          heading="Docter’s In The Medical Sciences"
+          heading="Doctor’s In The Medical Sciences"
         />
         <div className="pt-8 lg:pt-14">
           <Swiper
@@ -45,13 +45,13 @@ const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
           >
             {doctors?.map((doctor: TDoctor) => (
               <SwiperSlide key={doctor._id}>
-                <DoctorCard doctor={doctor} />
+                <DoctorCard link="diagnostics/doctors" doctor={doctor} />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
         <div className="w-[225px] mx-auto pt-8 md:pt-12">
-          <LabBtn link="/doctors" text="Sell All Doctors" />
+          <LabBtn link="/diagnostics/doctors" text="Sell All Doctors" />
         </div>
       </div>
     </>

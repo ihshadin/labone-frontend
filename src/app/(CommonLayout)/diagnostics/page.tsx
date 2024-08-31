@@ -9,7 +9,6 @@ import SpecialService from "@/components/SpecialService/SpecialService";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import Newsletter from "@/components/Newsletter/Newsletter";
 import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
-import { getMachines } from "@/api/machines.api";
 import { getDgDoctors } from "@/api/dg-doctors.api";
 import { getDgMachines } from "@/api/dg-machines.api";
 
@@ -30,8 +29,10 @@ const spotlightData = {
 };
 
 const DiagnosticsPage = async () => {
-  const machines = await getDgMachines();
-  const doctors = await getDgDoctors();
+  const machines = await getDgMachines([{ name: "limit", value: 9 }]);
+  const doctors = await getDgDoctors([{ name: "limit", value: 9 }]);
+
+  // console.log("doctors--=?..=>", doctors);
 
   return (
     <>
@@ -49,15 +50,19 @@ const DiagnosticsPage = async () => {
           heading="We use modern machines"
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 pt-6 md:pt-10 pb-8 md:pb-12">
-          {machines?.map((machine: TMachine) => (
-            <MachineCard key={machine._id} machine={machine} />
+          {machines?.result?.map((machine: TMachine) => (
+            <MachineCard
+              linkMachine="diagnostics/machines"
+              key={machine?._id}
+              machine={machine}
+            />
           ))}
         </div>
         <div className="flex flex-col items-center">
-          <LabBtn text="See All Machines" link="/machines" />
+          <LabBtn text="See All Machines" link="/diagnostics/machines" />
         </div>
       </div>
-      <DoctorsSection doctors={doctors} />
+      <DoctorsSection doctors={doctors?.result} />
       <Newsletter />
       <TestimonialsSection />
       <FAQSection />
