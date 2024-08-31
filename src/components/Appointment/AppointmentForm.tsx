@@ -1,29 +1,41 @@
 "use client";
 import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
-import { getLocalTimeZone, today, now } from "@internationalized/date";
-import { Dispatch, useEffect, useState } from "react";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { useEffect, useState } from "react";
 import LabDatePicker from "@/utils/LabDatePicker";
-import { useDateFormatter } from "@react-aria/i18n";
 import { useForm } from "react-hook-form";
-import { baseApi } from "@/utils/baseUrl";
+import { baseApi } from "@/api/api";
 import { TDoctor } from "@/types/doctors.type";
+import { getDoctors } from "@/api/doctors.api";
+import { TAppointment } from "@/types/appointment.type";
+import { formatSingleTimePeriod } from "@/utils/TimeRangeFormate";
+import toast from "react-hot-toast";
+import { FaAngleRight } from "react-icons/fa6";
 
 type TAppointmentForm = {
   onClose?: any;
-  defaultDoctor?: string;
+  selectDoctor?: string;
 };
 
-const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
-  const { register, handleSubmit, reset } = useForm();
-  const [date, setDate] = useState(today(getLocalTimeZone()));
-  const [doctors, setDoctors] = useState([]);
-  const [selDocInfo, setSelDocInfo] = useState({});
-  const [selectDoc, setSelectDoc] = useState("");
+const AppointmentForm = ({ onClose, selectDoctor }: TAppointmentForm) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    clearErrors,
+    formState: { errors },
+  } = useForm<TAppointment>();
 
-  const onSubmit = async (data) => {
+  const [date, setDate] = useState(today(getLocalTimeZone()));
+  const [doctors, setDoctors] = useState<TDoctor[]>([]);
+  const [selDocInfo, setSelDocInfo] = useState<TDoctor | null>(null);
+  const [selectDoc, setSelectDoc] = useState(selectDoctor || "");
+
+  const onSubmit = async (data: TAppointment) => {
     data.appointmentDate = date.toString();
-    data.doctorId = selectDoc;
-    console.log(data);
+    data.doctorID = selectDoc;
+
     try {
       const response = await fetch(`${baseApi}/appointment`, {
         method: "POST",
@@ -34,41 +46,65 @@ const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
       });
 
       if (response.ok) {
-        console.log("Appointment successfully created");
         reset();
         if (onClose) onClose();
+        toast.success("Appointment Added Successful!");
       } else {
-        console.error("Failed to create appointment");
+        // Handle the error here
       }
     } catch (error) {
-      console.error("An error occurred while creating appointment", error);
+      toast.error("An error occurred while creating appointment");
     }
   };
-  console.log(defaultDoctor);
+
   const handleDoctorChange = (id: string) => {
-    const selectedDoctor = doctors.find(({ _id }) => _id === id);
-    setSelDocInfo(selectedDoctor ? selectedDoctor : "");
+    const selectedDoctor = doctors.find(({ _id }) => _id === id) || null;
+    setSelDocInfo(selectedDoctor);
     setSelectDoc(id);
+    setValue("doctorID", id);
+
+    // Clear the error when a doctor is selected
+    if (id) {
+      clearErrors("doctorID");
+    }
   };
 
   const getDoctorsData = async () => {
-    const res = await fetch(`${baseApi}/doctor`);
-    const data = await res.json();
-    setDoctors(data?.data?.result);
+    const data = await getDoctors(0);
+    setDoctors(data);
   };
 
   useEffect(() => {
     getDoctorsData();
   }, []);
 
+  useEffect(() => {
+    if (selectDoctor) {
+      const selectedDoctor =
+        doctors.find(({ _id }) => _id === selectDoctor) || null;
+      setSelDocInfo(selectedDoctor);
+      setSelectDoc(selectDoctor);
+    }
+  }, [selectDoctor, doctors]);
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col justify-between">
           <Input
             type="text"
-            label="Patient Name"
-            {...register("patientName", { required: true })}
+            label={
+              errors.patientName ? (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.patientName.message}
+                </p>
+              ) : (
+                "Patient Name"
+              )
+            }
+            {...register("patientName", {
+              required: "Patient name is required",
+            })}
             placeholder="Write here..."
             labelPlacement="outside"
             classNames={{
@@ -86,47 +122,70 @@ const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
           />
         </div>
 
-        <div className="flex items-center justify-between gap-3">
-          <Input
-            type="number"
-            label="Patient Age"
-            {...register("patientAge", { required: true })}
-            placeholder="Write here..."
-            labelPlacement="outside"
-            classNames={{
-              base: "w-[35%]",
-              label:
-                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-              inputWrapper: [
-                "border",
-                "bg-white",
-                "hover:border-primary/50",
-                "group-data-[hover=true]:bg-white",
-                "group-data-[focus=true]:bg-white",
-                "group-data-[focus=true]:border-primary/50",
-              ],
-            }}
-          />
-          <Input
-            type="number"
-            label="Contact Number"
-            {...register("contactNumber", { required: true })}
-            placeholder="Write here..."
-            labelPlacement="outside"
-            classNames={{
-              base: "w-[65%]",
-              label:
-                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-              inputWrapper: [
-                "border",
-                "bg-white",
-                "hover:border-primary/50",
-                "group-data-[hover=true]:bg-white",
-                "group-data-[focus=true]:bg-white",
-                "group-data-[focus=true]:border-primary/50",
-              ],
-            }}
-          />
+        <div className="flex justify-between gap-3">
+          <div className="w-[35%]">
+            <Input
+              type="number"
+              label={
+                errors.patientAge ? (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.patientAge.message}
+                  </p>
+                ) : (
+                  "Patient Age"
+                )
+              }
+              {...register("patientAge", {
+                required: "Patient age is required",
+              })}
+              placeholder="Write here..."
+              labelPlacement="outside"
+              classNames={{
+                label:
+                  "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+                inputWrapper: [
+                  "border",
+                  "bg-white",
+                  "hover:border-primary/50",
+                  "group-data-[hover=true]:bg-white",
+                  "group-data-[focus=true]:bg-white",
+                  "group-data-[focus=true]:border-primary/50",
+                ],
+              }}
+            />
+          </div>
+
+          <div className="w-[65%]">
+            <Input
+              type="number"
+              label={
+                errors.mobileNumber ? (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.mobileNumber.message}
+                  </p>
+                ) : (
+                  "Contact Number"
+                )
+              }
+              {...register("mobileNumber", {
+                required: "Contact number is required",
+              })}
+              placeholder="Write here..."
+              labelPlacement="outside"
+              classNames={{
+                label:
+                  "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+                inputWrapper: [
+                  "border",
+                  "bg-white",
+                  "hover:border-primary/50",
+                  "group-data-[hover=true]:bg-white",
+                  "group-data-[focus=true]:bg-white",
+                  "group-data-[focus=true]:border-primary/50",
+                ],
+              }}
+            />
+          </div>
         </div>
 
         <div className="flex items-center justify-between gap-3">
@@ -135,49 +194,87 @@ const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
             date={date}
             setDate={setDate}
           />
-          <Select
-            label="Select Doctor"
-            placeholder="Select a Doctor"
-            labelPlacement="outside"
-            classNames={{
-              label:
-                "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
-              trigger:
-                "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
-            }}
-            defaultSelectedKeys={[defaultDoctor]}
-            onChange={(e) => handleDoctorChange(e.target.value)}
-          >
-            {doctors?.map((doctor: TDoctor) => (
-              <SelectItem key={doctor._id} value={doctor._id}>
-                {doctor.firstName + " " + doctor.lastName}
-              </SelectItem>
-            ))}
-          </Select>
+
+          <div className="w-full">
+            <Select
+              label={
+                errors.doctorID ? (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.doctorID.message}
+                  </p>
+                ) : (
+                  "Select Doctor"
+                )
+              }
+              placeholder="Select a Doctor"
+              labelPlacement="outside"
+              classNames={{
+                label:
+                  "group-data-[filled-within=true]:-translate-y-[calc(100%_+_theme(fontSize.small)/2_+_15px)]",
+                trigger:
+                  "border bg-white hover:border-primary/50 data-[hover=true]:bg-white group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary/50",
+              }}
+              value={selectDoc}
+              defaultSelectedKeys={[selectDoctor || ""]}
+              {...register("doctorID", {
+                required: "Doctor is required",
+              })}
+              onChange={(e) => handleDoctorChange(e.target.value)}
+            >
+              {doctors?.map((doctor: TDoctor) => (
+                <SelectItem key={doctor._id} value={doctor._id}>
+                  {doctor.firstName + " " + doctor.lastName}
+                </SelectItem>
+              ))}
+            </Select>
+          </div>
         </div>
 
         {selDocInfo && (
           <div>
-            <p>
-              {/* Saturday (12:05 AM - 11:55 PM) & Saturday (12:05 AM - 11:55 PM) */}
-              {selDocInfo?.schedules
-                ?.map(
-                  (schedule) =>
-                    `${schedule?.scheduleDay}  (${schedule?.startTime} - ${schedule?.endTime})`
-                )
-                .join(" & ")}
-            </p>
+            <ul>
+              {selDocInfo?.schedules?.length > 0
+                ? selDocInfo?.schedules?.map((schedule) => (
+                    <li key={schedule?._id}>
+                      <div className="flex gap-3 md:gap-2">
+                        <p className="font-bold capitalize ">
+                          {schedule?.scheduleDay}
+                        </p>
+                        <p className="font-tiroBangla">
+                          <span className="font-bold"></span>
+                          {"( "}
+                          {formatSingleTimePeriod(schedule?.startTime)}
+                        </p>
+                        <p>-</p>
+                        <p className="font-tiroBangla">
+                          <span className="font-bold"></span>{" "}
+                          {formatSingleTimePeriod(schedule?.endTime)}
+                          {" )"}
+                        </p>
+                      </div>
+                    </li>
+                  ))
+                : "No schedule yet"}
+            </ul>
             <p className="text-sm font-medium font-tiroBangla text-primary">
               {selDocInfo?.specialization}
             </p>
           </div>
         )}
 
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col justify-between">
           <Textarea
             type="text"
-            label="Add Notes"
-            {...register("addNotes", { required: true })}
+            label={
+              errors.message ? (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.message.message}
+                </p>
+              ) : (
+                "Add Notes"
+              )
+            }
+            {...register("message", { required: "Notes are required" })}
             placeholder="Write in details if possible (Optional)"
             labelPlacement="outside"
             classNames={{
@@ -201,8 +298,9 @@ const AppointmentForm = ({ onClose, defaultDoctor }: TAppointmentForm) => {
               Close
             </span>
           )}
-          <button className="px-5 py-1.5 rounded-full bg-gradient-to-r from-primary to-[#07CCEC] text-white">
+          <button className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-[#07CCEC] hover:bg-gradient-to-l text-white flex items-center gap-1 duration-300 transition-all group">
             Appointment
+            <FaAngleRight className="group-hover:translate-x-1.5 duration-300" />
           </button>
         </div>
       </form>

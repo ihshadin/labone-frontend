@@ -1,22 +1,10 @@
 import React from "react";
 import Breadcamp from "@/utils/Breadcamp";
 import { Image } from "@nextui-org/react";
-import { baseApi } from "@/utils/baseUrl";
-
-const getMachineData = async (id: string) => {
-  try {
-    const res = await fetch(`${baseApi}/machine/${id}`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    return res.json();
-  } catch (error) {
-    throw error;
-  }
-};
+import { getMachine } from "@/api/machines.api";
 
 const MachineDetailsPage = async ({ params }: { params: { id: string } }) => {
-  const machine = await getMachineData(params?.id);
+  const machine = await getMachine(params?.id);
   return (
     <>
       <Breadcamp title="Machine Details" subTitle={machine?.data?.name} />

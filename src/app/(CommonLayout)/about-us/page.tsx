@@ -1,24 +1,17 @@
 import SectionHeader from "@/utils/SectionHeader";
-import { Image } from "@nextui-org/react";
-import bgImg from "@/assets/images/an-bg.png";
-import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
 import FAQSection from "@/components/Diagnostics/FAQSection";
 import GallerySlider from "@/components/GallerySlider/GallerySlider";
 import Breadcamp from "@/utils/Breadcamp";
 import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import Newsletter from "@/components/Newsletter/Newsletter";
-
-const labPhotos = [
-  "https://labonehospital.com/admin/doctorimg/9%20lab.jpg",
-  "https://labonehospital.com/admin/doctorimg/10%20lab.jpg",
-  "https://labonehospital.com/admin/doctorimg/11%20lab.jpg",
-  "https://labonehospital.com/admin/doctorimg/1%20lab.jpg",
-  "https://labonehospital.com/admin/doctorimg/2%20lab.jpg",
-];
+import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
+import GoogleMaps from "@/components/GoogleMap/GoogleMaps";
+import { getAboutsData } from "@/api/about.api";
 
 const spotlightData = {
-  image: "https://labonehospital.com/img/bg/illlustration.jpg",
+  image:
+    "https://res.cloudinary.com/dz4ckryd6/image/upload/v1725081332/qqbj3dzdof0nivqa0kcn.jpg",
   subHeading: "About Labone Diagnositc",
   heading: "We Are Specialize in Medical Diagnositics",
   description:
@@ -32,39 +25,103 @@ const spotlightData = {
   btnLink: "/about-us",
 };
 
-const AboutUsPage = () => {
+const AboutUsPage = async () => {
+  const aboutsData = await getAboutsData("66c9d4ff2b1c51fc3bd6abbc");
   return (
     <>
       <Breadcamp title={"About Us"} subTitle="About Labone" />
       <SpotlightSection data={spotlightData} />
       <AchivementSection />
-      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
-        <SectionHeader
-          subHeading="Our's Lab"
-          heading="We have the most advance Lab"
-        />
-        <div className="mt-6 md:mt-10">
-          <GallerySlider photos={labPhotos} />
+      {aboutsData?.labPhotos?.length > 0 && (
+        <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+          <SectionHeader
+            subHeading="Our's Lab"
+            heading="We have the most advance Lab"
+          />
+          <div className="mt-6 md:mt-10">
+            <GallerySlider photos={aboutsData?.labPhotos} />
+          </div>
         </div>
-      </div>
-      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
-        <SectionHeader
-          subHeading="Nicu"
-          heading="Neonatal intensive care unit (NICU)"
-        />
-        <div className="mt-6 md:mt-10">
-          <GallerySlider photos={labPhotos} />
+      )}
+      {aboutsData?.nicuPhotos?.length > 0 && (
+        <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+          <SectionHeader
+            subHeading="Nicu"
+            heading="Neonatal intensive care unit (NICU)"
+          />
+          <div className="mt-6 md:mt-10">
+            <GallerySlider photos={aboutsData?.nicuPhotos} />
+          </div>
         </div>
-      </div>
-      <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
-        <SectionHeader subHeading="ot" heading="Operation theater" />
-        <div className="mt-6 md:mt-10">
-          <GallerySlider photos={labPhotos} />
+      )}
+      {aboutsData?.otPhotos?.length > 0 && (
+        <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+          <SectionHeader subHeading="ot" heading="Operation theater" />
+          <div className="mt-6 md:mt-10">
+            <GallerySlider photos={aboutsData?.otPhotos} />
+          </div>
         </div>
-      </div>
+      )}
+      {aboutsData?.emergencyUnitPhotos?.length > 0 && (
+        <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+          <SectionHeader
+            subHeading="Emergency Unit"
+            heading="LabOne Hospital Emergency Unit is open 24/7"
+          />
+          <div className="mt-6 md:mt-10">
+            <GallerySlider photos={aboutsData?.emergencyUnitPhotos} />
+          </div>
+        </div>
+      )}
+      {aboutsData?.iTDeptPhotos?.length > 0 && (
+        <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+          <SectionHeader
+            subHeading="IT Department"
+            heading="We have IT Department"
+          />
+          <div className="mt-6 md:mt-10">
+            <GallerySlider photos={aboutsData?.iTDeptPhotos} />
+          </div>
+        </div>
+      )}
+      {aboutsData?.pharmacyPhotos?.length > 0 && (
+        <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+          <SectionHeader
+            subHeading="Pharmacy Department"
+            heading="LabOne Hospital Pharmacy Department"
+          />
+          <div className="mt-6 md:mt-10">
+            <GallerySlider photos={aboutsData?.pharmacyPhotos} />
+          </div>
+        </div>
+      )}
+      {aboutsData?.radiologyImagingPhotos?.length > 0 && (
+        <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+          <SectionHeader
+            subHeading="Radiology Imaging Department"
+            heading="Radiology Imaging Department"
+          />
+          <div className="mt-6 md:mt-10">
+            <GallerySlider photos={aboutsData?.radiologyImagingPhotos} />
+          </div>
+        </div>
+      )}
+      {aboutsData?.receptionPhotos?.length > 0 && (
+        <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
+          <SectionHeader
+            subHeading="Reception"
+            heading="LabOne Hospital Reception Department"
+          />
+          <div className="mt-6 md:mt-10">
+            <GallerySlider photos={aboutsData?.receptionPhotos} />
+          </div>
+        </div>
+      )}
+
       <Newsletter />
       <TestimonialsSection />
       <FAQSection />
+      <GoogleMaps />
     </>
   );
 };

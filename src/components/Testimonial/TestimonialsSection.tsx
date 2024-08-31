@@ -1,8 +1,7 @@
 "use client";
-import SectionHeader from "@/utils/SectionHeader";
-import TestimonialCard from "./TestimonialCard";
 import { useEffect, useState } from "react";
-import { baseApi } from "@/utils/baseUrl";
+import SectionHeader from "@/utils/SectionHeader";
+import TestimonialCard from "@/components/Testimonial/TestimonialCard";
 
 // core version + navigation, pagination modules:
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,22 +9,18 @@ import { Autoplay, Pagination } from "swiper/modules";
 // import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/pagination";
+import LabBtn from "@/utils/LabBtn";
+import { getTestimonials } from "@/api/reviews.api";
 
 const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const response = await fetch(`${baseApi}/reviews`);
-        const data = await response.json();
-        setTestimonials(data?.data?.result);
-      } catch (error) {
-        console.error("Error fetching testimonials:", error);
-      }
+    const getTestimonialsData = async () => {
+      const data = await getTestimonials(5);
+      setTestimonials(data);
     };
-
-    fetchTestimonials();
+    getTestimonialsData();
   }, []);
   return (
     <>
@@ -46,7 +41,7 @@ const TestimonialsSection = () => {
             }}
             loop={true}
             pagination={{
-              clickable: true,
+              dynamicBullets: true,
             }}
             modules={[Autoplay, Pagination]}
             className="testimonial-swiper vertical-pagination"
@@ -57,6 +52,9 @@ const TestimonialsSection = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+        <div className="w-[225px] mx-auto pt-5">
+          <LabBtn link="/testimonials" text="Leave your review" />
         </div>
       </div>
     </>

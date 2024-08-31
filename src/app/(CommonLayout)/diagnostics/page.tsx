@@ -1,22 +1,21 @@
-import { baseApi } from "@/utils/baseUrl";
 import { TMachine } from "@/types/machine.type";
-import { Image } from "@nextui-org/react";
-import { RiArrowDropRightLine } from "react-icons/ri";
 import LabBtn from "@/utils/LabBtn";
 import SectionHeader from "@/utils/SectionHeader";
-import serviceLine from "@/assets/images/sr-line.png";
 import MachineCard from "@/components/Machines/MachineCard";
 import DoctorsSection from "@/components/Diagnostics/DoctorsSection";
-import bgImg from "@/assets/images/an-bg.png";
-import TestimonialsSection from "@/components/Diagnostics/TestimonialsSection";
 import FAQSection from "@/components/Diagnostics/FAQSection";
 import SpotlightSection from "@/components/SpotlightSection/SpotlightSection";
 import SpecialService from "@/components/SpecialService/SpecialService";
 import AchivementSection from "@/components/AchivementSection/AchivementSection";
 import Newsletter from "@/components/Newsletter/Newsletter";
+import TestimonialsSection from "@/components/Testimonial/TestimonialsSection";
+import { getMachines } from "@/api/machines.api";
+import { getDgDoctors } from "@/api/dg-doctors.api";
+import { getDgMachines } from "@/api/dg-machines.api";
 
 const spotlightData = {
-  image: "https://labonehospital.com/img/bg/illlustration.jpg",
+  image:
+    "https://res.cloudinary.com/dz4ckryd6/image/upload/v1725081332/qqbj3dzdof0nivqa0kcn.jpg",
   subHeading: "About Labone Diagnositc",
   heading: "We Are Specialize in Medical Diagnositics",
   description:
@@ -30,24 +29,9 @@ const spotlightData = {
   btnLink: "/about-us",
 };
 
-const getDoctorData = async () => {
-  const res = await fetch(`${baseApi}/doctor?limit=7`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-};
-const getMachineData = async () => {
-  const res = await fetch(`${baseApi}/machine?limit=3`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-};
-
 const DiagnosticsPage = async () => {
-  const data = await getDoctorData();
-  const machineData = await getMachineData();
+  const machines = await getDgMachines();
+  const doctors = await getDgDoctors();
 
   return (
     <>
@@ -65,7 +49,7 @@ const DiagnosticsPage = async () => {
           heading="We use modern machines"
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 pt-6 md:pt-10 pb-8 md:pb-12">
-          {machineData?.data?.result?.map((machine: TMachine) => (
+          {machines?.map((machine: TMachine) => (
             <MachineCard key={machine._id} machine={machine} />
           ))}
         </div>
@@ -73,7 +57,7 @@ const DiagnosticsPage = async () => {
           <LabBtn text="See All Machines" link="/machines" />
         </div>
       </div>
-      <DoctorsSection doctors={data?.data?.result} />
+      <DoctorsSection doctors={doctors} />
       <Newsletter />
       <TestimonialsSection />
       <FAQSection />

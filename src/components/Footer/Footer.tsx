@@ -14,6 +14,7 @@ import {
 } from "react-icons/ri";
 import "@/styles/footer.css";
 import logoIcon from "@/assets/images/favicon.png";
+import logoHorizontal from "@/assets/images/logo-horizontal.png";
 
 const Footer = () => {
   return (
@@ -28,12 +29,25 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between gap-8 lg:gap-32">
           <div className="baseis-[30%] md:basis-[35%]">
             <Link href="/">
-              <div className="flex items-center justify-center md:justify-start gap-1.5 cursor-pointer py-2">
-                <Image className="w-[62px]" src={logoIcon} alt="logo" />
-                <div className="text-2xl leading-[1em] italic font-extrabold">
+              <div className="flex items-center justify-center md:justify-start gap-2.5 cursor-pointer py-2">
+                <Image
+                  className="w-[62px]"
+                  src={logoIcon}
+                  width={62}
+                  height={62}
+                  alt="logo"
+                />
+                <Image
+                  className="w-[130px]"
+                  src={logoHorizontal.src}
+                  width={130}
+                  height={50}
+                  alt="logo"
+                />
+                {/* <div className="text-2xl leading-[1em] italic font-extrabold">
                   <h2 className="text-primary">Lab One</h2>
                   <h3 className="text-secondary">Hospital</h3>
-                </div>
+                </div> */}
                 {/* <img className="w-14" src={logoIcon} alt="logo" /> */}
               </div>
             </Link>
@@ -43,20 +57,23 @@ const Footer = () => {
             </p>
 
             <div className="mt-4 md:mt-6 flex justify-center lg:justify-start gap-5 *:text-accent/90 hover:*:text-accent">
-              <Link href={"https://facebook.com"} target="_blank">
-                <FaSquareFacebook size={20} />
+              <Link
+                href={"https://www.facebook.com/labonehospital"}
+                target="_blank"
+              >
+                <FaSquareFacebook />
               </Link>
 
-              <Link href={"https://facebook.com"} target="_blank">
-                <FaInstagram size={20} />
+              <Link href={"https://www.instagram.com/"} target="_blank">
+                <FaInstagram />
               </Link>
 
-              <Link href={"https://facebook.com"} target="_blank">
-                <FaLinkedin size={20} />
+              <Link href={"https://www.linkedin.com/"} target="_blank">
+                <FaLinkedin />
               </Link>
 
-              <Link href={"https://facebook.com"} target="_blank">
-                <FaXTwitter size={20} />
+              <Link href={"https://x.com/"} target="_blank">
+                <FaXTwitter />
               </Link>
             </div>
           </div>
@@ -140,9 +157,9 @@ const Footer = () => {
                 </li>
                 <li>
                   <RiMapPinLine className="flex-shrink-0 self-start mt-1" />
-                  <Link href={"#"} className="text-sm text-left">
+                  <span className="text-sm text-left">
                     Tetuibari, DEPZ Road Mojarmil Bus Stand, Kashimpur, Gazipur
-                  </Link>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -152,7 +169,10 @@ const Footer = () => {
         <div className="mt-10 border-t border-gray-100 pt-3">
           <p className="text-center text-xs/relaxed text-gray-800 font-medium">
             <span>Labone Hospital ©{new Date().getFullYear()} Created by </span>
-            <Link href={"https://websyner.com"} className="text-primary">
+            <Link
+              href={"https://www.linkedin.com/company/websyner"}
+              className="text-primary"
+            >
               WebSyner
             </Link>
           </p>

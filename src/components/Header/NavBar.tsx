@@ -11,14 +11,16 @@ import {
   Link,
 } from "@nextui-org/react";
 import Image from "next/image";
-import LabBtn from "@/utils/LabBtn";
 import logo from "@/assets/images/labOneLogoThik.png";
 import { HiMiniXMark } from "react-icons/hi2";
 import { FaBarsStaggered } from "react-icons/fa6";
+import { usePathname } from "next/navigation";
+import AppointmentModalSection from "@/utils/AppointmentModal/AppointmentModalSection";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const pathname = usePathname();
 
   const menuItems = [
     {
@@ -49,8 +51,11 @@ const NavBar = () => {
       link: "/diagnostics",
       text: "Diagnostics",
     },
+    {
+      link: "/gallery",
+      text: "Gallery",
+    },
   ];
-
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 150);
@@ -66,9 +71,9 @@ const NavBar = () => {
     <>
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
-        className={`[&_header]:max-w-[1250px] [&_header]:px-2 [&_header]:py-2 [&_header]:h-auto ${
+        className={`[&_header]:max-w-[1250px] [&_header]:px-2 [&_header]:py-2 [&_header]:h-auto  ${
           isSticky &&
-          "fixed left-0 top-0 w-full animate-slideDown data-[active=true]:text-primary"
+          "fixed left-0 top-0 w-full animate-slideDown data-[active=true]:text-primary shadow-[0px_5px_8px] shadow-primary/20"
         }`}
       >
         <NavbarContent className="!grow-0 !basis-auto">
@@ -87,11 +92,14 @@ const NavBar = () => {
         >
           {menuItems.map((item, index) => (
             <NavbarMenuItem
-              key={`${item}-${index}`}
+              key={`${item.link}-${index}`}
+              isActive={pathname == item?.link}
               className="font-medium text-accent"
             >
               <Link
-                className="active:!text-primary text-accent data-[focus-within=true]:text-primary"
+                className={`font-medium hover:text-primary ${
+                  pathname === item?.link ? "text-primary" : "text-accent"
+                }`}
                 href={item.link}
               >
                 {item.text}
@@ -99,9 +107,11 @@ const NavBar = () => {
             </NavbarMenuItem>
           ))}
         </NavbarContent>
-        <NavbarContent justify="end" className="!grow-0 w-auto ml-10">
+
+        <NavbarContent justify="end" className="!grow-0 w-auto ml-6">
           <NavbarItem className="hidden lg:inline-block ">
-            <LabBtn link="/" text="Appointment" />
+            <AppointmentModalSection />
+            {/* <DoctorsSearch /> */}
           </NavbarItem>
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -115,21 +125,17 @@ const NavBar = () => {
             }
           />
         </NavbarContent>
-        <NavbarMenu>
+        <NavbarMenu className="top-[56px]">
           {menuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
+            <NavbarMenuItem key={`${item.link}-${index}`}>
               <Link className="w-full" href={item.link}>
                 {item.text}
               </Link>
             </NavbarMenuItem>
           ))}
-          <NavbarItem className="inline-block md:hidden">
-            <Link
-              href="/"
-              className="px-5 py-2 text-white bg-gradient-to-r from-primary to-[#07CCEC] rounded-full"
-            >
-              Appointment
-            </Link>
+          <NavbarItem className="inline-block lg:hidden">
+            {/* <DoctorsSearch /> */}
+            <AppointmentModalSection />
           </NavbarItem>
         </NavbarMenu>
       </Navbar>
