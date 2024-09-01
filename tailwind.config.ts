@@ -14,6 +14,7 @@ const config: Config = {
       fontFamily: {
         archivo: ["Archivo", "sans-serif"],
         tiroBangla: ["Tiro Bangla", "sans-serif"],
+        hindSiliguri: ["Hind Siliguri", "sans-serif"],
       },
       colors: {
         primary: "#0a8848",
