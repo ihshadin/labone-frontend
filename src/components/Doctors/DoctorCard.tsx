@@ -22,7 +22,7 @@ const DoctorCard = ({ doctor, link }: { doctor: TDoctor; link?: string }) => {
           <div className="w-full">
             <Link
               href={`/${link ? link : "doctors"}/${doctor?._id}`}
-              className="block text-primary hover:text-primary/90 text-base md:text-2xl line-clamp-1 font-bold text-center font-tiroBangla"
+              className="block text-primary hover:text-primary/90 text-base md:text-2xl line-clamp-1 font-bold text-center font-hindSiliguri"
             >
               {doctor?.firstName + " " + doctor?.lastName}
             </Link>
