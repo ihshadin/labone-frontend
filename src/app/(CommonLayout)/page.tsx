@@ -97,7 +97,7 @@ export default async function Home() {
           <LabBtn text="See All Machines" link="/machines" />
         </div>
       </div>
-      <DoctorsSection doctors={doctors} />
+      <DoctorsSection isFromHome={true} doctors={doctors} />
       <Newsletter />
       <TestimonialsSection />
       <FAQSection />

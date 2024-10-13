@@ -12,7 +12,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import LabBtn from "@/utils/LabBtn";
 
-const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
+const DoctorsSection = ({
+  doctors,
+  isFromHome,
+}: {
+  doctors: TDoctor[];
+  isFromHome: boolean;
+}) => {
   return (
     <>
       <div className="mx-auto max-w-[1250px] px-2 py-10 lg:py-20">
@@ -45,13 +51,19 @@ const DoctorsSection = ({ doctors }: { doctors: TDoctor[] }) => {
           >
             {doctors?.map((doctor: TDoctor) => (
               <SwiperSlide key={doctor._id}>
-                <DoctorCard link="diagnostics/doctors" doctor={doctor} />
+                <DoctorCard
+                  link={`${isFromHome ? "doctors" : "diagnostics/doctors"}`}
+                  doctor={doctor}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
         <div className="w-[225px] mx-auto pt-8 md:pt-12">
-          <LabBtn link="/diagnostics/doctors" text="Sell All Doctors" />
+          <LabBtn
+            link={`${isFromHome ? "/doctors" : "/diagnostics/doctors"}`}
+            text="Sell All Doctors"
+          />
         </div>
       </div>
     </>
