@@ -62,7 +62,7 @@ const DiagnosticsPage = async () => {
           <LabBtn text="See All Machines" link="/diagnostics/machines" />
         </div>
       </div>
-      <DoctorsSection doctors={doctors?.result} />
+      <DoctorsSection isFromHome={false} doctors={doctors?.result} />
       <Newsletter />
       <TestimonialsSection />
       <FAQSection />
