@@ -3,7 +3,10 @@ import { baseApi } from "./api";
 export const getMachines = async (limit?: number) => {
   try {
     const res = await fetch(
-      `${baseApi}/machine${limit ? `?limit=${limit}` : ""}`
+      `${baseApi}/machine${limit ? `?limit=${limit}` : ""}`,
+      {
+        cache: "no-cache",
+      }
     );
     const data = await res.json();
     return data?.data?.result;
@@ -15,11 +18,8 @@ export const getMachines = async (limit?: number) => {
 export const getMachine = async (id: string) => {
   try {
     const res = await fetch(`${baseApi}/machine/${id}`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
     return res.json();
   } catch (error) {
-    throw error;
+    console.error("Error fetching Machine data:", error);
   }
 };
