@@ -40,10 +40,24 @@ export function formatCustomTimePeriod(startTime: string, endTime: string) {
 }
 
 export function formatSingleTimePeriod(date: string) {
-  const time = new Date(date);
+  // const time = new Date(date);
 
-  const timeHours = time.getHours();
-  const timeMinutes = time.getMinutes();
+  // const timeHours = time.getHours();
+  // const timeMinutes = time.getMinutes();
+
+  const options: Intl.DateTimeFormatOptions = {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: "Asia/Dhaka", // ensure consistent timezone
+  };
+
+  const [hoursStr, minutesStr] = new Intl.DateTimeFormat("en-GB", options)
+    .format(new Date(date))
+    .split(":");
+
+  const timeHours = parseInt(hoursStr, 10);
+  const timeMinutes = parseInt(minutesStr, 10);
 
   const defaultPeriod = { label: "Unknown", start: 0, end: 0 };
 
