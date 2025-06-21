@@ -4,7 +4,6 @@ import AppointmentModalSection from "@/utils/AppointmentModal/AppointmentModalSe
 import Breadcamp from "@/utils/Breadcamp";
 import { formatSingleTimePeriod } from "@/utils/TimeRangeFormate";
 import { Image } from "@nextui-org/react";
-import React from "react";
 
 const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
   const doctor = await getDoctor(params?.id);
@@ -52,7 +51,7 @@ const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
               {doctor?.schedules?.length > 0
                 ? doctor?.schedules?.map((schedule: TSchedule) => (
                     <li key={schedule?._id}>
-                      <div className="flex gap-3 md:gap-2 p-2">
+                      <div className="flex gap-3 md:gap-2">
                         <p className="font-bold capitalize ">
                           {schedule?.scheduleDay}
                         </p>
@@ -70,7 +69,7 @@ const DoctorSinglePage = async ({ params }: { params: { id: string } }) => {
                       </div>
                     </li>
                   ))
-                : "No shedule yet"}
+                : "No schedule yet"}
             </ul>
             <div className="mt-10 md:flex items-start justify-start">
               <AppointmentModalSection doctorID={doctor?._id} />
